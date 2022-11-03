@@ -1,22 +1,15 @@
 import path from "path";
 import { fileURLToPath } from "url";
 
-import { config } from "../config.js";
-import { mergeDeep } from "./utils.js";
+import { config } from "./config.js";
 import { copyFile, readFile, readFolder, saveFile } from "./io.js";
-import { markdown } from "./markdown.js";
-
-const defaults = {
-    in: "TEST_IN",
-    out: "TEST_OUT"
-};
-
-const options = mergeDeep(defaults, config);
-console.log({ options });
+import { parseFrontmatter } from "./frontmatter.js";
+import { markdown as md } from "./markdown.js";
+import templates from "../site/templates/index.js";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
-const IN_DIRECTORY = path.resolve(__dirname, `../${options.in}/`);
-const OUT_DIRECTORY = path.resolve(__dirname, `../${options.out}/`);
+const IN_DIRECTORY = path.resolve(__dirname, `../${config.in}/`);
+const OUT_DIRECTORY = path.resolve(__dirname, `../${config.out}/`);
 
 const processFile = async filePath => {
     const extension = path.extname(filePath);
@@ -33,11 +26,19 @@ const processFile = async filePath => {
         );
 
         const fileContents = await readFile(filePath);
-        const markdownContents = markdown.render(fileContents);
-        console.log(`Writing ${updatePath}`);
-        saveFile(updatePath, markdownContents);
+        const { frontmatter, markdown } = parseFrontmatter(fileContents);
+        const markdownContents = md.render(markdown);
+        const layout = frontmatter.layout || "Main";
+
+        const body = templates[layout]({
+            content: markdownContents,
+            props: frontmatter
+        });
+
+        if (!config.quiet) console.log(`Writing ${updatePath}`);
+        saveFile(updatePath, body);
     } else {
-        console.log(`Copying ${copyPath}`);
+        if (!config.quiet) console.log(`Copying ${copyPath}`);
         copyFile(filePath, copyPath);
     }
 };
@@ -47,3 +48,4 @@ const allFiles = readFolder(IN_DIRECTORY);
 console.log(`found ${allFiles.length} files`);
 
 allFiles.forEach(filePath => processFile(filePath));
+console.log(`Site generated at "/${config.out}"`);

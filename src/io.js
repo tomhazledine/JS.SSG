@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import { config } from "./config.js";
 
 const isDir = targetPath => {
     try {
@@ -11,7 +12,7 @@ const isDir = targetPath => {
 
 const getAllFilePaths = root => {
     if (isDir(root)) {
-        console.log(`Reading ${root}`);
+        if (!config.quiet) console.log(`Reading ${root}`);
         const files = fs.readdirSync(root);
         return files.map(file => getAllFilePaths(`${root}/${file}`));
     }
@@ -23,7 +24,7 @@ const ensureDirectoryExistence = filePath => {
     if (isDir(dirname)) {
         return true;
     }
-    console.log(`Creating folder ${dirname}`);
+    if (!config.quiet) console.log(`Creating folder ${dirname}`);
     fs.mkdirSync(dirname, { recursive: true });
     return true;
 };
