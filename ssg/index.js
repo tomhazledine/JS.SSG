@@ -1,15 +1,25 @@
-import path from "path";
-import { fileURLToPath } from "url";
+#!/usr/bin/env node
+// 👆 Used to tell Node.js that this is a CLI tool
 
-import { config } from "./config.js";
+"use strict";
+import path from "path";
+import fs from "fs";
+
+import { getConfig } from "./config.js";
 import { copyFile, readFile, readFolder, saveFile } from "./io.js";
 import { parseFrontmatter } from "./frontmatter.js";
 import { render } from "./markdown.js";
 import templates from "../site/templates/index.js";
 
-const __dirname = fileURLToPath(new URL(".", import.meta.url));
-const IN_DIRECTORY = path.resolve(__dirname, `../${config.in}/`);
-const OUT_DIRECTORY = path.resolve(__dirname, `../${config.out}/`);
+export const config = getConfig();
+
+const IN_DIRECTORY = path.resolve(".", `./${config.in}/`);
+const OUT_DIRECTORY = path.resolve(".", `./${config.out}/`);
+
+// Clean old versions
+fs.rmSync(OUT_DIRECTORY, { recursive: true, force: true });
+
+console.log("Generating static site...");
 
 const processFile = async filePath => {
     const extension = path.extname(filePath);

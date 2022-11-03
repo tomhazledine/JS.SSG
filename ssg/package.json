@@ -1,0 +1,19 @@
+{
+    "name": "ssg",
+    "version": "1.0.0",
+    "description": "js friendly SSG",
+    "main": "index.js",
+    "devDependencies": {},
+    "type": "module",
+    "bin": "./index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "node ./index"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "markdown-it": "^13.0.1",
+        "yaml": "^2.1.3"
+    }
+}

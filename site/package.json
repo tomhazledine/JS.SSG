@@ -1,0 +1,17 @@
+{
+    "name": "site",
+    "version": "1.0.0",
+    "description": "A test site to use the new SSG",
+    "main": "index.js",
+    "devDependencies": {},
+    "type": "module",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "ssg"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "ssg": "1.0.0"
+    }
+}

@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { config } from "./config.js";
+import { config } from "./index.js";
 
 const isDir = targetPath => {
     try {
