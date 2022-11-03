@@ -11,7 +11,7 @@ const isDir = targetPath => {
 
 const getAllFilePaths = root => {
     if (isDir(root)) {
-        console.log(`reading ${root}`);
+        console.log(`Reading ${root}`);
         const files = fs.readdirSync(root);
         return files.map(file => getAllFilePaths(`${root}/${file}`));
     }
@@ -23,7 +23,7 @@ const ensureDirectoryExistence = filePath => {
     if (isDir(dirname)) {
         return true;
     }
-    console.log(`creating ${dirname}...`);
+    console.log(`Creating folder ${dirname}`);
     fs.mkdirSync(dirname, { recursive: true });
     return true;
 };

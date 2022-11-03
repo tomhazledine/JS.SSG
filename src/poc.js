@@ -1,4 +1,3 @@
-import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -25,36 +24,12 @@ const processFile = async filePath => {
 
         const fileContents = await readFile(filePath);
         const markdownContents = markdown.render(fileContents);
+        console.log(`Writing ${updatePath}`);
         saveFile(updatePath, markdownContents);
     } else {
+        console.log(`Copying ${copyPath}`);
         copyFile(filePath, copyPath);
     }
-
-    // // If the file isn't an image format that we want
-    // // to process, don't do anything else.
-    // if (!VALID_FORMATS.includes(extension)) return;
-
-    // try {
-    //     const image = await sharp(filePath);
-    //     const metadata = await image.metadata();
-
-    //     sizes.forEach(async size => {
-    //         // if (metadata.width < size) return;
-
-    //         const resizedData = await sharp(filePath)
-    //             .resize({ width: size, withoutEnlargement: true })
-    //             .toBuffer();
-
-    //         const resizedOutPath = outPath.replace(
-    //             extension,
-    //             `-${size}${extension}`
-    //         );
-    //         saveImageFile(resizedOutPath, resizedData);
-    //     });
-    // } catch (error) {
-    //     console.error(`An error occurred when processing ${filePath}`);
-    //     console.error(error);
-    // }
 };
 
 console.log("Getting all file paths...");
