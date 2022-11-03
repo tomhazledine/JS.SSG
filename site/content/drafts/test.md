@@ -1,6 +1,6 @@
 ---
 permalink: /draft-test/
-layout: "article.njk"
+layout: "Main"
 title: "Draft test"
 date: "2022-11-01"
 excerpt: "Lorem ipsum"
@@ -9,6 +9,8 @@ categories: ["code"]
 ---
 
 Ipsum voluptate nisi mollit dolor. Irure id esse et proident officia commodo labore Lorem culpa ipsum nostrud ex. Consectetur elit occaecat dolore est consequat deserunt nostrud eiusmod sunt voluptate dolor fugiat sit et. Magna nisi dolor ea ullamco commodo exercitation amet mollit elit in laborum.
+
+---
 
 Proident id laborum est excepteur. Nisi fugiat laborum cillum occaecat dolore esse exercitation pariatur cupidatat aliqua voluptate. Cupidatat dolor sunt ut et esse incididunt mollit Lorem nostrud elit ipsum Lorem esse occaecat. Sit eiusmod nulla incididunt exercitation qui.
 

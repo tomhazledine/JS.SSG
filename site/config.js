@@ -1,4 +1,4 @@
 export const config = {
-    in: "content",
+    in: "site/content/drafts",
     out: "build"
 };
