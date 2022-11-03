@@ -4,7 +4,7 @@ import { fileURLToPath } from "url";
 import { config } from "./config.js";
 import { copyFile, readFile, readFolder, saveFile } from "./io.js";
 import { parseFrontmatter } from "./frontmatter.js";
-import { markdown as md } from "./markdown.js";
+import { render } from "./markdown.js";
 import templates from "../site/templates/index.js";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
@@ -27,12 +27,18 @@ const processFile = async filePath => {
 
         const fileContents = await readFile(filePath);
         const { frontmatter, markdown } = parseFrontmatter(fileContents);
-        const markdownContents = md.render(markdown);
-        const layout = frontmatter.layout || "Main";
+        const markdownContents = render(markdown);
+        const fallbackTemplate = "main";
+        const layout = frontmatter.layout.toLowerCase() || fallbackTemplate;
+        const template =
+            typeof templates[layout] !== "undefined"
+                ? templates[layout]
+                : templates[fallbackTemplate];
 
-        const body = templates[layout]({
+        const body = template({
             content: markdownContents,
-            props: frontmatter
+            page: frontmatter,
+            site: config.data
         });
 
         if (!config.quiet) console.log(`Writing ${updatePath}`);

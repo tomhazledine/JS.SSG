@@ -12,3 +12,5 @@ export const markdown = new MarkdownIt({
     //     copyAttrs: "class"
     // })
     .disable("code");
+
+export const render = content => markdown.render(content);
