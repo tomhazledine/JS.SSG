@@ -1,0 +1,16 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+templateEngineOverride: njk
+---
+
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- for page in collections.all %}
+  {% set mappedUrl %}{{ metadata.url}}{{ page.url | url }}{% endset %}
+  <url>
+    <loc>{{ site.url + mappedUrl }}</loc>
+    <lastmod>{{ page.date | date_sitemap }}</lastmod>
+  </url>
+{%- endfor %}
+</urlset>
