@@ -1,6 +1,6 @@
 ---
 permalink: /inline-svg-icons/
-layout: "article.njk"
+layout: "article"
 title: "Getting started with inline SVG icons"
 date: "2015-05-31"
 excerpt: "As a typography nerd, using a custom font to serve icons felt really good. However, it turns out inline SVG icons are better in almost every way."

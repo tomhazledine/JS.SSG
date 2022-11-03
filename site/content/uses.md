@@ -1,6 +1,6 @@
 ---
 permalink: /uses/
-layout: "article.njk"
+layout: "article"
 title: "Uses"
 date: "2020-01-09"
 excerpt: "My developer setup, gear, software and configs"

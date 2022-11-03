@@ -1,6 +1,6 @@
 ---
 permalink: /picobel-js-css-audio-player/
-layout: "article.njk"
+layout: "article"
 title: "Introducing Picobel.js - an audio player you can style with css"
 date: "2017-04-30"
 excerpt: "Picobel.js is a lightweight dependency-free Javascript tool that converts html audio tags into styleable markup."

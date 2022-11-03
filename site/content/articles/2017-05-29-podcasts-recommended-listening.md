@@ -1,6 +1,6 @@
 ---
 permalink: /podcasts-recommended-listening/
-layout: "article.njk"
+layout: "article"
 title: "Recommended Listening: my favourite podcasts"
 date: "2017-05-29"
 excerpt: "Without any constraints of format or time, the best podcasts get to dive deep into topics that wouldn't otherwise get covered."

@@ -1,6 +1,6 @@
 ---
 permalink: /learning-and-doing-in-public/
-layout: "article.njk"
+layout: "article"
 title: "Learning (and doing) in public"
 date: "2021-04-30"
 excerpt: "Making my upcoming to-do list public, in an effort to improve my productivity."

@@ -1,6 +1,6 @@
 ---
 permalink: /comic-sans-april-fool-disaster/
-layout: "article.njk"
+layout: "article"
 title: "I changed my site's font to Comic Sans as an April Fool. It was a disaster."
 date: "2017-04-19"
 excerpt: 'I often hear that "good design" works in all situations, no matter what typeface you wrap it in. The reality is a little more nuanced.'

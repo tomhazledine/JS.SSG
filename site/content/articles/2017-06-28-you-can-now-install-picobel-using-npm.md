@@ -1,6 +1,6 @@
 ---
 permalink: /you-can-now-install-picobel-using-npm/
-layout: "article.njk"
+layout: "article"
 title: "You can now install Picobel using NPM"
 date: "2017-06-28"
 excerpt: "Picobel is my open source JavaScript tool for turning HTML audio tags into styleable markup."

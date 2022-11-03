@@ -1,6 +1,6 @@
 ---
 permalink: /twitter-cards-with-nunjucks-and-eleventy/
-layout: "article.njk"
+layout: "article"
 title: "Twitter Cards with Nunjucks and 11ty"
 date: "2020-02-17"
 excerpt: "Using cards makes sharing your content on Twitter look much nicer."

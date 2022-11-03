@@ -1,6 +1,6 @@
 ---
 permalink: /a-good-readme/
-layout: "article.njk"
+layout: "article"
 title: "You are only as good as your README"
 date: "2016-09-28"
 excerpt: 'All code is an abstraction. If we were writing explicitly for computers we would write in machine code or assembly-language. We don''t, because "hello world" would take months to write. So instead of typing in binary, we use languages that hide the mess out of sight.'

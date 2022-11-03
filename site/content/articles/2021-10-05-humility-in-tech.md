@@ -1,6 +1,6 @@
 ---
 permalink: /humility-in-tech/
-layout: "article.njk"
+layout: "article"
 title: "Humility in software development"
 date: "2021-10-05"
 excerpt: "An idea that has been specifically valuable to me in the context of my career in tech."

@@ -1,6 +1,6 @@
 ---
 permalink: /css-naked-day/
-layout: "article.njk"
+layout: "article"
 title: "CSS Naked Day"
 date: "2020-04-09"
 excerpt: "The once-a-year event that celebrates clean markup. "

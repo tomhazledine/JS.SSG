@@ -1,6 +1,6 @@
 ---
 permalink: /inline-svg-icon-sprites/
-layout: "article.njk"
+layout: "article"
 title: "Inline SVG icon sprites are (still) not scary."
 date: "2017-02-26"
 excerpt: "One of the best things about HTML is that it just works. As with much of the web, things only get weird when designers and developers start adding things."

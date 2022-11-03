@@ -1,6 +1,6 @@
 ---
 permalink: /things-i-use/
-layout: "article.njk"
+layout: "article"
 title: "The things I use"
 date: "2020-01-17"
 tags: ["articles"]

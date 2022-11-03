@@ -1,6 +1,6 @@
 ---
 permalink: /eleventy-static-site-generator/
-layout: "article.njk"
+layout: "article"
 title: "Static site generators: Hugo vs Jekyll vs Gatsby vs 11ty"
 date: "2020-01-07"
 excerpt: "I have an obsession with SSGs, and Eleventy is my favourite (even better than Hugo, Jekyll, and Gatsby)."

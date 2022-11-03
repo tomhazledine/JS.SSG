@@ -1,6 +1,6 @@
 ---
 permalink: /web-audio-delay/
-layout: "article.njk"
+layout: "article"
 title: "Building a delay effect with the Web Audio API"
 date: "2020-12-30"
 excerpt: "An introduction to the power of JavaScript's Web Audio API"

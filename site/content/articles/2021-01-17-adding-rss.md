@@ -1,6 +1,6 @@
 ---
 permalink: /adding-rss/
-layout: "article.njk"
+layout: "article"
 title: "RSS in 2021 (yes, it's still a thing)"
 date: "2021-01-17"
 excerpt: "Adding an RSS feed to an Eleventy site is (mostly) easy peasy."

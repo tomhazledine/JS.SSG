@@ -1,6 +1,6 @@
 ---
 permalink: /what-is-a-decibel-anyway/
-layout: "article.njk"
+layout: "article"
 title: "What is a decibel, anyway?"
 date: "2017-03-22"
 excerpt: "The decibel has always confused me. I did some research, and it turns out the decibel is actually pretty interesting."

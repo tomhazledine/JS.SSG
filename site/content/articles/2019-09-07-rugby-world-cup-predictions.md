@@ -1,6 +1,6 @@
 ---
 permalink: /rugby-world-cup-predictions/
-layout: "article.njk"
+layout: "article"
 title: "Algorithmically predicting the results of the 2019 Rugby World Cup"
 date: "2019-09-07"
 excerpt: "Data visualisation and prediction algorithm for the 2019 Rugby World Cup"

@@ -1,6 +1,6 @@
 ---
 permalink: /simple-is-hard/
-layout: "article.njk"
+layout: "article"
 title: "Simple is hard"
 date: "2013-09-26"
 excerpt: "How I learnt to focus on substance over style, and began to rethink my relationship with ‘good design’."

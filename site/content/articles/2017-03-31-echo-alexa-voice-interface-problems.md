@@ -1,6 +1,6 @@
 ---
 permalink: /echo-alexa-voice-interface-problems/
-layout: "article.njk"
+layout: "article"
 title: 'Living with Alexa: the problems with "voice" as an interface'
 date: "2017-03-31"
 excerpt: "I've lived with Alexa (the virtual assistant held within the Amazon Echo) for six months now. The experience has changed how I feel about voice-as-an-interface."

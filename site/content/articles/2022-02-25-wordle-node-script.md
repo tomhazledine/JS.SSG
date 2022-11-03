@@ -1,6 +1,6 @@
 ---
 permalink: /wordle-node-script/
-layout: "article.njk"
+layout: "article"
 title: "Improving my Wordle opening words using simple node scripts"
 date: "2022-02-25"
 excerpt: "Crafting command-line scripts to calculate the most frequently used letters in Wordle (and finding an optimal sequence of starting words)."

@@ -1,6 +1,6 @@
 ---
 permalink: /bullet-journal-workflow/
-layout: "article.njk"
+layout: "article"
 title: "A bullet-journal workflow"
 date: "2013-09-24"
 excerpt: "An analogue to-do list system. To-do lists are usually just a short-term fix, but I've found a system that stays relevant."

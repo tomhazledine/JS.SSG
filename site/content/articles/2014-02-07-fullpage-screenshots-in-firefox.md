@@ -1,6 +1,6 @@
 ---
 permalink: /fullpage-screenshots-in-firefox/
-layout: "article.njk"
+layout: "article"
 title: "Fullpage screenshots in Firefox"
 date: "2014-02-07"
 excerpt: "I crawled through rafts of Firefox and Chrome extensions trying to take a screenshot of an entire webpage. It turns out Firefox can do it natively."

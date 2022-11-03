@@ -1,6 +1,6 @@
 ---
 permalink: /futura-for-the-win/
-layout: "article.njk"
+layout: "article"
 title: "Futura for the win"
 date: "2014-02-01"
 excerpt: "Picking the right typeface for this site took a long time, and my final choice wasn’t one I was expecting. Ask 3-months-ago-me if I'd set a website entirely in Futura and I'd have laughed at you."
