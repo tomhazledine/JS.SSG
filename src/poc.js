@@ -1,12 +1,22 @@
 import path from "path";
 import { fileURLToPath } from "url";
 
+import { config } from "../config.js";
+import { mergeDeep } from "./utils.js";
 import { copyFile, readFile, readFolder, saveFile } from "./io.js";
 import { markdown } from "./markdown.js";
 
+const defaults = {
+    in: "TEST_IN",
+    out: "TEST_OUT"
+};
+
+const options = mergeDeep(defaults, config);
+console.log({ options });
+
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
-const IN_DIRECTORY = path.resolve(__dirname, "../content/");
-const OUT_DIRECTORY = path.resolve(__dirname, "../build/");
+const IN_DIRECTORY = path.resolve(__dirname, `../${options.in}/`);
+const OUT_DIRECTORY = path.resolve(__dirname, `../${options.out}/`);
 
 const processFile = async filePath => {
     const extension = path.extname(filePath);
