@@ -1,5 +1,7 @@
-import Main from "./layouts/Main.js";
+import article from "./layouts/Article.js";
+import main from "./layouts/Main.js";
 
 export default {
-    Main
+    article,
+    main
 };

@@ -1,30 +1,34 @@
 import Head from "../components/Head.js";
+import SitewideAlert from "../components/SitewideAlert.js";
+import HeaderAnimation from "../components/HeaderAnimation.js";
+import Header from "../components/Header.js";
+import TweetWidget from "../components/TweetWidget.js";
+import Analytics from "../components/Analytics.js";
 
-const Main = ({ content, props = {} }) => {
+const Main = ({ content, page = {}, site = {} }) => {
+    const scripts =
+        page.scripts &&
+        page.scripts
+            .map(script => `<script src="/tomhazledine.${script}.js"></script>`)
+            .join("");
+
     return `<!doctype html>
 <html lang="en">
-    ${Head({})}
+    ${Head({ page, site })}
     <body class="body body--dark">
-
-        {# {% include "sitewide-alert.njk" %} #}
-
-        {% include "header-animation.html" %}
-
+        ${SitewideAlert(site.alert)}
+        ${HeaderAnimation}
         <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
-
-        {% include "header.njk" %}
-
+        
+        ${Header({ page, site })}
+        
         ${content}
 
         <footer>
-            {% include "tweet-widget.njk" %}
-
+            ${TweetWidget}
             <script src="/tomhazledine.app.js"></script>
-            {% for script in scripts %}
-                <script src="/tomhazledine.{{script}}.js"></script>
-            {% endfor %}
-
-            {% include "analytics.njk" %}
+            ${scripts}
+            ${Analytics}
         </footer>
 
     </body>
