@@ -1,4 +1,4 @@
-import { markdown } from "ssg";
+import { markdown } from "jsssg";
 
 import Main from "./Main.js";
 import TweetForm from "../components/TweetForm.js";

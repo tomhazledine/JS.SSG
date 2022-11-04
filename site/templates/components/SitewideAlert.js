@@ -1,4 +1,4 @@
-import { markdown } from "ssg";
+import { markdown } from "jsssg";
 
 const SiteWideAlert = alert =>
     alert
