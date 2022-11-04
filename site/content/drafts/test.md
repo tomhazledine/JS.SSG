@@ -1,6 +1,6 @@
 ---
 permalink: /draft-test/
-layout: "Main"
+layout: "article"
 title: "Draft test"
 date: "2022-11-01"
 excerpt: "Lorem ipsum"

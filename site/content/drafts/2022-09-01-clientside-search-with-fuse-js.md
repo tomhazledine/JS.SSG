@@ -1,6 +1,6 @@
 ---
 permalink: /clientside-search-with-fuse-js/
-layout: "Main"
+layout: "article"
 title: "Searching an Eleventy site with Fuse.js"
 date: "2022-09-01"
 excerpt: "How to add client-side search to an Eleventy site"

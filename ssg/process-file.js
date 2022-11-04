@@ -9,24 +9,33 @@ import { render } from "./markdown.js";
 export const config = getConfig();
 export const markdown = render;
 
+const buildUpdatePath = (filePath, permalink, PATHS) => {
+    if (!permalink || typeof permalink === "undefined") {
+        const destinationPath = filePath.replace(PATHS.IN, PATHS.OUT);
+        return path.join(
+            path.dirname(destinationPath),
+            path.basename(destinationPath, path.extname(destinationPath)) +
+                ".html"
+        );
+    }
+
+    if (path.extname(permalink)) {
+        return path.join(PATHS.OUT, permalink);
+    }
+
+    return path.join(PATHS.OUT, permalink, "/index.html");
+};
+
 export const processFile = async (filePath, PATHS) => {
     const extension = path.extname(filePath);
 
     // Ignore weird files (i.e. `.DS_Store` etc.)
     if (extension === "") return;
 
-    const destinationPath = filePath.replace(PATHS.IN, PATHS.OUT);
-
     // Load all templates from templates/index.js
     const { default: templates } = await import(PATHS.TEMPLATES);
 
     if (extension === ".md") {
-        const updatePath = path.join(
-            path.dirname(destinationPath),
-            path.basename(destinationPath, path.extname(destinationPath)) +
-                ".html"
-        );
-
         const fileContents = await readFile(filePath);
         const { frontmatter, markdown } = parseFrontmatter(fileContents);
         const markdownContents = render(markdown);
@@ -43,9 +52,16 @@ export const processFile = async (filePath, PATHS) => {
             site: config.data
         });
 
+        const updatePath = buildUpdatePath(
+            filePath,
+            frontmatter.permalink,
+            PATHS
+        );
+
         if (!config.quiet) log(`Writing ${updatePath}`, "green");
         saveFile(updatePath, body);
     } else {
+        const destinationPath = filePath.replace(PATHS.IN, PATHS.OUT);
         if (!config.quiet) log(`Copying ${destinationPath}`, "green");
         copyFile(filePath, destinationPath);
     }
