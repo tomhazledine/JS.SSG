@@ -1,0 +1,496 @@
+:root {
+  --black: #4d4d4d;
+  --black--light: #888;
+  --black--translucent: #4d4d4d44;
+  --black--unchanging: #4d4d4d;
+  --black--unchanging--dark: #3d3d3d;
+  --black--soft: #666;
+  --white: #fdfdfa;
+  --white--on-dark: #fdfdfa;
+  --white--unchanging: #fdfdfa;
+  --cream: #efeeeb;
+  --cream--unchanging: #efeeeb;
+  --grey: #dad8d2;
+  --grey--light: $greyLight;
+  --grey--dark: #aca79a;
+  --primary: #00b7c6;
+  --primary--translucent: rgba(0, 183, 198, 0.3);
+  --secondary: #ff851b;
+  --orange: #793200;
+  --orange--dark: #c65100;
+  --primary--dark: #007079;
+  --primary--mid: #42d3e2;
+  --primary--light: #e4f6f5;
+  --selection--primary: --white;
+  --selection--secondary: #bbb;
+  --selection--tertiary: rgba($primary, 0.5);
+  --cg__lego: #0074d9;
+  --cg__lego--fill: rgba(0, 116, 217, 0.3);
+  --cg__mus: #2ecc40;
+  --cg__mus--fill: rgba(46, 204, 64, 0.3);
+  --cg__art: #ff4136;
+  --cg__art--fill: rgba(255, 65, 54, 0.3);
+  --cg__des: #4d4d4d;
+  --cg__des--fill: rgba(77, 77, 77, 0.3);
+  --cg__dev: #00b7c6;
+  --cg__dev--fill: rgba(0, 183, 198, 0.3);
+  --cg__pod: #ff851b;
+  --cg__pod--fill: rgba(255, 133, 27, 0.3); }
+
+:root[data-theme="dark"] {
+  --primary: #ff851b;
+  --primary--dark: #df6b00;
+  --primary--mid: #df6b00;
+  --primary--light: #ff9334;
+  --primary--translucent: rgba(255, 133, 27, 0.3);
+  --black: #efeeeb;
+  --black--light: #888;
+  --black--translucent: #efeeeb44;
+  --grey: #666;
+  --white: #4d4d4d;
+  --white--on-dark: #fdfdfa;
+  --cream: #666;
+  --grey--dark: #aca79a;
+  --cg__des: #aca79a;
+  --cg__des--fill: rgba(172, 167, 154, 0.3); }
+
+.uniquething {
+  color: red;
+  background: #990000; }
+
+::-moz-selection {
+  color: var(--selection--primary);
+  background: var(--selection--secondary); }
+
+::selection {
+  color: var(--selection--primary);
+  background: var(--selection--secondary); }
+
+a::-moz-selection {
+  color: var(--primary);
+  text-shadow: none !important; }
+
+a::selection {
+  color: var(--primary);
+  text-shadow: none !important; }
+
+@font-face {
+  font-family: "Cartograph Sans";
+  src: url(fonts/CartographSansCF-Medium.eot);
+  src: url(fonts/CartographSansCF-Medium.eot?#iefix) format("embedded-opentype"), url(fonts/CartographSansCF-Medium.woff) format("woff"), url(fonts/CartographSansCF-Medium.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Cartograph Sans";
+  src: url(fonts/CartographSansCF-MediumItalic.eot);
+  src: url(fonts/CartographSansCF-MediumItalic.eot?#iefix) format("embedded-opentype"), url(fonts/CartographSansCF-MediumItalic.woff) format("woff"), url(fonts/CartographSansCF-MediumItalic.ttf) format("truetype");
+  font-weight: normal;
+  font-style: italic; }
+
+@font-face {
+  font-family: "Cartograph Sans";
+  src: url(fonts/CartographSansCF-Heavy.eot);
+  src: url(fonts/CartographSansCF-Heavy.eot?#iefix) format("embedded-opentype"), url(fonts/CartographSansCF-Heavy.woff) format("woff"), url(fonts/CartographSansCF-Heavy.ttf) format("truetype");
+  font-weight: bold;
+  font-style: normal; }
+
+@font-face {
+  font-family: "Cartograph Sans";
+  src: url(fonts/CartographSansCF-HeavyItalic.eot);
+  src: url(fonts/CartographSansCF-HeavyItalic.eot?#iefix) format("embedded-opentype"), url(fonts/CartographSansCF-HeavyItalic.woff) format("woff"), url(fonts/CartographSansCF-HeavyItalic.ttf) format("truetype");
+  font-weight: bold;
+  font-style: italic; }
+
+@font-face {
+  font-family: "Cartograph Mono";
+  src: url(fonts/CartographMonoCF-Medium.eot);
+  src: url(fonts/CartographMonoCF-Medium.eot?#iefix) format("embedded-opentype"), url(fonts/CartographMonoCF-Medium.woff) format("woff"), url(fonts/CartographMonoCF-Medium.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+
+.finals__wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%; }
+  @media (max-width: 1000px) {
+    .finals__wrapper {
+      flex-wrap: wrap; } }
+
+.finals__header {
+  text-align: center; }
+
+.finals__wrapper .match__date {
+  display: none; }
+
+.finals__wrapper .match__bar {
+  width: 100%; }
+
+.finals__column {
+  width: 50%; }
+  @media (max-width: 770px) {
+    .finals__column {
+      width: 100%; } }
+
+.finals__column--right .match,
+.finals__column--left .match {
+  position: relative; }
+  .finals__column--right .match:before,
+  .finals__column--left .match:before {
+    content: "";
+    width: 0.1rem;
+    height: 2rem;
+    background: var(--grey--dark);
+    position: absolute;
+    left: 50%; }
+  .finals__column--right .match:after,
+  .finals__column--left .match:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    border-left: 0.5rem solid transparent;
+    border-right: 0.5rem solid transparent; }
+
+.finals__column--right .match:first-of-type:before,
+.finals__column--left .match:first-of-type:before {
+  top: 100%;
+  transform: translate(-50%, 0.4rem); }
+
+.finals__column--right .match:first-of-type:after,
+.finals__column--left .match:first-of-type:after {
+  border-top: 0.8rem solid var(--grey--dark);
+  transform: translate(-50%, 4rem); }
+
+.finals__column--right .match:last-of-type:before,
+.finals__column--left .match:last-of-type:before {
+  bottom: 100%;
+  transform: translate(-50%, -4rem); }
+
+.finals__column--right .match:last-of-type:after,
+.finals__column--left .match:last-of-type:after {
+  border-bottom: 0.8rem solid var(--grey--dark);
+  transform: translate(-50%, -7rem); }
+
+.rugby-graph__outer {
+  display: flex;
+  width: 100%;
+  justify-content: space-between; }
+  @media (max-width: 750px) {
+    .rugby-graph__outer {
+      flex-wrap: wrap; } }
+
+.rugby-graph__wrapper {
+  width: 100%;
+  max-width: 40rem;
+  margin: 0 auto 4rem; }
+
+.graph--rugby-rankings {
+  width: 100%;
+  margin-bottom: 0; }
+
+.graph--rugby-rankings path.line_linear {
+  stroke-width: 0.1rem; }
+
+.graph--rugby-rankings path.line_linear--default {
+  stroke-width: 0.1rem; }
+
+.graph--rugby-rankings path.line_adjusted {
+  stroke: var(--primary);
+  stroke-width: 0.1rem; }
+
+.graph--rugby-rankings path.line_adjusted--default {
+  stroke: var(--primary);
+  stroke-width: 0.1rem; }
+
+.graph__legend {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.graph__legend-item {
+  padding: 0.4rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.graph__legend-icon {
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  background: var(--grey);
+  margin-right: 0.5rem; }
+
+.graph__legend-icon--adjusted {
+  background: var(--primary); }
+
+.graph__legend-text {
+  font-size: 1.4rem; }
+
+.match {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem; }
+
+.matches--solo {
+  margin: 6rem 0; }
+
+.match__date {
+  color: var(--grey--dark);
+  font-size: 1.2rem;
+  width: 9rem;
+  flex-shrink: 0;
+  flex-grow: 0;
+  font-family: Menlo, Monaco, "Andale Mono", "Lucida Console", "Courier New", monospace; }
+
+.match__team {
+  padding: 0 0.5rem;
+  width: 7rem;
+  text-align: right;
+  line-height: 1;
+  text-transform: uppercase;
+  font-family: Menlo, Monaco, "Andale Mono", "Lucida Console", "Courier New", monospace; }
+
+.rugby--v2 .match__team {
+  width: 4rem; }
+
+.match__team--last {
+  text-align: left; }
+
+.match__team-ranking {
+  color: var(--grey--dark);
+  padding: 0 0.4rem; }
+
+.match__bar {
+  display: flex;
+  position: relative;
+  width: 22rem;
+  flex-grow: 1; }
+
+.bar__inner {
+  height: 2.5rem;
+  background: var(--grey);
+  display: flex;
+  align-items: center; }
+
+.match__bar-divider {
+  display: block;
+  width: 0.1rem;
+  background: rgba(var(--black), 0.4);
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%); }
+
+.bar__inner--win {
+  background: var(--primary); }
+
+.bar__value {
+  padding: 0 0.5rem;
+  color: var(--black);
+  font-size: 1.4rem;
+  line-height: 1;
+  font-family: Menlo, Monaco, "Andale Mono", "Lucida Console", "Courier New", monospace; }
+
+.bar__inner--win .bar__value {
+  color: var(--white); }
+
+.bar__inner:last-of-type {
+  justify-content: flex-end; }
+
+.wrapper--rugby {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; }
+
+.pool__wrapper {
+  padding: 4rem 0; }
+
+.pool {
+  width: 100%;
+  margin-bottom: 4rem;
+  max-width: 38rem; }
+
+.pool--final {
+  padding: 1rem 0;
+  margin-bottom: 1rem; }
+
+.pool--wide {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; }
+  @media (max-width: 770px) {
+    .pool--wide {
+      flex-wrap: wrap; } }
+
+.entry-content h2.pool__header {
+  display: inline-block;
+  line-height: 1;
+  border-bottom: 0.2rem solid var(--black);
+  margin-bottom: 2rem;
+  box-shadow: var(--white) 0 0.2rem 0 0, var(--black) 0 0.3rem 0 0; }
+
+.pool__column {
+  width: 100%; }
+
+.pool__column--graphs {
+  width: 60%;
+  flex-shrink: 0; }
+  @media (max-width: 770px) {
+    .pool__column--graphs {
+      width: 100%; } }
+
+.pool__column-divider {
+  width: 2rem;
+  height: 26rem;
+  flex-grow: 0;
+  margin: 0 2rem 0 1rem;
+  border: 0.1rem solid var(--grey--dark);
+  border-left: 0;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  position: relative; }
+  .pool__column-divider:after {
+    content: "";
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    background: var(--white);
+    top: 50%;
+    right: -0.6rem;
+    position: absolute;
+    border-top: 0.1rem solid var(--grey--dark);
+    border-right: 0.1rem solid var(--grey--dark);
+    transform: translateY(-50%) rotate(45deg); }
+  @media (max-width: 770px) {
+    .pool__column-divider {
+      display: none; } }
+
+.pool-results {
+  width: 100%;
+  padding-right: 4rem; }
+  @media (max-width: 770px) {
+    .pool-results {
+      padding-right: 7rem; } }
+
+.pool-result {
+  display: flex;
+  justify-content: stretch;
+  padding: 0.4rem 2rem 0.4rem 0.4rem;
+  border-bottom: 0.1rem solid var(--grey);
+  position: relative;
+  list-style: none;
+  margin: 0; }
+  .pool-result:before {
+    display: none; }
+
+.result__heading {
+  font-weight: bold;
+  border-bottom: 0.1rem solid var(--grey); }
+
+.result__number {
+  width: 3rem;
+  text-align: center;
+  flex-grow: 0;
+  flex-shrink: 0;
+  margin-right: 0.5rem; }
+
+.result__name {
+  flex-grow: 1;
+  flex-shrink: 1; }
+
+.result__wins {
+  flex-grow: 0;
+  flex-shrink: 0;
+  color: var(--grey--dark);
+  padding-left: 0.2rem; }
+
+.result__final {
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: -6rem;
+  color: var(--primary);
+  font-family: Menlo, Monaco, "Andale Mono", "Lucida Console", "Courier New", monospace;
+  font-size: 1.4rem;
+  transform: translateY(-50%); }
+
+.result__0 .result__wins,
+.result__1 .result__wins {
+  color: var(--white); }
+
+.result__points {
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: 7rem;
+  text-align: right;
+  padding-left: 0.2rem; }
+
+.result__0,
+.result__1 {
+  background: var(--primary);
+  color: var(--white);
+  position: relative; }
+  .result__0:before, .result__0:after,
+  .result__1:before,
+  .result__1:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    display: block;
+    transform: translateY(-50%);
+    right: -3rem;
+    left: auto; }
+  .result__0:before,
+  .result__1:before {
+    top: 50%;
+    display: block;
+    border-top: 0.5rem solid transparent;
+    border-left: 0.8rem solid var(--primary);
+    border-bottom: 0.5rem solid transparent;
+    height: 0;
+    width: 0; }
+  .result__0:after,
+  .result__1:after {
+    width: 2.8rem;
+    right: -2.8rem;
+    background: var(--primary);
+    height: 0.2rem; }
+
+.result__0 {
+  border-bottom: 0.1rem solid rgba(var(--white), 0.2); }
+
+.results {
+  border-top: 0.1rem solid var(--grey);
+  border-bottom: 0.1rem solid var(--grey); }
+
+.result {
+  display: flex;
+  justify-content: stretch;
+  padding: 0.4rem;
+  list-style: none;
+  margin: 0; }
+  .result:nth-of-type(2n) {
+    background: var(--grey--light); }
+  .result:before {
+    display: none; }
+
+.result__number {
+  width: 3rem;
+  text-align: center;
+  flex-grow: 0;
+  flex-shrink: 0;
+  margin-right: 0.5rem; }
+
+.result__name {
+  flex-grow: 1;
+  flex-shrink: 1; }
+
+.result__wins {
+  flex-grow: 0;
+  flex-shrink: 0;
+  padding-left: 0.2rem; }
+

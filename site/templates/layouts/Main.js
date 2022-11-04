@@ -6,11 +6,13 @@ import TweetWidget from "../components/TweetWidget.js";
 import Analytics from "../components/Analytics.js";
 
 const Main = ({ content, page = {}, site = {} }) => {
-    const scripts =
-        page.scripts &&
-        page.scripts
-            .map(script => `<script src="/tomhazledine.${script}.js"></script>`)
-            .join("");
+    const scripts = page.scripts
+        ? page.scripts
+              .map(
+                  script => `<script src="/tomhazledine.${script}.js"></script>`
+              )
+              .join("")
+        : "";
 
     return `<!doctype html>
 <html lang="en">

@@ -12,6 +12,7 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "moment": "^2.29.4",
         "ssg": "1.0.0"
     }
 }
