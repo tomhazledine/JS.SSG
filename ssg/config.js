@@ -8,7 +8,8 @@ const defaults = {
     templates: "templates",
     public: "public",
     quiet: true,
-    serve: false
+    serve: false,
+    watch: true
 };
 
 export const getConfig = () => {

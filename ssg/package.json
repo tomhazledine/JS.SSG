@@ -20,6 +20,7 @@
         "markdown-it-footnote": "^3.0.3",
         "markdown-it-implicit-figures": "^0.10.0",
         "node-static": "^0.7.11",
+        "node-watch": "^0.7.3",
         "yaml": "^2.1.3"
     }
 }
