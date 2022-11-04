@@ -3,8 +3,10 @@ import { mergeDeep } from "./utils.js";
 import { readFile } from "./io.js";
 
 const defaults = {
-    in: "TEST_IN",
-    out: "TEST_OUT",
+    in: "content",
+    out: "build",
+    templates: "templates",
+    public: "public",
     quiet: true,
     serve: false
 };
