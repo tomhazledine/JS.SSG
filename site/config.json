@@ -3,6 +3,7 @@
     "out": "build",
     "templates": "templates",
     "quiet": true,
+    "serve": true,
     "data": {
         "url": "https://tomhazledine.com",
         "baseUrl": "/",

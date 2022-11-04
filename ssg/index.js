@@ -10,6 +10,7 @@ import { log } from "./console.js";
 import { copyFile, readFile, readFolder, saveFile } from "./io.js";
 import { parseFrontmatter } from "./frontmatter.js";
 import { render } from "./markdown.js";
+import { server } from "./server.js";
 
 export const config = getConfig();
 export const markdown = render;
@@ -71,3 +72,8 @@ console.log(`found ${allFiles.length} files`);
 
 allFiles.forEach(filePath => processFile(filePath));
 console.log(`Site generated at "/${config.out}"`);
+
+if (config.serve) {
+    console.log(`Serving result at http://localhost:8080/`);
+    server(OUT_DIRECTORY);
+}

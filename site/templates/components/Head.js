@@ -39,11 +39,9 @@ const Head = ({ page = {}, site = {} }) => {
     <link rel="canonical" href="${site.url + page.url}">
     <link rel="shortcut icon" href="/images/favicon.png">
     <link rel="shortcut icon" href="/images/favicon.ico">
-    {# Twitter card #}
     <meta name="twitter:card" content="${card.type}"/>
     <meta name="twitter:creator" content="${site.authorTwitterUrl}"/>
     <meta name="twitter:image" content="${card.image}"/>
-    {# Generic meta #}
     <meta property="og:url" content="${site.url}${page.url}"/>
     <meta property="og:title" content="${card.title}"/>
     <meta property="og:image" content="${card.image}"/>
