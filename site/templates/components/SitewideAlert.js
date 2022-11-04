@@ -1,16 +1,10 @@
-// import { render } from "../../../src/markdown.js";
+import { markdown } from "ssg";
 
-// const SitewideAlert = alert =>
-//     alert
-//         ? `<div class="alert alert--banner">
-//             <div class="alert__inner">${render(alert)}</div>
-//         </div>`
-//         : "";
-const SitewideAlert = alert =>
+const SiteWideAlert = alert =>
     alert
         ? `<div class="alert alert--banner">
-            <div class="alert__inner">${alert}</div>
+            <div class="alert__inner">${markdown(alert)}</div>
         </div>`
         : "";
 
-export default SitewideAlert;
+export default SiteWideAlert;

@@ -12,6 +12,7 @@ import { render } from "./markdown.js";
 import templates from "../site/templates/index.js";
 
 export const config = getConfig();
+export const markdown = render;
 
 const IN_DIRECTORY = path.resolve(".", `./${config.in}/`);
 const OUT_DIRECTORY = path.resolve(".", `./${config.out}/`);
