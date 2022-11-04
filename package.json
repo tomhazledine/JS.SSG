@@ -3,5 +3,8 @@
     "workspaces": [
         "ssg",
         "site"
-    ]
+    ],
+    "scripts": {
+        "build:site": "yarn workspace site build"
+    }
 }
