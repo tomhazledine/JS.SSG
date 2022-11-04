@@ -1,6 +1,8 @@
 {
     "in": "content",
     "out": "build",
+    "templates": "templates",
+    "quiet": true,
     "data": {
         "url": "https://tomhazledine.com",
         "baseUrl": "/",
