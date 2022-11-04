@@ -1,15 +1,22 @@
-import path from "path";
-import { fileURLToPath } from "url";
+#!/usr/bin/env node
+// 👆 Used to tell Node.js that this is a CLI tool
 
-import { config } from "./config.js";
+"use strict";
+import path from "path";
+import fs from "fs";
+
+import { getConfig } from "./config.js";
+import { log } from "./console.js";
 import { copyFile, readFile, readFolder, saveFile } from "./io.js";
 import { parseFrontmatter } from "./frontmatter.js";
 import { render } from "./markdown.js";
-import templates from "../site/templates/index.js";
 
-const __dirname = fileURLToPath(new URL(".", import.meta.url));
-const IN_DIRECTORY = path.resolve(__dirname, `../${config.in}/`);
-const OUT_DIRECTORY = path.resolve(__dirname, `../${config.out}/`);
+export const config = getConfig();
+export const markdown = render;
+
+const IN_DIRECTORY = path.resolve(".", `./${config.in}/`);
+const TEMPLATE_DIRECTORY = path.resolve(".", `./${config.templates}/index.js`);
+const OUT_DIRECTORY = path.resolve(".", `./${config.out}/`);
 
 const processFile = async filePath => {
     const extension = path.extname(filePath);
@@ -17,12 +24,16 @@ const processFile = async filePath => {
     // Ignore weird files (i.e. `.DS_Store` etc.)
     if (extension === "") return;
 
-    const copyPath = filePath.replace(IN_DIRECTORY, OUT_DIRECTORY);
+    const destinationPath = filePath.replace(IN_DIRECTORY, OUT_DIRECTORY);
+
+    // Load all templates from templates/index.js
+    const { default: templates } = await import(TEMPLATE_DIRECTORY);
 
     if (extension === ".md") {
         const updatePath = path.join(
-            path.dirname(copyPath),
-            path.basename(copyPath, path.extname(copyPath)) + ".html"
+            path.dirname(destinationPath),
+            path.basename(destinationPath, path.extname(destinationPath)) +
+                ".html"
         );
 
         const fileContents = await readFile(filePath);
@@ -41,13 +52,18 @@ const processFile = async filePath => {
             site: config.data
         });
 
-        if (!config.quiet) console.log(`Writing ${updatePath}`);
+        if (!config.quiet) log(`Writing ${updatePath}`, "green");
         saveFile(updatePath, body);
     } else {
-        if (!config.quiet) console.log(`Copying ${copyPath}`);
-        copyFile(filePath, copyPath);
+        if (!config.quiet) log(`Copying ${destinationPath}`, "green");
+        copyFile(filePath, destinationPath);
     }
 };
+
+console.log("Generating static site...");
+
+if (!config.quiet) console.log(`Removing old versions...`);
+fs.rmSync(OUT_DIRECTORY, { recursive: true, force: true });
 
 console.log("Getting all file paths...");
 const allFiles = readFolder(IN_DIRECTORY);

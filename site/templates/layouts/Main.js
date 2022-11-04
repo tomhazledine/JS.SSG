@@ -1,5 +1,5 @@
 import Head from "../components/Head.js";
-import SitewideAlert from "../components/SitewideAlert.js";
+import SiteWideAlert from "../components/SiteWideAlert.js";
 import HeaderAnimation from "../components/HeaderAnimation.js";
 import Header from "../components/Header.js";
 import TweetWidget from "../components/TweetWidget.js";
@@ -16,7 +16,7 @@ const Main = ({ content, page = {}, site = {} }) => {
 <html lang="en">
     ${Head({ page, site })}
     <body class="body body--dark">
-        ${SitewideAlert(site.alert)}
+        ${SiteWideAlert(site.alert)}
         ${HeaderAnimation}
         <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
         

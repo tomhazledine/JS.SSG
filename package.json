@@ -1,19 +1,10 @@
 {
-    "name": "ssg",
-    "version": "1.0.0",
-    "description": "js friendly SSG",
-    "main": "index.js",
-    "devDependencies": {},
-    "type": "module",
+    "private": true,
+    "workspaces": [
+        "ssg",
+        "site"
+    ],
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "clean": "rm -rf build/",
-        "build": "yarn clean && node src/index"
-    },
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "markdown-it": "^13.0.1",
-        "yaml": "^2.1.3"
+        "build:site": "yarn workspace site build"
     }
 }
