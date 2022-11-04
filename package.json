@@ -1,7 +1,7 @@
 {
     "private": true,
     "workspaces": [
-        "ssgjs",
+        "jsssg",
         "site"
     ],
     "scripts": {

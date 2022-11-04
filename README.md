@@ -1,4 +1,4 @@
-# SSG.JS
+# JS.SSG
 
 A "just the way I like it" static site generator built with Node.js
 

@@ -7,14 +7,14 @@
     "type": "module",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "build": "ssgjs",
-        "dev": "ssgjs --serve --port=1337 --watch",
-        "debug": "ssgjs --verbose"
+        "build": "jsssg",
+        "dev": "jsssg --serve --port=1337 --watch",
+        "debug": "jsssg --verbose"
     },
     "author": "",
     "license": "ISC",
     "dependencies": {
         "moment": "^2.29.4",
-        "ssgjs": "1.0.0"
+        "jsssg": "1.0.0"
     }
 }

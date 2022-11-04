@@ -1,5 +1,5 @@
 {
-    "name": "ssgjs",
+    "name": "jsssg",
     "version": "1.0.0",
     "description": "An opinionated static site generator built with JavaScript",
     "main": "index.js",
