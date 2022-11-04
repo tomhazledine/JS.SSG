@@ -1,7 +1,7 @@
 {
-    "name": "ssg",
+    "name": "ssgjs",
     "version": "1.0.0",
-    "description": "js friendly SSG",
+    "description": "An opinionated static site generator built with JavaScript",
     "main": "index.js",
     "devDependencies": {},
     "type": "module",
