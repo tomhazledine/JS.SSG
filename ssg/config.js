@@ -5,7 +5,8 @@ import { readFile } from "./io.js";
 const defaults = {
     in: "TEST_IN",
     out: "TEST_OUT",
-    quiet: true
+    quiet: true,
+    serve: false
 };
 
 export const getConfig = () => {
