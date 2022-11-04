@@ -2,19 +2,34 @@ import path from "path";
 import { mergeDeep } from "./utils.js";
 import { readFile } from "./io.js";
 
-const defaults = {
+const defaultConfig = {
     in: "content",
     out: "build",
     templates: "templates",
-    public: "public",
-    quiet: true,
-    serve: false,
-    watch: true
+    public: "public"
 };
 
 export const getConfig = () => {
     const rawUserConfig = readFile(path.resolve(".", `./config.json`));
     const userConfig = JSON.parse(rawUserConfig);
-    const config = mergeDeep(defaults, userConfig);
+    const config = mergeDeep(defaultConfig, userConfig);
     return config;
+};
+
+const defaultArgs = {
+    serve: false,
+    watch: false,
+    verbose: false,
+    port: "8080"
+};
+
+export const parseArgs = rawArgs => {
+    const [a, b, ...relevant] = rawArgs;
+    const args = relevant
+        .map(arg => {
+            const [key, value] = arg.split("=");
+            return { [key.replace(/-/g, "")]: value || true };
+        })
+        .reduce((args, arg) => ({ ...args, ...arg }), {});
+    return mergeDeep(defaultArgs, args);
 };

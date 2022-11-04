@@ -1,7 +1,7 @@
 import { Server } from "node-static";
 import http from "http";
 
-export const server = buildPath => {
+export const server = (buildPath, port) => {
     const file = new Server(buildPath);
 
     http.createServer(function (request, response) {
@@ -11,5 +11,5 @@ export const server = buildPath => {
                 file.serve(request, response);
             })
             .resume();
-    }).listen(8080);
+    }).listen(port);
 };

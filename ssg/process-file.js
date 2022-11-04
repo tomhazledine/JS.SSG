@@ -1,13 +1,10 @@
 import path from "path";
 
-import { getConfig } from "./config.js";
+import { args, config } from "./index.js";
 import { log } from "./console.js";
 import { copyFile, readFile, saveFile } from "./io.js";
 import { parseFrontmatter } from "./frontmatter.js";
 import { render } from "./markdown.js";
-
-export const config = getConfig();
-export const markdown = render;
 
 const buildUpdatePath = (filePath, permalink, PATHS) => {
     if (!permalink || typeof permalink === "undefined") {
@@ -58,11 +55,11 @@ export const processFile = async (filePath, PATHS) => {
             PATHS
         );
 
-        if (!config.quiet) log(`Writing ${updatePath}`, "green");
+        if (args.verbose) log(`Writing ${updatePath}`, "green");
         saveFile(updatePath, body);
     } else {
         const destinationPath = filePath.replace(PATHS.IN, PATHS.OUT);
-        if (!config.quiet) log(`Copying ${destinationPath}`, "green");
+        if (args.verbose) log(`Copying ${destinationPath}`, "green");
         copyFile(filePath, destinationPath);
     }
 };
