@@ -11,7 +11,8 @@ import { log } from "./console.js";
 import { copyFile, readFolder } from "./io.js";
 import { render } from "./markdown.js";
 import { server } from "./server.js";
-import { handleFileBuild, parseSiteData, processFile } from "./process-file.js";
+import { handleFileBuild, processFile } from "./process-file.js";
+import { parseSiteData } from "./parse-site-data.js";
 
 export const args = parseArgs(process.argv);
 export const config = getConfig();
@@ -41,7 +42,7 @@ const build = async () => {
     );
 
     if (args.verbose) console.log("Processing pages...");
-    const site = parseSiteData(config.data, fileData);
+    const site = parseSiteData(config, fileData);
     // Load all templates from templates/index.js
     const { default: templates } = await import(PATHS.TEMPLATES);
     fileData.forEach(file =>

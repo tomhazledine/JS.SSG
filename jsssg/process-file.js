@@ -40,7 +40,3 @@ export const handleFileBuild = async ({ file, PATHS, templates, site }) => {
             break;
     }
 };
-
-export const parseSiteData = (data, pages) => {
-    return { ...data, pages };
-};

@@ -6,7 +6,8 @@ const defaultConfig = {
     in: "content",
     out: "build",
     templates: "templates",
-    public: "public"
+    public: "public",
+    collections: ["categories", "tags"]
 };
 
 export const getConfig = () => {
