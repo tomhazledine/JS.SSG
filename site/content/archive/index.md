@@ -1,5 +1,5 @@
 ---
-layout: articles.njk
+layout: articles
 title: "Archive"
 eleventyExcludeFromCollections: true
 ---
