@@ -15,7 +15,7 @@ export const handleMarkdown = async ({ file, templates, site }) => {
             : templates[fallbackTemplate];
     const body = template({
         content: markdownContents,
-        page: file.frontmatter,
+        page: { ...file.frontmatter, url: file.url },
         site
     });
     if (args.verbose) log(`Writing ${file.filePath}`, "green");
