@@ -30,6 +30,10 @@ const matchFrontmatterCollection = (page, key, slug) => {
     return page.frontmatter[key] == slug;
 };
 
+const sortPages = (a, b) =>
+    parseInt(b.frontmatter.date.replace(/-/gi, ""), 10) -
+    parseInt(a.frontmatter.date.replace(/-/gi, ""), 10);
+
 export const parseSiteData = (config, pages) => {
     const collectionKeys = getCollectionsKeys(config.collections, pages);
 
@@ -39,9 +43,11 @@ export const parseSiteData = (config, pages) => {
             [key]: collectionKeys[key].reduce(
                 (acc, slug) => ({
                     ...acc,
-                    [slug]: pages.filter(page =>
-                        matchFrontmatterCollection(page, key, slug)
-                    )
+                    [slug]: pages
+                        .filter(page =>
+                            matchFrontmatterCollection(page, key, slug)
+                        )
+                        .sort(sortPages)
                 }),
                 {}
             )

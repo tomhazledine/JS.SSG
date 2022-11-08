@@ -14,10 +14,19 @@ export const processFile = async (filePath, PATHS) => {
 
     // Read frontmatter from markdown files
     if (extension === ".md") {
+        if (args.verbose) log(`Parsing frontmatter for ${filePath}`);
         const fileContents = await readFile(filePath);
-        const { frontmatter, markdown } = parseFrontmatter(fileContents);
-        const paths = buildPagePaths(filePath, frontmatter.permalink, PATHS);
-        return { type: "markdown", frontmatter, markdown, ...paths };
+        try {
+            const { frontmatter, markdown } = parseFrontmatter(fileContents);
+            const paths = buildPagePaths(
+                filePath,
+                frontmatter.permalink,
+                PATHS
+            );
+            return { type: "markdown", frontmatter, markdown, ...paths };
+        } catch (err) {
+            console.log(`Invalid frontmatter: ${filePath}`);
+        }
     }
 
     // Handle all other filetypes (just return the path, because
