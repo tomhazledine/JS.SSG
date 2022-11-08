@@ -11,7 +11,7 @@ import { log } from "./console.js";
 import { copyFile, readFolder } from "./io.js";
 import { render } from "./markdown.js";
 import { server } from "./server.js";
-import { processFile } from "./process-file.js";
+import { handleFileBuild, parseSiteData, processFile } from "./process-file.js";
 
 export const args = parseArgs(process.argv);
 export const config = getConfig();
@@ -27,14 +27,31 @@ const PATHS = {
 
 console.log("Generating static site...");
 
-const build = () => {
+const build = async () => {
     if (args.verbose) console.log(`Removing old versions...`);
     fs.rmSync(PATHS.OUT, { recursive: true, force: true });
 
-    if (args.verbose) console.log("Getting all file paths...");
+    if (args.verbose) console.log("Getting all content file paths...");
     const allFiles = readFolder(PATHS.IN);
     if (args.verbose) console.log(`found ${allFiles.length} files`);
-    allFiles.forEach(filePath => processFile(filePath, PATHS));
+
+    if (args.verbose) console.log("Parsing frontmatter...");
+    const fileData = await Promise.all(
+        allFiles.map(async filePath => await processFile(filePath))
+    );
+
+    if (args.verbose) console.log("Processing pages...");
+    const site = parseSiteData(config.data, fileData);
+    // Load all templates from templates/index.js
+    const { default: templates } = await import(PATHS.TEMPLATES);
+    fileData.forEach(file =>
+        handleFileBuild({
+            file,
+            PATHS,
+            templates,
+            site
+        })
+    );
 
     if (args.verbose) console.log("Getting all public file paths...");
     const publicFiles = readFolder(PATHS.PUBLIC);
