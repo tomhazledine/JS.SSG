@@ -38,7 +38,7 @@ const build = async () => {
 
     if (args.verbose) console.log("Parsing frontmatter...");
     const fileData = await Promise.all(
-        allFiles.map(async filePath => await processFile(filePath))
+        allFiles.map(async filePath => await processFile(filePath, PATHS))
     );
 
     if (args.verbose) console.log("Processing pages...");

@@ -5,24 +5,7 @@ import { log } from "./console.js";
 import { saveFile } from "./io.js";
 import { render } from "./markdown.js";
 
-const buildUpdatePath = (filePath, permalink, PATHS) => {
-    if (!permalink || typeof permalink === "undefined") {
-        const destinationPath = filePath.replace(PATHS.IN, PATHS.OUT);
-        return path.join(
-            path.dirname(destinationPath),
-            path.basename(destinationPath, path.extname(destinationPath)) +
-                ".html"
-        );
-    }
-
-    if (path.extname(permalink)) {
-        return path.join(PATHS.OUT, permalink);
-    }
-
-    return path.join(PATHS.OUT, permalink, "/index.html");
-};
-
-export const handleMarkdown = async ({ file, PATHS, templates, site }) => {
+export const handleMarkdown = async ({ file, templates, site }) => {
     const markdownContents = render(file.markdown);
     const fallbackTemplate = "main";
     const layout = file.frontmatter.layout.toLowerCase() || fallbackTemplate;
@@ -35,11 +18,6 @@ export const handleMarkdown = async ({ file, PATHS, templates, site }) => {
         page: file.frontmatter,
         site
     });
-    const updatePath = buildUpdatePath(
-        file.path,
-        file.frontmatter.permalink,
-        PATHS
-    );
-    if (args.verbose) log(`Writing ${updatePath}`, "green");
-    saveFile(updatePath, body);
+    if (args.verbose) log(`Writing ${file.filePath}`, "green");
+    saveFile(file.filePath, body);
 };

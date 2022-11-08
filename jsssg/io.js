@@ -57,3 +57,29 @@ export const readFile = path => {
         console.error(err);
     }
 };
+
+export const buildPagePath = (filePath, permalink, PATHS) => {
+    if (!permalink || typeof permalink === "undefined") {
+        const destinationPath = filePath.replace(PATHS.IN, "");
+        return path.join(
+            path.dirname(destinationPath),
+            path.basename(destinationPath, path.extname(destinationPath)) +
+                "/index.html"
+        );
+    }
+
+    if (path.extname(permalink)) return permalink;
+
+    return path.join(permalink, "/index.html");
+};
+
+export const buildPagePaths = (filePath, permalink, PATHS) => {
+    const relativePath = buildPagePath(filePath, permalink, PATHS).replace(
+        "/index/",
+        "/"
+    );
+    return {
+        url: relativePath.replace("/index.html", "/"),
+        filePath: path.join(PATHS.OUT, relativePath)
+    };
+};
