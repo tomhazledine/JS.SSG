@@ -2,6 +2,7 @@ import Main from "./Main.js";
 
 import HomeGraph from "../components/HomeGraph.js";
 import FeaturedIntro from "../components/FeaturedIntro.js";
+import FeaturedPopular from "../components/FeaturedPopular.js";
 import NewsletterSignup from "../components/NewsletterSignup.js";
 
 const Home = ({ content, page = {}, site = {} }) => {
@@ -24,7 +25,7 @@ const Home = ({ content, page = {}, site = {} }) => {
 
         ${FeaturedIntro(page, site.collections.pages.tags.intro)}
 
-        {% include "featured-popular.njk" %}
+        ${FeaturedPopular(page, site.collections.pages.tags.popular)}
 
         <hr/>
 
