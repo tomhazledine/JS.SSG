@@ -1,5 +1,5 @@
 ---
-layout: home.njk
+layout: home
 title: "Home"
 heading: Developer. Podcaster. Nerd.
 scripts: ["home"]
