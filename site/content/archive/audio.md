@@ -1,5 +1,5 @@
 ---
-layout: category.11ty.js
+layout: category
 title: "Audio"
 category: audio
 eleventyExcludeFromCollections: true
