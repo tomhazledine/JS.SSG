@@ -17,7 +17,7 @@ Docs can be found at [./ssg/README.md](./ssg/README.md)
 -   [x] "Include" other files (components) in templates
 -   [x] Set permalinks in frontmatter
 -   [x] Accept script args (for "serve", "watch" etc).
--   [ ] Group pages internally ("categories","tags", etc.)
+-   [x] Group pages internally ("categories","tags", etc.)
 -   [ ] Pagination between pages (based on grouping)
 -   [ ] Built-in image optimisation (optional)
 -   [ ] Built-in css/scss handling (optional)
@@ -30,3 +30,4 @@ Docs can be found at [./ssg/README.md](./ssg/README.md)
 -   [ ] Default theme
 -   [ ] Build pipeline for SSG itself (webpack? raw Babel? Something else?)
 -   [ ] Short demo video on YouTube
+-   [ ] Code block highlighting
