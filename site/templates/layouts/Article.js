@@ -99,7 +99,7 @@ const Article = ({ content, page = {}, site = {} }) => {
                 : ""
         }
 
-        ${!page.standalone ? PostNav(page.pagination.all) : ""}
+        ${!page.standalone ? PostNav(page.pagination.tags.articles) : ""}
     </div>
 </article>
     `;

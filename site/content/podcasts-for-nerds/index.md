@@ -1,5 +1,5 @@
 ---
-layout: "article.njk"
+layout: "article"
 title: "Podcasts for Nerds"
 date: "2020-05-14"
 excerpt: "I've started a podcast-adjacent project, and need your help."

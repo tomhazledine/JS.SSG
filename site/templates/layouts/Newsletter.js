@@ -102,7 +102,7 @@ const Newsletter = ({ content, page = {}, site = {} }) => {
                     : ""
             }
     
-            ${!page.standalone ? PostNav() : ""}
+            ${!page.standalone ? PostNav(page.pagination.tags.articles) : ""}
         </div>
     </article>
         `;
