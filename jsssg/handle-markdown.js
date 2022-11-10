@@ -12,7 +12,8 @@ export const handleMarkdown = async ({ file, templates, site }) => {
         typeof templates[layout] !== "undefined"
             ? templates[layout]
             : templates[fallbackTemplate];
-    const pagination = generatePagination(file, site);
+
+    const pagination = await generatePagination(file, site);
     const body = template({
         content: markdownContents,
         page: { ...file.frontmatter, url: file.url, pagination },

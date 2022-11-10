@@ -19,13 +19,46 @@ const getPagination = (url, collection) => {
     };
 };
 
+const paginateCollection = (url, values, collections) =>
+    values.reduce(
+        (acc, value) => ({
+            ...acc,
+            [value]: getPagination(url, collections[value])
+        }),
+        {}
+    );
+
 export const generatePagination = (page, site) => {
     // No pagination for pages without a date
     if (!page.frontmatter || !page.frontmatter.date) return false;
 
-    const all = getPagination(page.url, site.pages);
+    const collections = Object.keys(site.collections.keys);
+    const collectionsToPaginate = collections
+        .map(collection => {
+            if (page.frontmatter[collection]) {
+                return {
+                    key: collection,
+                    values: [page.frontmatter[collection]].flatMap(i => i)
+                };
+            }
+            return false;
+        })
+        .filter(i => i);
+    const collectionsPagination = collectionsToPaginate.reduce(
+        (acc, collection) => ({
+            ...acc,
+            [collection.key]: paginateCollection(
+                page.url,
+                collection.values,
+                site.collections.pages[collection.key]
+            )
+        }),
+        {}
+    );
 
+    const all = getPagination(page.url, site.pages);
     return {
-        all
+        all,
+        ...collectionsPagination
     };
 };
