@@ -97,7 +97,11 @@ const Article = ({ content, page = {}, site = {} }) => {
         
         ${!page.hide_footer_signup && !page.hide_twitter ? `<hr/>` : ""}
 
-        ${!page.hide_footer_signup ? NewsletterSignup({ site, page }) : ""}
+        ${
+            !page.hide_footer_signup
+                ? NewsletterSignup({ site, message: page.signup_message })
+                : ""
+        }
 
         ${!page.standalone ? PostNav() : ""}
     </div>

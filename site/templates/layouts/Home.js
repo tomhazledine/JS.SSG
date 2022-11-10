@@ -33,7 +33,7 @@ const Home = ({ content, page = {}, site = {} }) => {
 
         <hr/>
 
-        ${NewsletterSignup({ site, page })}
+        ${NewsletterSignup({ site, message: page.signup_message })}
 
     </main>
 </div>`;

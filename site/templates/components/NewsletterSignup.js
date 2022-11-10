@@ -2,12 +2,12 @@ import { markdown } from "jsssg";
 
 const NewsletterSignup = ({
     site,
-    page
+    message
 }) => `<script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
 <div id="newsletter-signup" class="intro-note stack--small">
     ${
-        page.signup_message
-            ? markdown(page.signup_message)
+        message
+            ? markdown(message)
             : `<h3>${site.newsletterTitle}</h3>
         <p>${site.newsletterIntro}</p>
     `
