@@ -30,7 +30,7 @@ const matchFrontmatterCollection = (page, key, slug) => {
     return page.frontmatter[key] == slug;
 };
 
-const sortPages = (a, b) =>
+export const sortPages = (a, b) =>
     parseInt(b.frontmatter.date.replace(/-/gi, ""), 10) -
     parseInt(a.frontmatter.date.replace(/-/gi, ""), 10);
 
