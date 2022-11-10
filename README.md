@@ -18,6 +18,7 @@ Docs can be found at [./ssg/README.md](./ssg/README.md)
 -   [x] Set permalinks in frontmatter
 -   [x] Accept script args (for "serve", "watch" etc).
 -   [x] Group pages internally ("categories","tags", etc.)
+-   [ ] In-markdown includes
 -   [ ] Pagination between pages (based on grouping)
 -   [ ] Built-in image optimisation (optional)
 -   [ ] Built-in css/scss handling (optional)

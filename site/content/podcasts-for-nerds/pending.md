@@ -1,7 +1,6 @@
 ---
 layout: "article.njk"
 title: "Almost done!"
-date: "2020-05-29"
 excerpt: "You've signed up for Podcasts for Nerds"
 standalone: true
 hide_twitter: true

@@ -2,7 +2,6 @@
 permalink: /uses/
 layout: "article"
 title: "Uses"
-date: "2020-01-09"
 excerpt: "My developer setup, gear, software and configs"
 standalone: true
 hide_meta: true

@@ -1,6 +1,7 @@
 import { markdown } from "jsssg";
 
 import Main from "./Main.js";
+import Icon from "../components/Icon/index.js";
 import TweetForm from "../components/TweetForm.js";
 import NewsletterSignup from "../components/NewsletterSignup.js";
 import PostNav from "../components/PostNav.js";
@@ -8,20 +9,13 @@ import { date, datefull } from "../../tools/date.js";
 import { readTime } from "../../tools/readtime.js";
 
 const Article = ({ content, page = {}, site = {} }) => {
-    const icon = "";
-    // {% if custom_icon %}
-    //     {% include "icons/" + custom_icon + ".njk" %}
-    // {% elif podcasts_for_nerds_logo %}
-    //     {% include "icons/podcasts-for-nerds-logo.njk" %}
-    // {% elif categories[0] === "code" %}
-    //     {% include "icons/code.njk" %}
-    // {% elif categories[0] === "audio" %}
-    //     {% include "icons/music.njk" %}
-    // {% elif categories[0] === "data" %}
-    //     {% include "icons/rugby-data.njk" %}
-    // {% else %}
-    //     {% include "icons/pages.njk" %}
-    // {% endif %}
+    const iconSlug = page.custom_icon
+        ? page.custom_icon
+        : page.podcasts_for_nerds_logo
+        ? page.podcasts_for_nerds_logo
+        : page.categories && page.categories.length
+        ? page.categories[0]
+        : "pages";
 
     const standaloneTitle = page.standalone ? "entry-title--standalone" : "";
     const hiddenTitle = page.hide_title ? "hidden--visually" : "";
@@ -36,7 +30,9 @@ const Article = ({ content, page = {}, site = {} }) => {
 <article class="wrapper--main" itemprop="mainEntity" itemtype="http://schema.org/BlogPosting">
     <div class="entry-content stack--large" itemprop="articleBody mainEntityOfPage">
         <header class="entry-header stack--large">
-            <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">${icon}</div>
+            <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">${Icon(
+                { slug: iconSlug }
+            )}</div>
 
             <div class="stack--small">
 
@@ -103,7 +99,7 @@ const Article = ({ content, page = {}, site = {} }) => {
                 : ""
         }
 
-        ${!page.standalone ? PostNav() : ""}
+        ${!page.standalone ? PostNav(page.pagination.all) : ""}
     </div>
 </article>
     `;

@@ -1,7 +1,6 @@
 ---
 layout: "article.njk"
 title: "You've successfully signed up!"
-date: "2020-05-29"
 excerpt: "You've signed up for Podcasts for Nerds"
 standalone: true
 hide_twitter: true
@@ -19,6 +18,7 @@ Thanks so much for signing up to the _Podcasts for Nerds_ newsletter. This start
 
 {% for article in collections.pfn | reverse %}
 {% if loop.first %}
+
 <div class="block block--newsletter">
 <h2>{{ article.data.title }} ({{ article.data.subtitle }})</h2>
 <div>{{ article.templateContent | safe }}</div>

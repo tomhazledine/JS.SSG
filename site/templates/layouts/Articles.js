@@ -1,6 +1,7 @@
 import { markdown } from "jsssg";
 
 import Main from "./Main.js";
+import Icon from "../components/Icon/index.js";
 import Snippet from "./../components/Snippet.js";
 import NewsletterSnippet from "./../components/NewsletterSnippet.js";
 
@@ -9,7 +10,7 @@ const Articles = ({ content, page = {}, site = {} }) => {
 
     const articlesMarkup = articles
         .map(article => {
-            if (article.frontmatter.categories.includes("podcasts for nerds")) {
+            if (article.frontmatter.tags.includes("pfn")) {
                 return NewsletterSnippet({ article });
             }
             return Snippet({ article });
@@ -24,7 +25,7 @@ const Articles = ({ content, page = {}, site = {} }) => {
             itemscope
             itemtype="https://schema.org/ImageObject"
         >
-            ${"" /* include "icons/pages.njk" */}
+            ${Icon({ slug: "pages" })}
             <img style="display:none;" class="hidden--visually" src="/images/pages_large.png" alt=""/>
             <meta itemprop="url" content="/images/pages_large.png"/>
             <meta itemprop="width" content="32"/>
