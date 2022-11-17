@@ -2,17 +2,17 @@
     "name": "jsssg",
     "version": "1.0.0",
     "description": "An opinionated static site generator built with JavaScript",
-    "main": "index.js",
+    "main": "./build/index.js",
     "devDependencies": {},
-    "type": "module",
-    "bin": "./index.js",
+    "bin": "./build/index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "build": "node ./index"
+        "build": "esbuild src/index.js --bundle --outfile=build/index.js --platform=node --loader:.js=jsx --jsx=automatic --external:esbuild"
     },
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "esbuild": "^0.15.14",
         "markdown-it": "^13.0.1",
         "markdown-it-anchor": "^8.6.5",
         "markdown-it-attrs": "^4.1.4",
