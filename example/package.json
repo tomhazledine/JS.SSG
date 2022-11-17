@@ -1,0 +1,19 @@
+{
+    "name": "example",
+    "version": "1.0.0",
+    "description": "A test site to use the new SSG",
+    "main": "index.js",
+    "devDependencies": {},
+    "type": "module",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "jsssg",
+        "dev": "jsssg --serve --port=1337 --watch",
+        "debug": "jsssg --verbose"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "jsssg": "1.0.0"
+    }
+}

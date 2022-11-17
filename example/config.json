@@ -1,0 +1,8 @@
+{
+    "in": "content",
+    "out": "build",
+    "templates": "templates",
+    "data": {
+        "title": "Example site"
+    }
+}
