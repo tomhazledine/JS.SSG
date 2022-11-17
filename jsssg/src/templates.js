@@ -10,8 +10,8 @@ export const getTemplates = async (TEMPLATES, TEMPLATES_DIR, TEMP) => {
     const vanillaTemplatePaths = templatePaths.filter(
         filePath => path.extname(filePath) === ".js"
     );
-    console.log({ jsxTemplatePaths });
-    console.log({ vanillaTemplatePaths });
+    // console.log({ jsxTemplatePaths });
+    // console.log({ vanillaTemplatePaths });
 
     const rawVanillaTemplates = await Promise.all(
         vanillaTemplatePaths.map(async filePath => {
@@ -24,7 +24,7 @@ export const getTemplates = async (TEMPLATES, TEMPLATES_DIR, TEMP) => {
         .map(comp => ({ [comp.name]: comp }))
         .reduce((acc, curr) => ({ ...acc, ...curr }), {});
 
-    console.log(vanillaTemplates["Head"]({}));
+    // console.log(vanillaTemplates["Head"]({}));
     //         const componentName = path.basename(filePath, extension);
     //         if (extension === ".js") {
     //             const file = await readFile(filePath);

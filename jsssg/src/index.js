@@ -45,6 +45,8 @@ const build = async () => {
 
     if (args.verbose) console.log("Processing pages...");
     const site = parseSiteData(config, fileData);
+
+    if (args.verbose) console.log("Loading templates...");
     // Load all templates from templates/index.js
     const templates = await getTemplates(
         PATHS.TEMPLATES,

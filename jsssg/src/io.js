@@ -3,26 +3,33 @@ import path from "path";
 import { args } from "./index.js";
 import { log } from "./console.js";
 
-const isDir = targetPath => {
+const checkDir = targetPath => {
     try {
-        return fs.lstatSync(targetPath).isDirectory();
+        const stats = fs.lstatSync(targetPath);
+        return {
+            exists: true,
+            dir: stats.isDirectory()
+        };
     } catch (e) {
-        return false;
+        return { exists: false, dir: false };
     }
 };
 
 const getAllFilePaths = root => {
-    if (isDir(root)) {
+    if (checkDir(root).exists && checkDir(root).dir) {
         if (args.verbose) log(`Reading ${root}`, "green");
         const files = fs.readdirSync(root);
         return files.map(file => getAllFilePaths(`${root}/${file}`));
+    }
+    if (!checkDir(root).exists) {
+        return [];
     }
     return root;
 };
 
 const ensureDirectoryExistence = filePath => {
     const dirname = path.dirname(filePath);
-    if (isDir(dirname)) {
+    if (checkDir(dirname).exists) {
         return true;
     }
     if (args.verbose) log(`Creating folder ${dirname}`, "green");
@@ -30,8 +37,11 @@ const ensureDirectoryExistence = filePath => {
     return true;
 };
 
-export const readFolder = startPath =>
-    getAllFilePaths(startPath).flat(Infinity);
+export const readFolder = startPath => {
+    const allPaths = getAllFilePaths(startPath);
+    const flattenedPaths = allPaths.flat(Infinity);
+    return flattenedPaths;
+};
 
 export const copyFile = (originalFilePath, newFilePath) => {
     const targetExists = ensureDirectoryExistence(newFilePath);
