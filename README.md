@@ -29,6 +29,6 @@ Docs can be found at [./ssg/README.md](./ssg/README.md)
 -   [ ] Support MDX in markdown files
 -   [ ] Use JSX for templates
 -   [ ] Default theme
--   [ ] Build pipeline for SSG itself (webpack? raw Babel? Something else?)
+-   [x] Build pipeline for SSG itself (webpack? raw Babel? Something else?)
 -   [ ] Short demo video on YouTube
 -   [ ] Code block highlighting

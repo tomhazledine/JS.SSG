@@ -6,12 +6,14 @@ import { generatePagination } from "./pagination.js";
 
 export const handleMarkdown = async ({ file, templates, site }) => {
     const markdownContents = render(file.markdown);
-    const fallbackTemplate = "main";
+    const fallbackTemplate = "Main";
     const layout = file.frontmatter.layout.toLowerCase() || fallbackTemplate;
+    console.log({ layout });
     const template =
         typeof templates[layout] !== "undefined"
             ? templates[layout]
             : templates[fallbackTemplate];
+    console.log({ template });
 
     const pagination = await generatePagination(file, site);
     const body = template({

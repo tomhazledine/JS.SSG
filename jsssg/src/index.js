@@ -13,6 +13,7 @@ import { render } from "./markdown.js";
 import { server } from "./server.js";
 import { handleFileBuild, processFile } from "./process-file.js";
 import { parseSiteData } from "./parse-site-data.js";
+import { getTemplates } from "./templates.js";
 
 export const args = parseArgs(process.argv);
 export const config = getConfig();
@@ -22,6 +23,7 @@ const PATHS = {
     IN: path.resolve(".", `./${config.in}/`),
     TEMPLATES: path.resolve(".", `./${config.templates}/index.js`),
     TEMPLATES_DIR: path.resolve(".", `./${config.templates}`),
+    TEMP: path.resolve(".", `../${config.templates}/.temp/`),
     PUBLIC: path.resolve(".", `./${config.public}/`),
     OUT: path.resolve(".", `./${config.out}/`)
 };
@@ -44,7 +46,12 @@ const build = async () => {
     if (args.verbose) console.log("Processing pages...");
     const site = parseSiteData(config, fileData);
     // Load all templates from templates/index.js
-    const { default: templates } = await import(PATHS.TEMPLATES);
+    const templates = await getTemplates(
+        PATHS.TEMPLATES,
+        PATHS.TEMPLATES_DIR,
+        PATHS.TEMP
+    );
+
     fileData.forEach(file =>
         handleFileBuild({
             file,
