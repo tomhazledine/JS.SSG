@@ -2,7 +2,7 @@ const Wrapper = ({ page = {}, site = {}, children }) => (
     <html lang="en">
         <head>
             <meta charSet="UTF-8" />
-            <title>Add React in One Minute</title>
+            <title>{site.title}</title>
         </head>
         <body>{children}</body>
     </html>
