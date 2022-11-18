@@ -1,6 +1,6 @@
 ---
 permalink: /bullet-journal-redux/
-layout: "article"
+layout: Article
 title: "Spiraling out of control? Open up the Bullet Journal again"
 date: "2020-05-06"
 excerpt: "Believe it or not, I've thought of something new to say about Bullet Journalling."

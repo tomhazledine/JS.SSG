@@ -1,6 +1,6 @@
 ---
 permalink: /your-problem-is-not-your-users-problem/
-layout: "article"
+layout: Article
 title: "Don't turn your problem into your users' problem"
 date: "2016-08-23"
 excerpt: "I'm noticing a tendency for organisations to pass their problems along to their customers, and I wish it didn't happen."

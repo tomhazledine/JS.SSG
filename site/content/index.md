@@ -1,5 +1,5 @@
 ---
-layout: home
+layout: Home
 title: "Home"
 heading: Developer. Podcaster. Nerd.
 scripts: ["home"]

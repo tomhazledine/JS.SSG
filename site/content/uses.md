@@ -1,6 +1,6 @@
 ---
 permalink: /uses/
-layout: "article"
+layout: Article
 title: "Uses"
 excerpt: "My developer setup, gear, software and configs"
 standalone: true

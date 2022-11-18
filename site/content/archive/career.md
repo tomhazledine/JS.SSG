@@ -1,5 +1,5 @@
 ---
-layout: category
+layout: Category
 title: "Career"
 category: career
 eleventyExcludeFromCollections: true

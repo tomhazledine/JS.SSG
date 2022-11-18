@@ -1,6 +1,6 @@
 ---
 permalink: /year-of-writing/
-layout: "article"
+layout: Article
 title: "The year of writing"
 date: "2021-02-07"
 excerpt: "Choosing my Yearly Theme for 2021."

@@ -1,7 +1,7 @@
 ---
 permalink: /rugby-world-cup-2019/
 # layout: "rugby-pools.njk"
-layout: "article"
+layout: Article
 title: "Using world ranking to predict the results of the 2019 Rugby World Cup pool stages"
 date: "2019-08-21"
 excerpt: "Data visualisation for the pool stages of the 2019 Rugby World Cup"

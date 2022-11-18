@@ -1,5 +1,5 @@
 ---
-layout: category
+layout: Category
 title: "Audio"
 category: audio
 eleventyExcludeFromCollections: true

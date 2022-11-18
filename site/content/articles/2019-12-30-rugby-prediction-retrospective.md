@@ -1,6 +1,6 @@
 ---
 permalink: /rugby-prediction-retrospective/
-layout: "article"
+layout: Article
 title: "Rugby prediction: retrospective"
 date: "2019-12-30"
 excerpt: "Data visualisation and prediction algorithm for the 2019 Rugby World Cup"

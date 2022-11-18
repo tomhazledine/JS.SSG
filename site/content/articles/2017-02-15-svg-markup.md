@@ -1,6 +1,6 @@
 ---
 permalink: /svg-markup/
-layout: "article"
+layout: Article
 title: "Getting to grips with SVG markup"
 date: "2017-02-15"
 excerpt: "SVGs are complex, for sure, but that very complexity gives them their power. And we don't need to know the intricacies of the co-ordinate system to harness that power."

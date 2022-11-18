@@ -1,6 +1,6 @@
 ---
 permalink: /writing-well/
-layout: "article"
+layout: Article
 title: "Writing well is essential. Try your best to get good at it"
 date: "2018-07-01"
 excerpt: "I’ve worked hard on my writing style, and continually reap the benefits of having done so."

@@ -1,6 +1,6 @@
 ---
 permalink: /bullet-journal-revisited/
-layout: "article"
+layout: Article
 title: "Bullet Journal Revisited"
 date: "2017-01-20"
 excerpt: "The Bullet Journal is a system for Getting Things Done. One nested pen-and-paper list that gets rewritten every morning."

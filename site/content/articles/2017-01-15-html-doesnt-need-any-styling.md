@@ -1,6 +1,6 @@
 ---
 permalink: /html-doesnt-need-any-styling/
-layout: "article"
+layout: Article
 title: "Well-written HTML doesn't need any styling. Except that it does."
 date: "2017-01-15"
 excerpt: "One of the best things about HTML is that it just works. As with much of the web, things only get weird when designers and developers start adding things."

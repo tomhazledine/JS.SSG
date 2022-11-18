@@ -1,6 +1,6 @@
 ---
 permalink: /web-audio-delay/
-layout: "article"
+layout: Article
 title: "Building a delay effect with the Web Audio API"
 date: "2020-12-30"
 excerpt: "An introduction to the power of JavaScript's Web Audio API"
@@ -38,7 +38,7 @@ Once we've got that `AudioContext` set up, we can then start using it. And the w
 
 A good example of a "signal path" is a how a band sets up on stage. It's the path that sound takes from an instrument to a mixing desk and then out to some speakers (so the audience can hear it).
 
-{% include "delay/signalpath.njk" %}
+<DelaySignalPath />
 
 And in audio-context terms, **Instrument** > **Mixer** > **Speakers**
 translates to `oscillator` > `gainNode` > `context.destination`
@@ -112,6 +112,7 @@ button.addEventListener("click", () => {
 You can test this out using the button below. Clicking once will call `.start()`, and you should hear a (probably quite horrible) noise. Then clicking a second time will call `.stop()`, which will end the sound.
 
 <!-- Start/stop button -->
+
 <div id="delay-block-one"></div>
 
 If we look at the frequency graph of what's happening, you can see when we start the pitch we get a peak at 440Hz, which is the "middle A" that we are hoping for.
@@ -172,6 +173,7 @@ given time.
 We want to ramp up to the volume value of `1` (a.k.a. maximum volume) and we want that to take `0.2` seconds. To stop the pulse, we then ramp all the way down to a value of `0` half a second later.
 
 <!-- "Ramped" pulse button (with graph) -->
+
 <div id="delay-block-three"></div>
 
 Now our pulse is starting to sound a little bit more sonorous. We've got a gentle pulse that more closely mimics sound that we'd hear in the real world (rather than the artificial on/off of the raw oscillator).
@@ -256,6 +258,7 @@ By adding a second VCO, we are doubling up the notes that we hear when we hit th
 You can see see the double peak on the frequency graph when we trigger a pulse:
 
 <!--  Doubled-up pulse with frequency graph -->
+
 <div id="delay-block-six"></div>
 
 ## The FX loop
@@ -299,6 +302,7 @@ delay.connect(master);
 ```
 
 <!-- pulse with single delay and frequency graph -->
+
 <div id="delay-block-seven"></div>
 
 Success! We have now created a delay. But we don't have the full picture yet; this is only applying the delay once. When we press the "pulse" button, we hear the original note and a single repetition of that note forty milliseconds (`0.4` seconds) later.
@@ -325,6 +329,7 @@ delay.connect(master);
 ```
 
 <!-- Pulse with full delay and frequency graph -->
+
 <div id="delay-block-eight"></div>
 
 The amount of signal that we're passing back in controls how many times we hear the pulse repeated; that's the audible delay. The combination of the delay _duration_ (`delay.delayTime.value`) and the level of the _feedback_ (`feedback.gain.value`) combine to create the full effect.
@@ -336,6 +341,7 @@ There's one final step required to fully mimic the behaviour of a "real" delay p
 Have a play yourself, and see what crazy sounds you can make. You can even set the feedback level to `100%`, but be warned - weird things will happen!
 
 <!-- Pulse with sliders and frequency graph -->
+
 <div id="delay-block-nine"></div>
 
 ---

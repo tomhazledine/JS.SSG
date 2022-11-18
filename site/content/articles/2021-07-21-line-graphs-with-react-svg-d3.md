@@ -1,6 +1,6 @@
 ---
 permalink: /line-graphs-with-react-svg-d3/
-layout: "article"
+layout: Article
 title: "Line graphs with React and D3.js"
 date: "2021-07-21"
 excerpt: "Generating a dynamic SVG visualisation of audio frequency data."

@@ -1,6 +1,6 @@
 ---
 permalink: /inspirational-web-people/
-layout: "article"
+layout: Article
 title: "Inspirational Web People"
 date: "2014-09-09"
 excerpt: "Taking time to credit the members of the digital-community that have shaped my career is something I should do more often. Here's a few people I've found personally inspiring."

@@ -1,6 +1,6 @@
 ---
 permalink: /oblique-strategies-via-npx/
-layout: "article"
+layout: Article
 title: "Oblique Strategies via npx"
 date: "2022-10-24"
 excerpt: "A node script that prints one of Brian Eno's Oblique Strategies into your terminal"

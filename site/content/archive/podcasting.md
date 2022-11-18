@@ -1,5 +1,5 @@
 ---
-layout: category
+layout: Category
 title: "Podcasting"
 category: podcasting
 eleventyExcludeFromCollections: true

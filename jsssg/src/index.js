@@ -80,7 +80,7 @@ if (args.watch) {
         build();
     };
     watch(PATHS.IN, { recursive: true }, changed);
-    watch(PATHS.TEMPLATES, { recursive: true }, changed);
+    // watch(PATHS.TEMPLATES, { recursive: true }, changed);
     console.log(
         `Watching for changes on "${config.in}" and "${config.templates}"`
     );

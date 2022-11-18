@@ -1,5 +1,5 @@
 ---
-layout: articles
+layout: Articles
 title: "Archive"
 eleventyExcludeFromCollections: true
 ---

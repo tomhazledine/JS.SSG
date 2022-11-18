@@ -1,5 +1,5 @@
 ---
-layout: "newsletter"
+layout: Newsletter
 title: "Getting wet, getting loud, getting better"
 subtitle: "Podcasts for Nerds: issue #6"
 date: "2020-06-10"

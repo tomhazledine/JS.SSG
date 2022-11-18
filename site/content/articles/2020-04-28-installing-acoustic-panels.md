@@ -1,6 +1,6 @@
 ---
 permalink: /installing-acoustic-panels/
-layout: "article"
+layout: Article
 title: "Installing acoustic panels"
 date: "2020-04-28"
 excerpt: "This week I installed some acoustic panels in my office to improve the sound quality of the podcast."

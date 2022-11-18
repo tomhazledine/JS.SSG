@@ -1,5 +1,5 @@
 ---
-layout: category
+layout: Category
 title: "Typography"
 category: typography
 eleventyExcludeFromCollections: true

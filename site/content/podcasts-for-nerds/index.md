@@ -1,5 +1,5 @@
 ---
-layout: "article"
+layout: Article
 title: "Podcasts for Nerds"
 date: "2020-05-14"
 excerpt: "I've started a podcast-adjacent project, and need your help."
@@ -16,7 +16,7 @@ image: "/podcasts_for_nerds/twitter_card.png"
 templateEngineOverride: njk
 ---
 
-{% include "newsletter-signup.njk" %}
+<NewsletterSignup />
 
 ### What is Podcast for Nerds?
 

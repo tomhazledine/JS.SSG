@@ -1,6 +1,6 @@
 ---
 permalink: /adding-rss/
-layout: "article"
+layout: Article
 title: "RSS in 2021 (yes, it's still a thing)"
 date: "2021-01-17"
 excerpt: "Adding an RSS feed to an Eleventy site is (mostly) easy peasy."
@@ -67,31 +67,31 @@ With that done, my new feed is live at [tomhazledine.com/feed.xml](https://tomha
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>{% raw %}{{ site.title }}{% endraw %}</title>
-  <subtitle>{% raw %}{{ site.summary }}{% endraw %}</subtitle>
-  <link href="{% raw %}{{ site.url }}/{{ permalink }}{% endraw %}" rel="self"/>
-  <link href="{% raw %}{{ site.url }}{% endraw %}"/>
-  <updated>{% raw %}{{ collections.articles | getNewestCollectionItemDate | dateToRfc3339 }}{% endraw %}</updated>
-  <id>{% raw %}{{ site.url }}{% endraw %}/</id>
+  <title>{{ site.title }}</title>
+  <subtitle>{{ site.summary }}</subtitle>
+  <link href="{{ site.url }}/{{ permalink }}" rel="self"/>
+  <link href="{{ site.url }}"/>
+  <updated>{{ collections.articles | getNewestCollectionItemDate | dateToRfc3339 }}</updated>
+  <id>{{ site.url }}/</id>
   <author>
-    <name>{% raw %}{{ site.author }}{% endraw %}</name>
-    <email>{% raw %}{{ site.authorEmail }}{% endraw %}</email>
+    <name>{{ site.author }}</name>
+    <email>{{ site.authorEmail }}</email>
   </author>
-  {% raw %}{%- for post in collections.articles | reverse %}{% endraw %}
-  {% raw %}{% set absolutePostUrl %}{{ post.url | url | absoluteUrl(site.url) }}{% endset %}{% endraw %}
+  {%- for post in collections.articles | reverse %}
+  {% set absolutePostUrl %}{{ post.url | url | absoluteUrl(site.url) }}{% endset %}
   <entry>
-    <title>{% raw %}{{ post.data.title }}{% endraw %}</title>
-    <link href="{% raw %}{{ absolutePostUrl }}{% endraw %}"/>
-    <updated>{% raw %}{{ post.date | dateToRfc3339 }}{% endraw %}</updated>
-    <id>{% raw %}{{ absolutePostUrl }}{% endraw %}</id>
+    <title>{{ post.data.title }}</title>
+    <link href="{{ absolutePostUrl }}"/>
+    <updated>{{ post.date | dateToRfc3339 }}</updated>
+    <id>{{ absolutePostUrl }}</id>
     <content type="html">
-        {% raw %}{%- if post.data.not_rss_friendly %}{% endraw %}
-            {% raw %}{{ site.rssCaveat | markdown }}{% endraw %}<p>View the original here: <a href="{% raw %}{{ absolutePostUrl }}{% endraw %}">{% raw %}{{ absolutePostUrl }}{% endraw %}</a></p>
-        {% raw %}{%- endif %}{% endraw %}
-        {% raw %}{{ post.templateContent | markdown | htmlToAbsoluteUrls(absolutePostUrl) }}{% endraw %}
+        {%- if post.data.not_rss_friendly %}
+            {{ site.rssCaveat | markdown }}<p>View the original here: <a href="{{ absolutePostUrl }}">{{ absolutePostUrl }}</a></p>
+        {%- endif %}
+        {{ post.templateContent | markdown | htmlToAbsoluteUrls(absolutePostUrl) }}
     </content>
   </entry>
-  {% raw %}{%- endfor %}{% endraw %}
+  {%- endfor %}
 </feed>
 ```
 

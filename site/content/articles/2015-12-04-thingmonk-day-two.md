@@ -1,6 +1,6 @@
 ---
 permalink: /thingmonk-day-two/
-layout: "article"
+layout: Article
 title: "Notes from ThingMonk: Day Two"
 date: "2015-12-04"
 excerpt: "The second installment of my notes from the ThinkMonk IoT conference."

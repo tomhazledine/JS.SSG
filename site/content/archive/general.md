@@ -1,5 +1,5 @@
 ---
-layout: category
+layout: Category
 title: "General"
 category: general
 eleventyExcludeFromCollections: true

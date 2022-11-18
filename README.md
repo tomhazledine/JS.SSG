@@ -18,7 +18,7 @@ Docs can be found at [./ssg/README.md](./ssg/README.md)
 -   [x] Set permalinks in frontmatter
 -   [x] Accept script args (for "serve", "watch" etc).
 -   [x] Group pages internally ("categories","tags", etc.)
--   [ ] In-markdown includes
+-   [~] ~~In-markdown includes~~ handled by MDX components
 -   [x] Pagination between pages (based on grouping)
 -   [ ] Built-in image optimisation (optional)
 -   [ ] Built-in css/scss handling (optional)
@@ -26,8 +26,8 @@ Docs can be found at [./ssg/README.md](./ssg/README.md)
 -   [ ] Generate a search index
 -   [ ] Sitemap xml file
 -   [ ] RSS feed
--   [ ] Support MDX in markdown files
--   [ ] Use JSX for templates
+-   [x] Support MDX (~~in markdown~~) files
+-   [x] Use JSX for templates
 -   [ ] Default theme
 -   [x] Build pipeline for SSG itself (webpack? raw Babel? Something else?)
 -   [ ] Short demo video on YouTube

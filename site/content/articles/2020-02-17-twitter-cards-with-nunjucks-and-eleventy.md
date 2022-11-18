@@ -1,6 +1,6 @@
 ---
 permalink: /twitter-cards-with-nunjucks-and-eleventy/
-layout: "article"
+layout: Article
 title: "Twitter Cards with Nunjucks and 11ty"
 date: "2020-02-17"
 excerpt: "Using cards makes sharing your content on Twitter look much nicer."
@@ -37,8 +37,6 @@ My site is built with [Eleventy](https://www.11ty.dev/) (a.k.a. _11ty_), and I u
 
 That same block of metadata that I showed before looks like this in a Nunjucks file:
 
-{% raw %}
-
 ```html
 <meta name="twitter:card" content="{{cardType}}" />
 <meta name="twitter:creator" content="{{site.authorTwitterUrl}}" />
@@ -51,8 +49,6 @@ That same block of metadata that I showed before looks like this in a Nunjucks f
 <meta name="twitter:image" content="{{cardImage}}" />
 <meta property="og:image" content="{{cardImage}}" />
 ```
-
-{% endraw %}
 
 Because the way 11ty templates and layouts are put together, I had to add the metadata to my site's master `main.njk` layout file. This is the main layout that wraps all my pages, so I need to include some custom logic to account for a few scenaris:
 

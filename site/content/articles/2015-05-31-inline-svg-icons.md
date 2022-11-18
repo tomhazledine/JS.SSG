@@ -1,6 +1,6 @@
 ---
 permalink: /inline-svg-icons/
-layout: "article"
+layout: Article
 title: "Getting started with inline SVG icons"
 date: "2015-05-31"
 excerpt: "As a typography nerd, using a custom font to serve icons felt really good. However, it turns out inline SVG icons are better in almost every way."
@@ -28,18 +28,16 @@ For a while it seemed that Icon Fonts were the answer. They're vector based and 
 
 Lately the winds of change have been blowing. Fewer and fewer big-name sites are using icon fonts, and more and more are publicly coming out in favour of inline SVGs. At first I was sceptical: "that problem's already been solved", I thought. Actually inlining raw SVG code into a site seemed overly complicated, and harder to maintain and automate than an icon font setup. But was it? And were icon fonts as great as they first appeared?
 
-<dl>
-<dt>When icon fonts fail, things get weird.</dt>
-<dd>Sometimes there's no telling what crazy character a browser will display in place of an icon that hasn't loaded.</dd>
+When icon fonts fail, things get weird.
+: Sometimes there's no telling what crazy character a browser will display in place of an icon that hasn't loaded.
 
-<dt>There are inexplicable rendering inconsistencies.</dt>
-<dd>Firefox in particular seemed, like an overly generous grandparent, determined to fatten my icons up. Faux-bold on regular fonts is ugly and annoying, but when it happens to brand assets like icons it's excruciating (and something clients <em>always</em> pick up on).</dd>
+There are inexplicable rendering inconsistencies.
+: Firefox in particular seemed, like an overly generous grandparent, determined to fatten my icons up. Faux-bold on regular fonts is ugly and annoying, but when it happens to brand assets like icons it's excruciating (and something clients _always_ pick up on).
 
-<dt>Automation isn't so seamless after all.</dt>
-<dd>Oh hey, my <code>npm install</code> keeps failing. I wonder what the problem is: oh yeah, my <code>gulp-icon font</code> is throwing errors all up in my grill. Again. &#35;facepalm</dd>
-</dl>
+Automation isn't so seamless after all.
+: Oh hey, my `npm install` keeps failing. I wonder what the problem is: oh yeah, my `gulp-icon font` is throwing errors all up in my grill. Again. #facepalm
 
-By contrast, pure SVG is a much more consistent format. I've been using SVGs within <code>&amp;lt;img&amp;gt;</code> tags since 2006, and I've never had any trouble with setting SVGs as CSS background images.
+By contrast, pure SVG is a much more consistent format. I've been using SVGs within `<img />` tags since 2006, and I've never had any trouble with setting SVGs as CSS background images.
 
 ```css
 /* SVG CSS background-image. */
@@ -51,13 +49,13 @@ By contrast, pure SVG is a much more consistent format. I've been using SVGs wit
 }
 ```
 
-The obvious _simple_ solution is to just use SVGs like that: set them with CSS or use <code><img></code> elements. That gives you scaleable vector graphics that work well in most environments. The trouble is, you're loading in a new file for every icon. Every icon would represent another HTTP request to the server, and would be a performance nightmare. No matter how "squishy" your design, if your site is slow to load it is _not_ "Responsive".
+The obvious _simple_ solution is to just use SVGs like that: set them with CSS or use `<img>` elements. That gives you scaleable vector graphics that work well in most environments. The trouble is, you're loading in a new file for every icon. Every icon would represent another HTTP request to the server, and would be a performance nightmare. No matter how "squishy" your design, if your site is slow to load it is _not_ "Responsive".
 
 So we're back to the same multiple-requests problem we had in the bad old days of raster iconography. The answer back then was to use image sprites. Concatenate all the icons into one file, load them all with just one HTTP request, and use CSS to crop the image when you want to display a particular icon. It turns out we can do that with SVG too, except now we can do it better!
 
-<h2>Inline SVG Sprites</h2>
+## Inline SVG Sprites
 
-SVGs are made of paths – collections of co-ordinates that describe the individual vectors of the image. Open an SVG in your favourite text editor and you can see those paths. What's more, you can add classes and IDs to them. Even more mindblowing: if you wrap the individual paths in a <code>symbol</code> tag you can combine multiple images into a single SVG file, and selectively pull them out using their IDs.
+SVGs are made of paths – collections of co-ordinates that describe the individual vectors of the image. Open an SVG in your favourite text editor and you can see those paths. What's more, you can add classes and IDs to them. Even more mindblowing: if you wrap the individual paths in a `symbol` tag you can combine multiple images into a single SVG file, and selectively pull them out using their IDs.
 
 ```html
 <!-- Load the SVG file into your document... -->
@@ -108,7 +106,7 @@ gulp.task("svg", function () {
 
 ## Inline SVG in Jekyll
 
-This site is built using the static-site generator Jekyll. Transferring this site's (admittedly meagre) icon set from an icon font to an inline SVG sprite couldn't have been easier. Make sure your task-runner outputs your sprite into Jekyll's `_includes` directory and you can pull in your sprite with a simple `{% raw %}{% include /symbol/svg/sprite.symbol.svg %}{% endraw %}`. And because Jekyll compiles _before_ deployment, you don't even have to make a single HTTP request to get your icons: it's all truly inline.
+This site is built using the static-site generator Jekyll. Transferring this site's (admittedly meagre) icon set from an icon font to an inline SVG sprite couldn't have been easier. Make sure your task-runner outputs your sprite into Jekyll's `_includes` directory and you can pull in your sprite with a `{% include /symbol/svg/sprite.symbol.svg %}`. And because Jekyll compiles _before_ deployment, you don't even have to make a single HTTP request to get your icons: it's all truly inline.
 
 ## Inline SVG in Wordpress
 

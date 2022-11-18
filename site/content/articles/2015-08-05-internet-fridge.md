@@ -1,6 +1,6 @@
 ---
 permalink: /internet-fridge/
-layout: "article"
+layout: Article
 title: "Why doesn’t everyone have an Internet Fridge?"
 date: "2015-08-05"
 excerpt: "An internet-connected fridge is the go-to example when trying to explain the Internet Of Things to lay people. So why don't we have them yet? And do we really want them? Or even need them?"

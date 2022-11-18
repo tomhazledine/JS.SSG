@@ -1,5 +1,5 @@
 ---
-layout: category
+layout: Category
 title: "Events"
 category: events
 eleventyExcludeFromCollections: true

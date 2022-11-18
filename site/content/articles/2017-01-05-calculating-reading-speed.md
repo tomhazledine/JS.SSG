@@ -1,6 +1,6 @@
 ---
 permalink: /calculating-reading-speed/
-layout: "article"
+layout: Article
 title: "n-minute read: calculating an average reading speed"
 date: "2017-01-05"
 excerpt: "I'm interested in measuring what effect, if any, displaying an approximate reading-time for articles will have on readers of my site."

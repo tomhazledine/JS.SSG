@@ -1,6 +1,6 @@
 ---
 permalink: /inline-svg-icon-sprites/
-layout: "article"
+layout: Article
 title: "Inline SVG icon sprites are (still) not scary."
 date: "2017-02-26"
 excerpt: "One of the best things about HTML is that it just works. As with much of the web, things only get weird when designers and developers start adding things."
@@ -164,18 +164,16 @@ shape: {
 
 Once Gulp has created the sprite file for us, we need to add that to our page below your opening `<body>` tag. Copy-pasting the contents of `sprite.symbol.svg` would do the trick. But we can automate this process by including a reference to our sprite file.
 
-<dl>
- 	<dt>Including an SVG icon sprite in a Jekyll site</dt>
- 	<dd>In the past I've worked a lot with Jekyll - a static-site generator. When it comes to performance and security it's hard to beat static HTML files. Jekyll compiles a site *before* it gets put on a server. There are no databases to hack, and no server-side build-steps to slow the site down. Because Jekyll is already combining lots of files together, adding a sprite into the mix is easy.</dd>
-</dl>
+Including an SVG icon sprite in a Jekyll site
+: In the past I've worked a lot with Jekyll - a static-site generator. When it comes to performance and security it's hard to beat static HTML files. Jekyll compiles a site _before_ it gets put on a server. There are no databases to hack, and no server-side build-steps to slow the site down. Because Jekyll is already combining lots of files together, adding a sprite into the mix is easy.
 
 We can get Gulp to output the sprite into Jekyll's `_includes` directory by changing the path in `gulp.dest()`. So `.pipe( gulp.dest( 'assets/icons' ) );` becomes `.pipe( gulp.dest( '_includes' ) );`. Then you can pull in your sprite with a simple "include" statement:
 
 ```liquid
-{% raw %}{% include /symbol/svg/sprite.symbol.svg %}{% endraw %}
+{% include /symbol/svg/sprite.symbol.svg %}
 ```
 
-Remember to use Liquid's `{% raw %}{% raw %}{% endraw %}` tag to ensure the SVG code doesn't get escaped.
+Remember to use Liquid's `{% raw %}` tag to ensure the SVG code doesn't get escaped.
 
 <dl>
  	<dt>Including an SVG icon sprite in a WordPress site</dt>

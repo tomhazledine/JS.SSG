@@ -1,6 +1,6 @@
 ---
 permalink: /podcasting-equipment/
-layout: "article"
+layout: Article
 title: "Podcasting: what gear do you need?"
 date: "2021-09-27"
 excerpt: "To record a good podcast you need three essential pieces of equipment and a little bit of skill."

@@ -1,5 +1,5 @@
 ---
-layout: "newsletter"
+layout: Newsletter
 title: "Prescience, new beginnings, and modern linguistics"
 subtitle: "Podcasts for Nerds: issue #1"
 date: "2020-05-06"

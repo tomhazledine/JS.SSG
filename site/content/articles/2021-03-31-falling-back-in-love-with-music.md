@@ -1,6 +1,6 @@
 ---
 permalink: /falling-back-in-love-with-music/
-layout: "article"
+layout: Article
 title: "Falling back in love with music"
 date: "2021-03-31"
 excerpt: "Ditching web audio in favour of hardware synthesisers"

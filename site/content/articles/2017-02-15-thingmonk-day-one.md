@@ -1,6 +1,6 @@
 ---
 permalink: /thingmonk-day-one/
-layout: "article"
+layout: Article
 title: "Notes from ThingMonk: Day One"
 date: "2015-12-03"
 excerpt: "Some of the leading figures in the IoT industry got together to talk shop. Here's what I thought of it all."

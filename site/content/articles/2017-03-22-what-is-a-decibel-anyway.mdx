@@ -1,6 +1,6 @@
 ---
 permalink: /what-is-a-decibel-anyway/
-layout: "article"
+layout: Article
 title: "What is a decibel, anyway?"
 date: "2017-03-22"
 excerpt: "The decibel has always confused me. I did some research, and it turns out the decibel is actually pretty interesting."
@@ -11,9 +11,15 @@ categories: ["audio"]
 
 The decibel has always confused me. Sometimes people use decibels as an absolute value where "0" is silence and anything over "120" is very loud. Journalists do this when describing how loud a band is[^1]. Sound engineers do it too, when boasting about the power of their speaker-setup. "It's louder than a jet engine at 50 paces, man". But when I look at the volume meter on a mixing desk, things are different. The desk shows the loudest value as zero, all the way down to silence at "-96" (or sometimes even "∞"). See what I mean? Confusing.
 
-<figure class="post-content__image-wrapper">
-    <img class="post-content__image" src="/images/articles/logic-mixer.jpg" alt="The mixer section of Logic X">
-    <figcaption class="post-content__caption">The mixer section of Logic X (a typical DAW - Digital Audio Workstation)</figcaption>
+<figure className="post-content__image-wrapper">
+    <img
+        className="post-content__image"
+        src="/images/articles/logic-mixer.jpg"
+        alt="The mixer section of Logic X"
+    />
+    <figcaption className="post-content__caption">
+        The mixer section of Logic X (a typical DAW - Digital Audio Workstation)
+    </figcaption>
 </figure>
 
 For a long time I've been at least tangentially connected to the world of "pro" audio. As such, I'd feel uneasy when I overheard a lay-person talking about volume. I would often catch myself thinking "I know they are getting it wrong, but I don't know why". So after years of pretty much taking the decibel for granted, I finally had enough. I did some research, and it turns out the decibel is actually pretty interesting.
@@ -29,9 +35,13 @@ For a long time I've been at least tangentially connected to the world of "pro" 
 -   The most common filter is the "A scale" (dBA). This is a "band-pass" filter, which is less sensitive to very high and very low frequencies. It's simplistic, but "close-enough" to have become a standard.
 -   A less-simplistic approximation of what our ears hear would be a "hearing response curve". These are much more complex than the "A" scale, with peaks and troughs at different frequencies.
 
-<figure class="post-content__image-wrapper">
-    {% include "icons/frequency-curve-graph.njk" %}
-<figcaption class="post-content__caption">The graph on the left shows an "A" scale frequency response curve, while the graph on the right shows one that more closely matches the response of an average human ear.</figcaption>
+<figure className="post-content__image-wrapper">
+    <DecibelFrequencyCurveGraph />
+    <figcaption className="post-content__caption">
+        The graph on the left shows an "A" scale frequency response curve, while
+        the graph on the right shows one that more closely matches the response
+        of an average human ear.
+    </figcaption>
 </figure>
 
 Now that I've done my research, the dB markings on a mixing desk look far more logical. I can see now that using a simple low-to-high dB meter wouldn't make any sense. Any dB scale _requires_ a defined reference point, which doesn't exist in this context. A mixer-channel _cannot_ have a fixed frame of reference because it gets mixed. A mixer routes all channels to the "master bus" output channel, which has its own volume control. Knowing the value of a signal at the channel-level tells us nothing about the final output value.
