@@ -1,9 +1,9 @@
 import { markdown } from "jsssg";
 
-import Main from "./Main.js";
-import AllCategories from "./../components/AllCategories.js";
-import Snippet from "./../components/Snippet.js";
-import NewsletterSnippet from "./../components/NewsletterSnippet.js";
+import Main from "./Main.jsx";
+import AllCategories from "../components/AllCategories.js";
+import Snippet from "../components/Snippet.js";
+import NewsletterSnippet from "../components/NewsletterSnippet.js";
 
 const Category = ({ content, page = {}, site = {} }) => {
     const articles = site.collections.pages.categories[page.category];

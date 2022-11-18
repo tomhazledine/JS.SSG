@@ -1,9 +1,9 @@
 import { markdown } from "jsssg";
 
-import Main from "./Main.js";
+import Main from "./Main.jsx";
 import Icon from "../components/Icon/index.js";
-import Snippet from "./../components/Snippet.js";
-import NewsletterSnippet from "./../components/NewsletterSnippet.js";
+import Snippet from "../components/Snippet.js";
+import NewsletterSnippet from "../components/NewsletterSnippet.js";
 
 const Articles = ({ content, page = {}, site = {} }) => {
     const articles = site.collections.pages.tags.articles;

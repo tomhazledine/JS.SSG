@@ -1,6 +1,6 @@
 import { markdown } from "jsssg";
 
-import Main from "./Main.js";
+import Main from "./Main.jsx";
 import TweetForm from "../components/TweetForm.js";
 import Icon from "../components/Icon/index.js";
 import NewsletterSignup from "../components/NewsletterSignup.js";
