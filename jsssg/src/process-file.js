@@ -12,8 +12,8 @@ export const processFile = async (filePath, PATHS) => {
     // Ignore weird files (i.e. `.DS_Store` etc.)
     if (extension === "") return { type: "not a file" };
 
-    // Read frontmatter from markdown files
-    if (extension === ".md") {
+    // Read frontmatter from markdown and mdx files
+    if (extension === ".md" || extension === ".mdx") {
         if (args.verbose) log(`Parsing frontmatter for ${filePath}`);
         const fileContents = await readFile(filePath);
         try {
@@ -23,7 +23,8 @@ export const processFile = async (filePath, PATHS) => {
                 frontmatter.permalink,
                 PATHS
             );
-            return { type: "markdown", frontmatter, markdown, ...paths };
+            const type = extension === ".md" ? "markdown" : "mdx";
+            return { type, frontmatter, markdown, ...paths };
         } catch (err) {
             console.log(`Invalid frontmatter: ${filePath}`);
         }
@@ -43,6 +44,7 @@ const handleCopy = (file, PATHS) => {
 export const handleFileBuild = async ({ file, PATHS, templates, site }) => {
     switch (file.type) {
         case "markdown":
+        case "mdx":
             handleMarkdown({ file, templates, site });
             break;
         default:

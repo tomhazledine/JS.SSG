@@ -1,4 +1,5 @@
 import { renderToStaticMarkup } from "react-dom/server";
+import MDX from "@mdx-js/runtime";
 
 import { args } from "./index.js";
 import { log } from "./console.js";
@@ -19,8 +20,21 @@ const renderTemplate = ({ template, ...props }) => {
     return "<span>template not found</span>";
 };
 
+const renderMdx = (body, templates) => {
+    const components = Object.keys(templates)
+        .filter(key => templates[key].type === "jsx")
+        .reduce(
+            (acc, key) => ({ ...acc, [key]: templates[key].component }),
+            {}
+        );
+    return renderToStaticMarkup(<MDX components={components}>{body}</MDX>);
+};
+
 export const handleMarkdown = async ({ file, templates, site }) => {
-    const markdownContents = render(file.markdown);
+    const markdownContents =
+        file.type === "mdx"
+            ? renderMdx(file.markdown, templates)
+            : render(file.markdown);
     const fallbackTemplate = "Main";
     const layout = file.frontmatter.layout
         ? file.frontmatter.layout
