@@ -1,8 +1,11 @@
 import path from "path";
-import { readFolder } from "./io.js";
 
-export const getTemplates = async (TEMPLATES, TEMPLATES_DIR, TEMP) => {
-    const templatePaths = readFolder(TEMPLATES_DIR);
+import { readFolder } from "./io.js";
+import { getJsxTemplates } from "./jsx.js";
+import { args } from "./index.js";
+
+export const getTemplates = async TEMPLATES => {
+    const templatePaths = readFolder(TEMPLATES);
 
     const jsxTemplatePaths = templatePaths.filter(
         filePath => path.extname(filePath) === ".jsx"
@@ -10,9 +13,8 @@ export const getTemplates = async (TEMPLATES, TEMPLATES_DIR, TEMP) => {
     const vanillaTemplatePaths = templatePaths.filter(
         filePath => path.extname(filePath) === ".js"
     );
-    // console.log({ jsxTemplatePaths });
-    // console.log({ vanillaTemplatePaths });
 
+    if (args.verbose) console.log("Loading vanilla JS templates...");
     const rawVanillaTemplates = await Promise.all(
         vanillaTemplatePaths.map(async filePath => {
             const { default: component } = await import(filePath);
@@ -21,28 +23,11 @@ export const getTemplates = async (TEMPLATES, TEMPLATES_DIR, TEMP) => {
     );
     const vanillaTemplates = rawVanillaTemplates
         .filter(comp => typeof comp === "function")
-        .map(comp => ({ [comp.name]: comp }))
+        .map(component => ({ [component.name]: { type: "js", component } }))
         .reduce((acc, curr) => ({ ...acc, ...curr }), {});
 
-    // console.log(vanillaTemplates["Head"]({}));
-    //         const componentName = path.basename(filePath, extension);
-    //         if (extension === ".js") {
-    //             const file = await readFile(filePath);
-    //             return {};
-    //         }
-    //     })
-    // );
+    if (args.verbose) console.log("Loading JSX templates...");
+    const jsxTemplates = await getJsxTemplates(jsxTemplatePaths, TEMPLATES);
 
-    // console.log({ templates });
-
-    //     componentPaths.map(
-    //         async filePath => await parseJSX(filePath, PATHS.ROOT)
-    //     )
-    //     // componentPaths.map(async filePath => {
-    //     //     const { default: component } = await import(filePath);
-    //     //     return component;
-    //     // })
-    // );
-    // const { default: templates } = await import(TEMPLATES);
-    return vanillaTemplates;
+    return { ...vanillaTemplates, ...jsxTemplates };
 };

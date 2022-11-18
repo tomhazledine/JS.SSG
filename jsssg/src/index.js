@@ -21,9 +21,7 @@ export const markdown = render;
 
 const PATHS = {
     IN: path.resolve(".", `./${config.in}/`),
-    TEMPLATES: path.resolve(".", `./${config.templates}/index.js`),
-    TEMPLATES_DIR: path.resolve(".", `./${config.templates}`),
-    TEMP: path.resolve(".", `../${config.templates}/.temp/`),
+    TEMPLATES: path.resolve(".", `./${config.templates}`),
     PUBLIC: path.resolve(".", `./${config.public}/`),
     OUT: path.resolve(".", `./${config.out}/`)
 };
@@ -48,11 +46,7 @@ const build = async () => {
 
     if (args.verbose) console.log("Loading templates...");
     // Load all templates from templates/index.js
-    const templates = await getTemplates(
-        PATHS.TEMPLATES,
-        PATHS.TEMPLATES_DIR,
-        PATHS.TEMP
-    );
+    const templates = await getTemplates(PATHS.TEMPLATES);
 
     fileData.forEach(file =>
         handleFileBuild({
@@ -86,7 +80,7 @@ if (args.watch) {
         build();
     };
     watch(PATHS.IN, { recursive: true }, changed);
-    watch(PATHS.TEMPLATES_DIR, { recursive: true }, changed);
+    watch(PATHS.TEMPLATES, { recursive: true }, changed);
     console.log(
         `Watching for changes on "${config.in}" and "${config.templates}"`
     );
