@@ -6,13 +6,9 @@ import TweetWidget from "../components/TweetWidget.jsx";
 import Analytics from "../components/Analytics.js";
 
 const Main = ({ page, site, children }) => {
-    const scripts = page.scripts
-        ? page.scripts
-              .map(script => (
-                  <script src={`/tomhazledine.${script}.js`}></script>
-              ))
-              .join("")
-        : "";
+    const scripts = page.scripts.map(script => (
+        <script src={`/tomhazledine.${script}.js`}></script>
+    ));
 
     return (
         <html lang="en">
@@ -28,7 +24,7 @@ const Main = ({ page, site, children }) => {
                 <footer>
                     <TweetWidget />
                     <script src="/tomhazledine.app.js"></script>
-                    {scripts}
+                    {page.scripts.length > 0 && scripts}
                     <Analytics />
                 </footer>
             </body>
