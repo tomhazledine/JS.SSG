@@ -1,4 +1,4 @@
-export default Pages = () => (
+export default () => (
     <svg
         className="pages-icon"
         width="200"

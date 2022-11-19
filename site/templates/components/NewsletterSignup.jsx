@@ -1,14 +1,17 @@
 import { markdown } from "jsssg";
 
-const NewsletterSignup = ({ site, message }) => (
+const NewsletterSignup = ({ newsletterTitle, newsletterIntro, message }) => (
     <>
         <script src="https://f.convertkit.com/ckjs/ck.5.js"></script>
         <div id="newsletter-signup" className="intro-note stack--small">
-            {message
-                ? markdown(message)
-                : `<h3>${site.newsletterTitle}</h3>
-        <p>${site.newsletterIntro}</p>
-    `}
+            {message ? (
+                <div dangerouslySetInnerHTML={{ __html: markdown(message) }} />
+            ) : (
+                <>
+                    <h3>{newsletterTitle}</h3>
+                    <p>{newsletterIntro}</p>
+                </>
+            )}
             <form
                 action="https://app.convertkit.com/forms/3039830/subscriptions"
                 className="seva-form formkit-form"

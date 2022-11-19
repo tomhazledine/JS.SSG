@@ -1,4 +1,4 @@
-export default Envelope = ({ className = "icon__envelope" }) => (
+export default ({ className = "icon__envelope" }) => (
     <svg
         className={className}
         width="30px"

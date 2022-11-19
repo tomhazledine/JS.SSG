@@ -1,19 +1,24 @@
 import { markdown } from "jsssg";
 
-import Main from "./Main.jsx";
+import Main from "./Main.js";
 import AllCategories from "../components/AllCategories.js";
-import Icon from "../components/Icon/index.jsx";
-import Snippet from "../components/Snippet.jsx";
-import NewsletterSnippet from "../components/NewsletterSnippet.jsx";
+import Icon from "../components/Icon.js";
+import Snippet from "../components/Snippet.js";
+import NewsletterSnippet from "../components/NewsletterSnippet.js";
 
 const Category = ({ content, page = {}, site = {} }) => {
     const articles = site.collections.pages.categories[page.category];
 
     const articlesMarkup = articles.map(article => {
         if (article.frontmatter.categories.includes("podcasts for nerds")) {
-            return <NewsletterSnippet article={article} />;
+            return <NewsletterSnippet key={article.url} article={article} />;
         }
-        return <Snippet {...{ article, includeCategories: false }} />;
+        return (
+            <Snippet
+                key={article.url}
+                {...{ article, includeCategories: false }}
+            />
+        );
     });
 
     return (
@@ -28,7 +33,7 @@ const Category = ({ content, page = {}, site = {} }) => {
                         itemscope
                         itemtype="https://schema.org/ImageObject"
                     >
-                        <Icon slug={iconSlug} />
+                        <Icon slug={page.category} />
                     </div>
 
                     <div className="stack">

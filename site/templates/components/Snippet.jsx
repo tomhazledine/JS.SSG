@@ -1,4 +1,4 @@
-import ArticleCategories from "./ArticleCategories.jsx";
+import ArticleCategories from "./ArticleCategories.js";
 import { date } from "../../tools/date.js";
 
 const Snippet = ({ article, includeCategories = true }) => (

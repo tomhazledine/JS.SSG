@@ -1,4 +1,4 @@
-export default Data = () => (
+export default () => (
     <svg
         className="pages-icon pages-icon--rugby"
         width="65"

@@ -1,11 +1,11 @@
-import Code from "./Code.jsx";
-import PodcastsForNerds from "./PodcastsForNerds.jsx";
-import Audio from "./Audio.jsx";
-import Data from "./Data.jsx";
-import Envelope from "./Envelope.jsx";
-import Pages from "./Pages.jsx";
+import Code from "./icons/Code.js";
+import PodcastsForNerds from "./icons/PodcastsForNerds.js";
+import Audio from "./icons/Audio.js";
+import Data from "./icons/Data.js";
+import Envelope from "./icons/Envelope.js";
+import Pages from "./icons/Pages.js";
 
-const Icons = ({ slug, className = "" }) => {
+const Icon = ({ slug, className = "" }) => {
     switch (slug) {
         case "code":
             return <Code />;
@@ -22,4 +22,4 @@ const Icons = ({ slug, className = "" }) => {
     }
 };
 
-export default Icons;
+export default Icon;

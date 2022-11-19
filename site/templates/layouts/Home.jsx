@@ -1,8 +1,7 @@
-import Main from "./Main.jsx";
-
-import HomeGraph from "../components/HomeGraph.jsx";
-import FeaturedIntro from "../components/FeaturedIntro.jsx";
-import FeaturedPopular from "../components/FeaturedPopular.jsx";
+import Main from "./Main.js";
+import HomeGraph from "../components/HomeGraph.js";
+import FeaturedIntro from "../components/FeaturedIntro.js";
+import FeaturedPopular from "../components/FeaturedPopular.js";
 import NewsletterSignup from "../components/NewsletterSignup.js";
 
 const Home = ({ content, page = {}, site = {} }) => {
@@ -35,7 +34,9 @@ const Home = ({ content, page = {}, site = {} }) => {
                     </div>
                     <hr />$
                     <NewsletterSignup
-                        {...{ site, message: page.signup_message }}
+                        newsletterTitle={site.newsletterTitle}
+                        newsletterIntro={site.newsletterIntro}
+                        message={page.signup_message}
                     />
                 </main>
             </div>

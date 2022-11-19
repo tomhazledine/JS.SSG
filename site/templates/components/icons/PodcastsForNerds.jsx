@@ -1,4 +1,4 @@
-export default PodcastsForNerds = () => (
+export default () => (
     <svg
         className="pfn__logo"
         viewBox="0 0 643 741"

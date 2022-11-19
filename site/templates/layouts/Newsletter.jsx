@@ -1,10 +1,10 @@
 import { markdown } from "jsssg";
 
-import Main from "./Main.jsx";
-import TweetForm from "../components/TweetForm.jsx";
-import Icon from "../components/Icon/index.jsx";
-import NewsletterSignup from "../components/NewsletterSignup.jsx";
-import PostNav from "../components/PostNav.jsx";
+import Main from "./Main.js";
+import TweetForm from "../components/TweetForm.js";
+import Icon from "../components/Icon.js";
+import NewsletterSignup from "../components/NewsletterSignup.js";
+import PostNav from "../components/PostNav.js";
 import { date, datemedium, datefull } from "../../tools/date.js";
 import { readTime } from "../../tools/readtime.js";
 
@@ -162,7 +162,8 @@ const Newsletter = ({ content, page = {}, site = {} }) => {
                     {!page.hide_footer_signup && !page.hide_twitter && <hr />}
                     {!page.hide_footer_signup && (
                         <NewsletterSignup
-                            site={site}
+                            newsletterTitle={site.newsletterTitle}
+                            newsletterIntro={site.newsletterIntro}
                             message={layoutData.signup_message}
                         />
                     )}
