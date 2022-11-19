@@ -29,5 +29,9 @@ const colors = {
 };
 
 export const log = (text, color = "white") => {
-    console.log(colors[color], text, colors["reset"]);
+    if (Array.isArray(text)) {
+        console.log(colors[color], ...text, colors["reset"]);
+    } else {
+        console.log(colors[color], text, colors["reset"]);
+    }
 };

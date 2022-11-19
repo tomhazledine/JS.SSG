@@ -14,8 +14,14 @@ const renderTemplate = ({ template, ...props }) => {
     }
 
     if (template.type === "jsx") {
-        const Template = template.component;
-        return renderToStaticMarkup(<Template {...props} />);
+        try {
+            const Template = template.component;
+            return renderToStaticMarkup(<Template {...props} />);
+        } catch (err) {
+            if (args.verbose)
+                log([`Problem rendering template`, template], "red");
+            console.error(err);
+        }
     }
     return "<span>template not found</span>";
 };

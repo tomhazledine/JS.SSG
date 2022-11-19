@@ -21,6 +21,7 @@ export const getTemplates = async TEMPLATES => {
             return component;
         })
     );
+
     const vanillaTemplates = rawVanillaTemplates
         .filter(comp => typeof comp === "function")
         .map(component => ({ [component.name]: { type: "js", component } }))

@@ -22,11 +22,17 @@ export const parseJSX = async filePath => {
 };
 
 export const loadJSX = async componentID => {
-    const { default: component } = await import(componentID.path);
-    if (args.verbose)
-        console.log(`Deleting temporary template: ${componentID.path}`);
-    fs.rmSync(componentID.path);
-    return { [componentID.name]: { type: "jsx", component } };
+    try {
+        const { default: component } = await import(componentID.path);
+
+        return { [componentID.name]: { type: "jsx", component } };
+    } catch (err) {
+        if (args.verbose)
+            console.log(
+                `Problem reading temporary template: ${componentID.path}`
+            );
+        console.error(err);
+    }
 };
 
 export const getJsxTemplates = async (componentPaths, templatesRoot) => {
@@ -36,5 +42,10 @@ export const getJsxTemplates = async (componentPaths, templatesRoot) => {
     const components = await Promise.all(
         componentIDs.map(async ID => await loadJSX(ID))
     );
+    componentIDs.map(async ID => {
+        if (args.verbose)
+            console.log(`Deleting temporary template: ${ID.path}`);
+        fs.rmSync(ID.path);
+    });
     return components.reduce((acc, curr) => ({ ...acc, ...curr }), {});
 };
