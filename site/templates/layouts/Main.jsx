@@ -6,7 +6,8 @@ import TweetWidget from "../components/TweetWidget.js";
 import Analytics from "../components/Analytics.js";
 
 const Main = ({ page, site, children }) => {
-    const hasScripts = page.scripts && page.scripts.length > 0;
+    const hasScripts =
+        typeof page.scripts !== "undefined" && page.scripts.length > 0;
     const scripts = hasScripts
         ? page.scripts.map(script => (
               <script

@@ -1,8 +1,8 @@
 const TweetForm = ({ url }) => {
     const twitterIcon = "";
     return (
-        <div class="stack--small">
-            <div class="tweek-link__intro">
+        <div className="stack--small">
+            <div className="tweek-link__intro">
                 <p>
                     <em>
                         Thanks for reading! It would be great if you could share
@@ -14,7 +14,7 @@ const TweetForm = ({ url }) => {
             </div>
 
             <form
-                class="tweet-link-wrapper"
+                className="tweet-link-wrapper"
                 id="tweet-form"
                 action="https://twitter.com/intent/tweet?source=webclient"
             >
@@ -22,11 +22,11 @@ const TweetForm = ({ url }) => {
                 <input
                     type="textarea"
                     name="text"
-                    value={`This post by @thomashazledine was great! ${url}`}
+                    defaultValue={`This post by @thomashazledine was great! ${url}`}
                 />
                 <button
                     id="tweet-form-submit"
-                    class="tweet-this button faux-button"
+                    className="tweet-this button faux-button"
                 >
                     Tweet
                 </button>

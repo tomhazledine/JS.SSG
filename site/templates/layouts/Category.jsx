@@ -29,9 +29,9 @@ const Category = ({ content, page = {}, site = {} }) => {
             >
                 <main id="main" className="site-main stack--large" role="main">
                     <div
-                        itemprop="image"
-                        itemscope
-                        itemtype="https://schema.org/ImageObject"
+                        itemProp="image"
+                        itemScope
+                        itemType="https://schema.org/ImageObject"
                     >
                         <Icon slug={page.category} />
                     </div>

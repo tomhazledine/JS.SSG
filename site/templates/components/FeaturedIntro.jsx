@@ -2,7 +2,7 @@ import { markdown } from "jsssg";
 
 const FeaturedIntro = ({ page, collection }) => {
     const featuredMarkup = collection.reverse().map(article => (
-        <article className="card post-snippet--featured">
+        <article className="card post-snippet--featured" key={article.url}>
             <a href={article.url} rel="bookmark">
                 {article.frontmatter.title}
             </a>

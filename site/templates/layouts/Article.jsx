@@ -34,18 +34,18 @@ const Article = ({ content, page = {}, site = {} }) => {
         <Main {...{ page, site }}>
             <article
                 className="wrapper--main"
-                itemprop="mainEntity"
-                itemtype="http://schema.org/BlogPosting"
+                itemProp="mainEntity"
+                itemType="http://schema.org/BlogPosting"
             >
                 <div
                     className="entry-content stack--large"
-                    itemprop="articleBody mainEntityOfPage"
+                    itemProp="articleBody mainEntityOfPage"
                 >
                     <header className="entry-header stack--large">
                         <div
-                            itemprop="image"
-                            itemscope
-                            itemtype="https://schema.org/ImageObject"
+                            itemProp="image"
+                            itemScope
+                            itemType="https://schema.org/ImageObject"
                         >
                             <Icon slug={iconSlug} />
                         </div>
@@ -53,7 +53,7 @@ const Article = ({ content, page = {}, site = {} }) => {
                         <div className="stack--small">
                             <h1
                                 className={`entry-title ${standaloneTitle} ${hiddenTitle}`}
-                                itemprop="name headline"
+                                itemProp="name headline"
                             >
                                 {page.title}
                             </h1>
@@ -70,19 +70,19 @@ const Article = ({ content, page = {}, site = {} }) => {
                                     Published on{" "}
                                 </span>
                                 <time
-                                    datetime={datefull(page.date)}
-                                    itemprop="datePublished"
+                                    dateTime={datefull(page.date)}
+                                    itemProp="datePublished"
                                 >
                                     {date(page.date)}
                                 </time>
                                 <span
-                                    style="display:none;"
+                                    style={{ display: "none" }}
                                     className="hidden--visually"
                                 >
                                     Modified on{" "}
                                     <time
-                                        datetime={datefull(page.date)}
-                                        itemprop="dateModified"
+                                        dateTime={datefull(page.date)}
+                                        itemProp="dateModified"
                                     >
                                         {date(page.date)}
                                     </time>
@@ -96,39 +96,39 @@ const Article = ({ content, page = {}, site = {} }) => {
                                 </span>
                                 <span
                                     className="hidden--visually"
-                                    itemprop="author"
-                                    itemscope=""
-                                    itemtype="http://schema.org/Person"
+                                    itemProp="author"
+                                    itemScope=""
+                                    itemType="http://schema.org/Person"
                                 >
-                                    <span itemprop="name">{site.author}</span>
+                                    <span itemProp="name">{site.author}</span>
                                 </span>
                                 <span
                                     className="hidden--visually"
-                                    itemprop="publisher"
-                                    itemscope=""
-                                    itemtype="http://schema.org/Organization"
+                                    itemProp="publisher"
+                                    itemScope=""
+                                    itemType="http://schema.org/Organization"
                                 >
                                     <meta
-                                        itemprop="name"
+                                        itemProp="name"
                                         content={site.author}
                                     />
-                                    <meta itemprop="url" content={site.url} />
+                                    <meta itemProp="url" content={site.url} />
                                     <div
-                                        itemprop="logo"
+                                        itemProp="logo"
                                         itemScope
-                                        itemtype="https://schema.org/ImageObject"
+                                        itemType="https://schema.org/ImageObject"
                                     >
                                         <img
-                                            style="display:none;"
+                                            style={{ display: "none" }}
                                             src="/images/pages.png"
                                             alt=""
                                         />
                                         <meta
-                                            itemprop="url"
+                                            itemProp="url"
                                             content="/images/pages.png"
                                         />
-                                        <meta itemprop="width" content="32" />
-                                        <meta itemprop="height" content="32" />
+                                        <meta itemProp="width" content="32" />
+                                        <meta itemProp="height" content="32" />
                                     </div>
                                 </span>
                             </div>
@@ -147,13 +147,8 @@ const Article = ({ content, page = {}, site = {} }) => {
                     <div
                         id="content"
                         className="content-area selectable-area first-selectable-area stack"
-                    >
-                        <div
-                            dangerouslySetInnerHTML={{
-                                __html: markdown(content)
-                            }}
-                        />
-                    </div>
+                        dangerouslySetInnerHTML={{ __html: content }}
+                    />
                     {!page.hide_twitter && (
                         <>
                             <hr />

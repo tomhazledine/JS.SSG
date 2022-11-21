@@ -10,9 +10,9 @@ const HomeGraph = () => (
                     transform="translate(0,200)"
                     className="x axis axis--x"
                     fill="none"
-                    font-size="10"
-                    font-family="sans-serif"
-                    text-anchor="middle"
+                    fontSize="10"
+                    fontFamily="sans-serif"
+                    textAnchor="middle"
                 >
                     <path
                         className="domain"
@@ -163,11 +163,11 @@ const HomeGraph = () => (
                         id="dev"
                         name="dev"
                         value="dev"
-                        checked=""
+                        defaultChecked=""
                     />
-                    <label for="dev" className="symLabel"></label>
+                    <label htmlFor="dev" className="symLabel"></label>
                 </div>
-                <label for="dev" className="visibleLabel selectorTitle">
+                <label htmlFor="dev" className="visibleLabel selectorTitle">
                     Developer
                 </label>
             </div>
@@ -180,9 +180,9 @@ const HomeGraph = () => (
                         name="pod"
                         value="pod"
                     />
-                    <label for="pod" className="symLabel"></label>
+                    <label htmlFor="pod" className="symLabel"></label>
                 </div>
-                <label for="pod" className="visibleLabel selectorTitle">
+                <label htmlFor="pod" className="visibleLabel selectorTitle">
                     Podcaster
                 </label>
             </div>
@@ -195,9 +195,9 @@ const HomeGraph = () => (
                         name="des"
                         value="des"
                     />
-                    <label for="des" className="symLabel"></label>
+                    <label htmlFor="des" className="symLabel"></label>
                 </div>
-                <label for="des" className="visibleLabel selectorTitle">
+                <label htmlFor="des" className="visibleLabel selectorTitle">
                     Designer
                 </label>
             </div>
@@ -210,9 +210,9 @@ const HomeGraph = () => (
                         name="mus"
                         value="mus"
                     />
-                    <label for="mus" className="symLabel"></label>
+                    <label htmlFor="mus" className="symLabel"></label>
                 </div>
-                <label for="mus" className="visibleLabel selectorTitle">
+                <label htmlFor="mus" className="visibleLabel selectorTitle">
                     Musician
                 </label>
             </div>
@@ -225,9 +225,9 @@ const HomeGraph = () => (
                         name="art"
                         value="art"
                     />
-                    <label for="art" className="symLabel"></label>
+                    <label htmlFor="art" className="symLabel"></label>
                 </div>
-                <label for="art" className="visibleLabel selectorTitle">
+                <label htmlFor="art" className="visibleLabel selectorTitle">
                     Artist
                 </label>
             </div>
@@ -240,9 +240,9 @@ const HomeGraph = () => (
                         name="lego"
                         value="lego"
                     />
-                    <label for="lego" className="symLabel"></label>
+                    <label htmlFor="lego" className="symLabel"></label>
                 </div>
-                <label for="lego" className="visibleLabel selectorTitle">
+                <label htmlFor="lego" className="visibleLabel selectorTitle">
                     Lego Master Builder
                 </label>
             </div>

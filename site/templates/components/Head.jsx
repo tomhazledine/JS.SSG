@@ -26,7 +26,7 @@ const Head = ({ page = {}, site = {} }) => {
                 <link
                     href="/tomhazledine.naked.css"
                     rel="stylesheet"
-                    dataNaked="1"
+                    data-naked="1"
                 />
             )}
             {!page.naked && (

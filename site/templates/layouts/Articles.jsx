@@ -8,14 +8,17 @@ import NewsletterSnippet from "../components/NewsletterSnippet.js";
 const Articles = ({ content, page = {}, site = {} }) => {
     const articles = site.collections.pages.tags.articles;
 
-    const articlesMarkup = articles
-        .map(article => {
-            if (article.frontmatter.tags.includes("pfn")) {
-                return NewsletterSnippet({ article });
-            }
-            return Snippet({ article });
-        })
-        .join("");
+    const articlesMarkup = articles.map(article => {
+        if (article.frontmatter.tags.includes("pfn")) {
+            return <NewsletterSnippet key={article.url} article={article} />;
+        }
+        return (
+            <Snippet
+                key={article.url}
+                {...{ article, includeCategories: false }}
+            />
+        );
+    });
 
     return (
         <Main {...{ page, site }}>
@@ -29,23 +32,23 @@ const Articles = ({ content, page = {}, site = {} }) => {
                     role="main"
                 >
                     <div
-                        itemprop="image"
-                        itemscope
-                        itemtype="https://schema.org/ImageObject"
+                        itemProp="image"
+                        itemScope
+                        itemType="https://schema.org/ImageObject"
                     >
                         <Icon slug="pages" />
                         <img
-                            style="display:none;"
+                            style={{ display: "none" }}
                             className="hidden--visually"
                             src="/images/pages_large.png"
                             alt=""
                         />
                         <meta
-                            itemprop="url"
+                            itemProp="url"
                             content="/images/pages_large.png"
                         />
-                        <meta itemprop="width" content="32" />
-                        <meta itemprop="height" content="32" />
+                        <meta itemProp="width" content="32" />
+                        <meta itemProp="height" content="32" />
                     </div>
 
                     <div className="clearfix homepage-sidenote-wrapper">

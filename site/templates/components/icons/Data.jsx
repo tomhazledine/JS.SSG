@@ -44,7 +44,7 @@ export default () => (
                 />
             </filter>
         </defs>
-        <g fill="none" fill-rule="evenodd">
+        <g fill="none" fillRule="evenodd">
             <path
                 className="pages-icon--stroke"
                 d="M2.995 30.363l10.267-13.86 4.877 4.106 5.134-5.903 9.754 7.7 5.39-7.7 9.497 3.337L59.208 5.465"
@@ -52,7 +52,7 @@ export default () => (
             <path
                 className="pages-icon--stroke"
                 d="M2.995 34.598V3.711M2.995 37.532v-2.977M61.005 37.532v-2.977M46.502 37.532v-2.977M17.498 37.532v-2.977M32 37.532v-2.977M3.038 34.598h57.967"
-                stroke-linecap="square"
+                strokeLinecap="square"
             />
             <use className="pages-icon--fill" filter="url(#a)" xlinkHref="#b" />
             <use className="pages-icon--stroke" xlinkHref="#b" />

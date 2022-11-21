@@ -19,7 +19,7 @@ const Home = ({ content, page = {}, site = {} }) => {
                     >
                         {page.intro}
                     </div>
-                    <hr />$
+                    <hr />
                     <FeaturedIntro
                         page={page}
                         collection={site.collections.pages.tags.intro}
@@ -29,10 +29,11 @@ const Home = ({ content, page = {}, site = {} }) => {
                         collection={site.collections.pages.tags.popular}
                     />
                     <hr />
-                    <div className="stack entry-content selectable-area">
-                        {content}
-                    </div>
-                    <hr />$
+                    <div
+                        className="stack entry-content selectable-area"
+                        dangerouslySetInnerHTML={{ __html: content }}
+                    />
+                    <hr />
                     <NewsletterSignup
                         newsletterTitle={site.newsletterTitle}
                         newsletterIntro={site.newsletterIntro}
