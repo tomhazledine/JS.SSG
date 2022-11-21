@@ -12,12 +12,7 @@ const Articles = ({ content, page = {}, site = {} }) => {
         if (article.frontmatter.tags.includes("pfn")) {
             return <NewsletterSnippet key={article.url} article={article} />;
         }
-        return (
-            <Snippet
-                key={article.url}
-                {...{ article, includeCategories: false }}
-            />
-        );
+        return <Snippet key={article.url} article={article} />;
     });
 
     return (

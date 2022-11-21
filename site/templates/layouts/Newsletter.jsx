@@ -38,7 +38,7 @@ const Newsletter = ({ content, page = {}, site = {} }) => {
                         </div>
 
                         <h1
-                            className="entry-title ${standaloneTitle} ${hiddenTitle}"
+                            className={`entry-title ${standaloneTitle} ${hiddenTitle}`}
                             itemProp="name headline"
                         >
                             {page.title}
@@ -139,13 +139,13 @@ const Newsletter = ({ content, page = {}, site = {} }) => {
                             />
                         </div>
                     )}
-                    <div
-                        id="content"
-                        className="selectable-area first-selectable-area stack--large"
-                    >
-                        <div className="block block--newsletter stack">
-                            {content}
-                        </div>
+                    <div id="content" className=" stack--large">
+                        <div
+                            className="block content-area selectable-area block--newsletter stack"
+                            dangerouslySetInnerHTML={{
+                                __html: content
+                            }}
+                        />
                         <blockquote>
                             You've been reading an issue of the Podcasts for
                             Nerds newsletter. Find out more{" "}
