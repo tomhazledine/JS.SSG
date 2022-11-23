@@ -108,7 +108,7 @@ The reason for doing this is so we can add a custom permalink for the page we're
 data() {
     return {
         permalink: "/search-data.json",
-        eleventyExcludeFromCollections: true
+        excludeFromCollections: true
     };
 }
 ```
@@ -119,12 +119,10 @@ Now when we build our Eleventy site we'll be able to visit `/search-data.json` a
 
 Focusing on the `render()` method from the `GenerateSearchData` class we created earlier (again, I _wish_ there was a more "functional" ESM-friendly way to do this!), the `data` parameter gives us access to the "collections" stored in Eleventy. `collections.all` is the list of all our posts, so to generate an object for each post involves mapping across the `data.collections.all` value.
 
-We'll want to do a couple of things to this data before outputting the final JSON. Firstly we'll want to filter out any pages that have the `eleventyExcludeFromCollections` frontmatter value set (as we mentioned before, these are pages that we do _not_ want to include in our search index):
+We'll want to do a couple of things to this data before outputting the final JSON. Firstly we'll want to filter out any pages that have the `excludeFromCollections` frontmatter value set (as we mentioned before, these are pages that we do _not_ want to include in our search index):
 
 ```js
-const items = data.collections.all.filter(
-    item => !item.eleventyExcludeFromCollections
-);
+const items = data.collections.all.filter(item => !item.excludeFromCollections);
 ```
 
 Then we'll want to parse the content of those posts into an array of shorter segments. Fuse is built to search over structured object data, so long strings of text are not useful (under the hood, Fuse has a `maxPatternLength` that determines the portion of a string that Fuse will search and I _think_ this defaults to `64` characters).
@@ -143,7 +141,7 @@ The last step is to return an object for each page with just the values I care a
 ```js
 render(data) {
     const items = data.collections.all
-        .filter(item => !item.eleventyExcludeFromCollections)
+        .filter(item => !item.excludeFromCollections)
         .map(item => {
             const content = item.templateContent;
             const contentArray = content

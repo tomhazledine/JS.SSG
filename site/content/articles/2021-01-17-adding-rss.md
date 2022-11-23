@@ -33,7 +33,7 @@ Add a `feed.md` file in your content directory, and use the `permalink` frontmat
 
 ```yaml
 permalink: feed.xml
-eleventyExcludeFromCollections: true
+excludeFromCollections: true
 ```
 
 ### 2. Create the template structure for your feed

@@ -6,7 +6,7 @@ standalone: true
 hide_twitter: true
 hide_footer_signup: true
 podcasts_for_nerds_logo: true
-eleventyExcludeFromCollections: true
+excludeFromCollections: true
 templateEngineOverride: njk
 ---
 

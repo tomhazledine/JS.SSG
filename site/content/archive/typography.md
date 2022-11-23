@@ -2,5 +2,5 @@
 layout: Category
 title: "Typography"
 category: typography
-eleventyExcludeFromCollections: true
+excludeFromCollections: true
 ---
