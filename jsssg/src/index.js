@@ -14,6 +14,7 @@ import { server } from "./server.js";
 import { handleFileBuild, processFile } from "./process-file.js";
 import { parseSiteData } from "./parse-site-data.js";
 import { getTemplates } from "./templates.js";
+import { buildRssPage } from "./rss.js";
 
 export const args = parseArgs(process.argv);
 export const config = getConfig();
@@ -56,6 +57,10 @@ const build = async () => {
             site
         })
     );
+
+    if (config.rss) {
+        buildRssPage({ templates, site, outPath: PATHS.OUT });
+    }
 
     if (args.verbose) console.log("Getting all public file paths...");
     const publicFiles = readFolder(PATHS.PUBLIC);

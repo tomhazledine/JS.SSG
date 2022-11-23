@@ -19,3 +19,14 @@ export const mergeDeep = (target, ...sources) => {
 
     return mergeDeep(target, ...sources);
 };
+
+export const escapeHTML = string => {
+    const lookup = {
+        "&": "&amp;",
+        '"': "&quot;",
+        "'": "&apos;",
+        "<": "&lt;",
+        ">": "&gt;"
+    };
+    return string.replace(/[&"'<>]/g, c => lookup[c]);
+};

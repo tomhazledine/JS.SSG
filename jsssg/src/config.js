@@ -7,7 +7,8 @@ const defaultConfig = {
     out: "build",
     templates: "templates",
     public: "public",
-    collections: ["categories", "tags"]
+    collections: ["categories", "tags"],
+    rss: true
 };
 
 export const getConfig = () => {

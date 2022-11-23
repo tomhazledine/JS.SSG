@@ -8,7 +8,7 @@ import { render } from "./markdown.js";
 import { generatePagination } from "./pagination.js";
 import defaultTemplate from "./defaults/Main.js";
 
-const renderTemplate = ({ template, ...props }) => {
+export const renderTemplate = ({ template, ...props }) => {
     if (template.type === "js") {
         return template.component(props);
     }
@@ -16,7 +16,8 @@ const renderTemplate = ({ template, ...props }) => {
     if (template.type === "jsx") {
         try {
             const Template = template.component;
-            return renderToStaticMarkup(<Template {...props} />);
+            const markup = renderToStaticMarkup(<Template {...props} />);
+            return markup;
         } catch (err) {
             if (args.verbose)
                 log([`Problem rendering template`, template], "red");
