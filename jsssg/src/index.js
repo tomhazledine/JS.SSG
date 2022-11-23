@@ -15,6 +15,7 @@ import { handleFileBuild, processFile } from "./process-file.js";
 import { parseSiteData } from "./parse-site-data.js";
 import { getTemplates } from "./templates.js";
 import { buildRssPage } from "./rss.js";
+import { buildSitemapPage } from "./sitemap.js";
 
 export const args = parseArgs(process.argv);
 export const config = getConfig();
@@ -60,6 +61,10 @@ const build = async () => {
 
     if (config.rss) {
         buildRssPage({ templates, site, outPath: PATHS.OUT });
+    }
+
+    if (config.sitemap) {
+        buildSitemapPage({ templates, site, outPath: PATHS.OUT });
     }
 
     if (args.verbose) console.log("Getting all public file paths...");

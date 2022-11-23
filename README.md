@@ -24,8 +24,8 @@ Docs can be found at [./ssg/README.md](./ssg/README.md)
 -   [ ] Built-in css/scss handling (optional)
 -   [ ] Built-in JS pipeline (optional)
 -   [ ] Generate a search index
--   [ ] Sitemap xml file
--   [ ] RSS feed
+-   [x] Sitemap xml file
+-   [x] RSS feed
 -   [x] Support MDX (~~in markdown~~) files
 -   [x] Use JSX for templates
 -   [ ] Default theme

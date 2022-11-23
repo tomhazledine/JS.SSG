@@ -8,7 +8,8 @@ const defaultConfig = {
     templates: "templates",
     public: "public",
     collections: ["categories", "tags"],
-    rss: true
+    rss: true,
+    sitemap: true
 };
 
 export const getConfig = () => {
