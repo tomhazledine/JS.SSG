@@ -1,0 +1,85 @@
+:root {
+    --type: "Cartograph Sans", sans-serif;
+    --cream: #efeeeb;
+    --grey: #dad8d2;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-size: 1.8em;
+    font-family: var(--type);
+    line-height: 1.7;
+}
+
+.container {
+    width: 96%;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+code {
+    font-variant-ligatures: none;
+    font-family: var(--type);
+    background: var(--cream);
+    font-size: 1em;
+    line-height: inherit;
+}
+
+pre {
+    border: 1px solid var(--grey);
+    overflow: hidden;
+    background: var(--cream);
+    font-size: inherit;
+    padding: 2rem 1rem;
+    overflow: auto;
+}
+pre > code {
+    /* font-variant-ligatures: none; */
+    /* text-shadow: none !important; */
+    line-height: 1.2;
+}
+*:not(pre) > code {
+    border: 1px solid var(--grey);
+}
+
+@font-face {
+    font-family: "Cartograph Sans";
+    src: url("./fonts/CartographSansCF-Medium.eot");
+    src: url("./fonts/CartographSansCF-Medium.eot?#iefix")
+            format("embedded-opentype"),
+        url("./fonts/CartographSansCF-Medium.woff") format("woff"),
+        url("./fonts/CartographSansCF-Medium.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Cartograph Sans";
+    src: url("./fonts/CartographSansCF-MediumItalic.eot");
+    src: url("./fonts/CartographSansCF-MediumItalic.eot?#iefix")
+            format("embedded-opentype"),
+        url("./fonts/CartographSansCF-MediumItalic.woff") format("woff"),
+        url("./fonts/CartographSansCF-MediumItalic.ttf") format("truetype");
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Cartograph Sans";
+    src: url("./fonts/CartographSansCF-Heavy.eot");
+    src: url("./fonts/CartographSansCF-Heavy.eot?#iefix")
+            format("embedded-opentype"),
+        url("./fonts/CartographSansCF-Heavy.woff") format("woff"),
+        url("./fonts/CartographSansCF-Heavy.ttf") format("truetype");
+    font-weight: bold;
+    font-style: normal;
+}

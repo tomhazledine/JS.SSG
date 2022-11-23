@@ -32,3 +32,12 @@ Docs can be found at [./ssg/README.md](./ssg/README.md)
 -   [x] Build pipeline for SSG itself (webpack? raw Babel? Something else?)
 -   [ ] Short demo video on YouTube
 -   [ ] Code block highlighting
+-   [ ] Documentation site
+    -   [ ] url?
+    -   [ ] theme
+    -   [ ] Getting Started
+    -   [ ] Using Templates (JS and JSX)
+    -   [ ] Using Markdown and MDX
+    -   [ ] Custom Taxonomies
+    -   [ ] Pagination
+    -   [ ] Config
