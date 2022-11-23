@@ -1,5 +1,6 @@
 import path from "path";
 
+import { log } from "./console.js";
 import defaultRSSTemplate from "./defaults/RSS.jsx";
 import { renderTemplate } from "./handle-markdown.js";
 import { args } from "./index.js";
@@ -16,6 +17,6 @@ export const buildRssPage = ({ templates, site, outPath }) => {
     });
 
     const feedPath = path.resolve(outPath, "feed.xml");
-    if (args.verbose) log(`Writing ${feedPath}`, "green");
+    if (args.verbose) log(`Writing RSS feed to ${feedPath}`, "green");
     saveFile(feedPath, `<?xml version="1.0" encoding="UTF-8"?>\n` + body);
 };

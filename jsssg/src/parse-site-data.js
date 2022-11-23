@@ -35,6 +35,14 @@ export const sortPages = (a, b) =>
     parseInt(a.frontmatter.date.replace(/-/gi, ""), 10);
 
 export const parseSiteData = (config, pages) => {
+    const onlyPages = pages.filter(
+        page => page.frontmatter.excludeFromCollections
+    );
+
+    const onlyPosts = pages.filter(
+        page => !page.frontmatter.excludeFromCollections
+    );
+
     const collectionKeys = getCollectionsKeys(config.collections, pages);
 
     const collections = [...Object.keys(collectionKeys)].reduce((acc, key) => {
@@ -47,6 +55,9 @@ export const parseSiteData = (config, pages) => {
                         .filter(page =>
                             matchFrontmatterCollection(page, key, slug)
                         )
+                        .filter(
+                            page => !page.frontmatter.excludeFromCollections
+                        )
                         .sort(sortPages)
                 }),
                 {}
@@ -56,7 +67,9 @@ export const parseSiteData = (config, pages) => {
 
     return {
         ...config.data,
-        pages,
+        allPages: pages,
+        pages: onlyPages,
+        posts: onlyPosts,
         collections: { keys: collectionKeys, pages: collections }
     };
 };
