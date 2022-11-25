@@ -6,6 +6,7 @@ const defaultConfig = {
     in: "content",
     out: "build",
     templates: "templates",
+    images: "images",
     public: "public",
     collections: ["categories", "tags"],
     rss: true,

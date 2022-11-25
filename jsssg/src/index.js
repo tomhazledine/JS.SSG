@@ -7,6 +7,7 @@ import path from "path";
 import { build } from "./build.js";
 import { getConfig, parseArgs } from "./config.js";
 import { log } from "./console.js";
+import { images } from "./images.js";
 import { render } from "./markdown.js";
 import { server } from "./server.js";
 import { initWatch } from "./watch.js";
@@ -19,7 +20,8 @@ const PATHS = {
     IN: path.resolve(".", `./${config.in}/`),
     TEMPLATES: path.resolve(".", `./${config.templates}`),
     PUBLIC: path.resolve(".", `./${config.public}/`),
-    OUT: path.resolve(".", `./${config.out}/`)
+    OUT: path.resolve(".", `./${config.out}/`),
+    IMAGES: path.resolve(".", `./${config.images}/`)
 };
 
 console.log("Generating static site...");
@@ -27,6 +29,7 @@ console.log("Generating static site...");
 const buildParams = { PATHS, config, args };
 
 build(buildParams);
+images(PATHS);
 
 if (args.serve) {
     log(`Serving result at http://localhost:${args.port}/`, "blue");

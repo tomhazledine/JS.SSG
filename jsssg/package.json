@@ -7,7 +7,7 @@
     "bin": "./build/index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "build": "esbuild src/index.js --bundle --outfile=build/index.js --platform=node --loader:.js=jsx --jsx=automatic --external:esbuild"
+        "build": "esbuild src/index.js --bundle --outfile=build/index.js --platform=node --loader:.js=jsx --jsx=automatic --external:esbuild --external:sharp"
     },
     "author": "",
     "license": "ISC",
@@ -24,6 +24,7 @@
         "node-watch": "^0.7.3",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
+        "sharp": "^0.31.2",
         "yaml": "^2.1.3"
     }
 }
