@@ -1,3 +1,5 @@
+import { markdown } from "jsssg";
+
 import Main from "./Main.js";
 import HomeGraph from "../components/HomeGraph.js";
 import FeaturedIntro from "../components/FeaturedIntro.js";
@@ -10,14 +12,17 @@ const Home = ({ content, page = {}, site = {} }) => {
             <div className="wrapper--main content-area" id="primary">
                 <main id="main" className="site-main stack--large" role="main">
                     <HomeGraph />
-                    <header className="entry-header">
-                        <h1 className="entry-title">{page.heading}</h1>
-                    </header>
-                    <div
-                        id="content"
-                        className="stack entry-content selectable-area"
-                    >
-                        {page.intro}
+                    <div className="stack--small">
+                        <header className="entry-header">
+                            <h1 className="entry-title">{page.heading}</h1>
+                        </header>
+                        <div
+                            id="content"
+                            className="stack entry-content selectable-area"
+                            dangerouslySetInnerHTML={{
+                                __html: markdown(page.intro)
+                            }}
+                        />
                     </div>
                     <hr />
                     <FeaturedIntro

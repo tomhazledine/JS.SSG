@@ -3,7 +3,7 @@ layout: Home
 title: "Home"
 heading: Developer. Podcaster. Nerd.
 scripts: ["home"]
-intro: I’m a frontend developer, specializing in complex UI for web apps. I think there's still a lot of ways that design-focused and user-friendly web-tech can "make the world a better place" (🤮) and I'm enjoying being a part of that process.
+intro: I’m a frontend developer, specializing in complex UI for web apps. I think there are still a lot of ways that design-focused and user-friendly web-tech can *"make the world a better place"* (🤮) and I'm enjoying being a part of that process.
 intro_posts: Don't know much about me? I'd say these posts are the most "representative" of the work I like to do. They're all deep-dives into something JavaScript-related, and follow a loose "tutorial/explainer" structure.
 popular_posts: 'These are the top performers from a page-view standpoint. (a.k.a. what Google thinks is my "best" content... )'
 ---
