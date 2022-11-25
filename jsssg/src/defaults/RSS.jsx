@@ -11,12 +11,6 @@ const sortByDate = (a, b) =>
     parseInt(a.frontmatter.date.replace(/-/gi, ""), 10);
 
 const RSS = ({ site }) => {
-    const newestDate = site.posts
-        .map(page => page.frontmatter.date)
-        .filter(date => date)
-        .sort(sortByDate)[0];
-    const updatedDate = formatDate(newestDate);
-
     const posts = site.posts
         // Only include pages with an explicit `date`
         .filter(page => page.frontmatter.date)
@@ -24,26 +18,31 @@ const RSS = ({ site }) => {
         .filter(page => page.markdown !== "")
         // Ignore explicitly ignored pages
         .filter(page => !page.frontmatter.excludeFromCollections)
-        .sort(sortByDate)
-        .map(page => {
-            const parsedContent = markdown(page.markdown);
-            const content = convertHtmlToAbsoluteUrls(parsedContent, site.url);
+        .sort(sortByDate);
 
-            const pageUrl = path.join(site.url, page.url);
-            const updatedDate = page.frontmatter.date
-                ? formatDate(page.frontmatter.date)
-                : moment().utc().format();
+    const newestDate = posts.map(page => page.frontmatter.date)[0];
+    const updatedDate = formatDate(newestDate);
 
-            return (
-                <entry key={pageUrl}>
-                    <title>{page.frontmatter.title}</title>
-                    <link href={pageUrl} />
-                    <updated>{updatedDate}</updated>
-                    <id>{pageUrl}</id>
-                    <content type="html">{escapeHTML(content)}</content>
-                </entry>
-            );
-        });
+    const postsMarkup = posts.map(page => {
+        const parsedContent = markdown(page.markdown);
+        const content = convertHtmlToAbsoluteUrls(parsedContent, site.url);
+
+        const pageUrl = path.join(site.url, page.url);
+        const updatedDate = page.frontmatter.date
+            ? formatDate(page.frontmatter.date)
+            : moment().utc().format();
+
+        return (
+            <entry key={pageUrl}>
+                <title>{page.frontmatter.title}</title>
+                <link href={pageUrl} />
+                <updated>{updatedDate}</updated>
+                <id>{pageUrl}</id>
+                <content type="html">{escapeHTML(content)}</content>
+            </entry>
+        );
+    });
+
     return (
         <feed xmlns="http://www.w3.org/2005/Atom">
             <title>{site.title}</title>
@@ -56,7 +55,7 @@ const RSS = ({ site }) => {
                 <name>{site.author}</name>
                 <email>{site.authorEmail}</email>
             </author>
-            {posts}
+            {postsMarkup}
         </feed>
     );
 };
