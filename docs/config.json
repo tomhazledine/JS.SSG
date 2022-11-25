@@ -3,7 +3,7 @@
     "out": "build",
     "templates": "templates",
     "data": {
-        "title": "Example site",
-        "url": "https://example-jsssg-site.com/"
+        "title": "JSSSG Docs",
+        "url": "https://docs.jsssg.com/"
     }
 }
