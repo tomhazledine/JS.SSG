@@ -11,8 +11,9 @@ const createSize = async (imagePath, size = 200, PATHS) => {
         try {
             const resizedData = await sharp(imagePath).resize(size).toBuffer();
             const outPath = imagePath
-                .replace(PATHS.IMAGES, path.join(PATHS.OUT, "/images/"))
+                .replace(PATHS.IMAGES, path.join(PATHS.OUT, "/images"))
                 .replace(extension, `-${size}${extension}`);
+            if (args.verbose) log(`Saving ${outPath}`);
             saveFile(outPath, resizedData);
         } catch (err) {
             if (args.verbose) log("An error occurred during processing", "red");
