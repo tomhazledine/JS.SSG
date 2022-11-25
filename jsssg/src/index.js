@@ -4,7 +4,6 @@
 "use strict";
 import path from "path";
 import fs from "fs";
-import watch from "node-watch";
 
 import { getConfig, parseArgs } from "./config.js";
 import { log } from "./console.js";
@@ -16,6 +15,7 @@ import { parseSiteData } from "./parse-site-data.js";
 import { getTemplates } from "./templates.js";
 import { buildRssPage } from "./rss.js";
 import { buildSitemapPage } from "./sitemap.js";
+import { initWatch } from "./watch.js";
 
 export const args = parseArgs(process.argv);
 export const config = getConfig();
@@ -47,7 +47,6 @@ const build = async () => {
     const site = parseSiteData(config, fileData);
 
     if (args.verbose) console.log("Loading templates...");
-    // Load all templates from templates/index.js
     const templates = await getTemplates(PATHS.TEMPLATES);
 
     fileData.forEach(file =>
@@ -85,13 +84,5 @@ if (args.serve) {
 }
 
 if (args.watch) {
-    const changed = (_, file) => {
-        log(`File changed: ${file}`, "yellow");
-        build();
-    };
-    watch(PATHS.IN, { recursive: true }, changed);
-    // watch(PATHS.TEMPLATES, { recursive: true }, changed);
-    console.log(
-        `Watching for changes on "${config.in}" and "${config.templates}"`
-    );
+    initWatch(PATHS, build, config);
 }
