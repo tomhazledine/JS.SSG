@@ -1,10 +1,10 @@
 import watch from "node-watch";
 import readline from "readline";
 
-export const initWatch = (PATHS, build, config) => {
+export const initWatch = (PATHS, build, config, buildParams) => {
     const changed = (_, file) => {
         log(`File changed: ${file}`, "yellow");
-        build();
+        build(buildParams);
     };
 
     const pathsToWatch = [
