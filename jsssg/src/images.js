@@ -19,6 +19,8 @@ const createSize = async (imagePath, size, defaultPath, extension) => {
 };
 
 const handleImage = async (imagePath, sizes = [200], PATHS) => {
+    const passThroughExtensions = [".icns", ".ico", ".gif"];
+
     const extension = path.extname(imagePath);
     if (extension === ".jpg" || extension === ".png") {
         try {
@@ -26,7 +28,7 @@ const handleImage = async (imagePath, sizes = [200], PATHS) => {
                 PATHS.IMAGES,
                 path.join(PATHS.OUT, "/images")
             );
-            if (args.verbose) log(`Saving ${outPath}`);
+            if (args.verbose) log(`Copying ${outPath}`);
             copyFile(imagePath, outPath);
             sizes.map(size => createSize(imagePath, size, outPath, extension));
         } catch (err) {
@@ -49,6 +51,13 @@ const handleImage = async (imagePath, sizes = [200], PATHS) => {
         );
         if (args.verbose) log(`Saving ${outPath}`);
         saveFile(outPath, result.data);
+    } else if (passThroughExtensions.includes(extension)) {
+        const outPath = imagePath.replace(
+            PATHS.IMAGES,
+            path.join(PATHS.OUT, "/images")
+        );
+        if (args.verbose) log(`Copying ${outPath}`);
+        copyFile(imagePath, outPath);
     } else {
         if (args.verbose)
             log(
