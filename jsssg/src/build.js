@@ -7,7 +7,7 @@ import { getTemplates } from "./templates.js";
 import { buildRssPage } from "./rss.js";
 import { buildSitemapPage } from "./sitemap.js";
 
-export const build = async ({ PATHS, config, args }) => {
+const cleanup = ({ args, PATHS, config }) => {
     if (args.images) {
         if (args.verbose) console.log(`Removing stale build files...`);
         fs.rmSync(PATHS.OUT, { recursive: true, force: true });
@@ -19,8 +19,11 @@ export const build = async ({ PATHS, config, args }) => {
             filePath => !filePath.includes(config.images)
         );
         nonImageBuildFiles.map(filePath => fs.rmSync(filePath));
-        return;
     }
+};
+
+export const build = async ({ PATHS, config, args }) => {
+    cleanup({ args, PATHS, config });
 
     if (args.verbose) console.log("Getting all content file paths...");
     const allFiles = readFolder(PATHS.IN);

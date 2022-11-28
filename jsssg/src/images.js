@@ -4,18 +4,31 @@ import { optimize } from "svgo";
 
 import { log } from "./console.js";
 import { args } from "./index.js";
-import { readFile, readFolder, saveFile } from "./io.js";
+import { copyFile, readFile, readFolder, saveFile } from "./io.js";
 
-const createSize = async (imagePath, size = 200, PATHS) => {
+const createSize = async (imagePath, size, defaultPath, extension) => {
+    try {
+        const resizedData = await sharp(imagePath).resize(size).toBuffer();
+        const outPath = defaultPath.replace(extension, `-${size}${extension}`);
+        if (args.verbose) log(`Saving ${outPath}`);
+        saveFile(outPath, resizedData);
+    } catch (err) {
+        if (args.verbose) log("An error occurred during processing", "red");
+        console.error(err);
+    }
+};
+
+const handleImage = async (imagePath, sizes = [200], PATHS) => {
     const extension = path.extname(imagePath);
     if (extension === ".jpg" || extension === ".png") {
         try {
-            const resizedData = await sharp(imagePath).resize(size).toBuffer();
-            const outPath = imagePath
-                .replace(PATHS.IMAGES, path.join(PATHS.OUT, "/images"))
-                .replace(extension, `-${size}${extension}`);
+            const outPath = imagePath.replace(
+                PATHS.IMAGES,
+                path.join(PATHS.OUT, "/images")
+            );
             if (args.verbose) log(`Saving ${outPath}`);
-            saveFile(outPath, resizedData);
+            copyFile(imagePath, outPath);
+            sizes.map(size => createSize(imagePath, size, outPath, extension));
         } catch (err) {
             if (args.verbose) log("An error occurred during processing", "red");
             console.error(err);
@@ -54,10 +67,6 @@ export const images = PATHS => {
     console.log(`found ${allImagePaths.length} image files`);
 
     allImagePaths.map(imagePath => {
-        createSize(imagePath, 600, PATHS);
-        createSize(imagePath, 400, PATHS);
-        createSize(imagePath, 200, PATHS);
-        createSize(imagePath, 160, PATHS);
-        createSize(imagePath, 100, PATHS);
+        handleImage(imagePath, [600, 400, 200, 160, 100], PATHS);
     });
 };
