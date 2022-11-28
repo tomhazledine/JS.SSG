@@ -29,7 +29,9 @@ console.log("Generating static site...");
 const buildParams = { PATHS, config, args };
 
 build(buildParams);
-images(PATHS);
+if (args.images) {
+    images(PATHS);
+}
 
 if (args.serve) {
     log(`Serving result at http://localhost:${args.port}/`, "blue");

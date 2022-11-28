@@ -1,9 +1,10 @@
-const path = require("path");
-const sharp = require("sharp");
+import path from "path";
+import sharp from "sharp";
+import { optimize } from "svgo";
 
 import { log } from "./console.js";
 import { args } from "./index.js";
-import { readFolder, saveFile } from "./io.js";
+import { readFile, readFolder, saveFile } from "./io.js";
 
 const createSize = async (imagePath, size = 200, PATHS) => {
     const extension = path.extname(imagePath);
@@ -19,6 +20,22 @@ const createSize = async (imagePath, size = 200, PATHS) => {
             if (args.verbose) log("An error occurred during processing", "red");
             console.error(err);
         }
+    } else if (extension === ".svg") {
+        const fileContents = await readFile(imagePath);
+
+        const result = optimize(fileContents, {
+            // optional but recommended field
+            path: imagePath,
+            // all config fields are also available here
+            multipass: true
+        });
+
+        const outPath = imagePath.replace(
+            PATHS.IMAGES,
+            path.join(PATHS.OUT, "/images")
+        );
+        if (args.verbose) log(`Saving ${outPath}`);
+        saveFile(outPath, result.data);
     } else {
         if (args.verbose)
             log(

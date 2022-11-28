@@ -24,7 +24,8 @@ const defaultArgs = {
     serve: false,
     watch: false,
     verbose: false,
-    port: "8080"
+    port: "8080",
+    images: false
 };
 
 export const parseArgs = rawArgs => {
