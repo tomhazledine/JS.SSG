@@ -6,6 +6,7 @@ import { parseSiteData } from "./parse-site-data.js";
 import { getTemplates } from "./templates.js";
 import { buildRssPage } from "./rss.js";
 import { buildSitemapPage } from "./sitemap.js";
+import { buildSearchData } from "./search.js";
 
 const cleanup = ({ args, PATHS, config }) => {
     if (args.images) {
@@ -55,6 +56,15 @@ export const build = async ({ PATHS, config, args }) => {
 
     if (config.sitemap) {
         buildSitemapPage({ templates, site, outPath: PATHS.OUT });
+    }
+
+    if (config.search) {
+        buildSearchData({
+            fields: config.searchFields,
+            templates,
+            site,
+            outPath: PATHS.OUT
+        });
     }
 
     if (args.verbose) console.log("Getting all public file paths...");

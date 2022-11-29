@@ -9,6 +9,8 @@ const defaultConfig = {
     images: "images",
     public: "public",
     collections: ["categories", "tags"],
+    search: true,
+    searchFields: ["title"],
     rss: true,
     sitemap: true
 };

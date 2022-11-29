@@ -27,7 +27,7 @@ export const renderTemplate = ({ template, ...props }) => {
     return "<span>template not found</span>";
 };
 
-const renderMdx = (body, templates) => {
+export const renderMdx = (body, templates) => {
     const components = Object.keys(templates)
         .filter(key => templates[key].type === "jsx")
         .reduce(

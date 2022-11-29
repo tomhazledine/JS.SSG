@@ -30,3 +30,24 @@ export const escapeHTML = string => {
     };
     return string.replace(/[&"'<>]/g, c => lookup[c]);
 };
+
+export const chunk = (content, limit) => {
+    const words = content
+        .replace(/<\/?[^>]+>/gi, "")
+        .replace(/\n/gi, " ")
+        .split(" ");
+
+    const lines = words.reduce((lines, word) => {
+        if (lines.length <= 0) return [word];
+
+        const [lastLine] = lines.slice(-1);
+        const newLine = lastLine + " " + word;
+        if (newLine.length <= limit) {
+            const oldLines = lines.slice(0, -1);
+            return [...oldLines, newLine];
+        }
+        return [...lines, word];
+    }, []);
+
+    return lines;
+};
