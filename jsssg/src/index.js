@@ -5,6 +5,7 @@
 import path from "path";
 
 import { build } from "./build.js";
+import { cleanup } from "./cleanup.js";
 import { getConfig, parseArgs } from "./config.js";
 import { log } from "./console.js";
 import { images } from "./images.js";
@@ -27,6 +28,10 @@ const PATHS = {
 console.log("Generating static site...");
 
 const buildParams = { PATHS, config, args };
+
+if (args.clean) {
+    cleanup(buildParams);
+}
 
 build(buildParams);
 if (args.images) {

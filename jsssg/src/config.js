@@ -12,7 +12,8 @@ const defaultConfig = {
     search: true,
     searchFields: ["title"],
     rss: true,
-    sitemap: true
+    sitemap: true,
+    clean: false
 };
 
 export const getConfig = () => {

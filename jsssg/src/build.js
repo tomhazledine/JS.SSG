@@ -8,23 +8,8 @@ import { buildRssPage } from "./rss.js";
 import { buildSitemapPage } from "./sitemap.js";
 import { buildSearchData } from "./search.js";
 
-const cleanup = ({ args, PATHS, config }) => {
-    if (args.images) {
-        if (args.verbose) console.log(`Removing stale build files...`);
-        fs.rmSync(PATHS.OUT, { recursive: true, force: true });
-    } else {
-        if (args.verbose)
-            console.log(`Removing stale build files (but keeping images)...`);
-        const allBuildFiles = readFolder(PATHS.OUT);
-        const nonImageBuildFiles = allBuildFiles.filter(
-            filePath => !filePath.includes(config.images)
-        );
-        nonImageBuildFiles.map(filePath => fs.rmSync(filePath));
-    }
-};
-
 export const build = async ({ PATHS, config, args }) => {
-    cleanup({ args, PATHS, config });
+    // cleanup({ args, PATHS, config });
 
     if (args.verbose) console.log("Getting all content file paths...");
     const allFiles = readFolder(PATHS.IN);
