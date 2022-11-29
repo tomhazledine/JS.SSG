@@ -2,6 +2,7 @@
 layout: Category
 title: "Audio"
 category: audio
+hideFromSearch: true
 excludeFromCollections: true
 ---
 

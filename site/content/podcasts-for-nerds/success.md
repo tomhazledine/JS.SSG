@@ -8,6 +8,7 @@ hide_footer_signup: true
 podcasts_for_nerds_logo: true
 excludeFromCollections: true
 templateEngineOverride: njk
+hideFromSearch: true
 ---
 
 Thanks so much for signing up to the _Podcasts for Nerds_ newsletter. This started as a fun way of nagging my friends about the great podcasts I'd been listening to. To have people volutarily sign-up really does mean a lot! You can find out more about this project in [the launch article I wrote](/podcasts-for-nerds), where you can also find details of past issues.

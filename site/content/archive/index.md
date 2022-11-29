@@ -1,6 +1,7 @@
 ---
 layout: Articles
 title: "Archive"
+hideFromSearch: true
 excludeFromCollections: true
 ---
 

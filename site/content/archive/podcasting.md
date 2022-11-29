@@ -2,6 +2,7 @@
 layout: Category
 title: "Podcasting"
 category: podcasting
+hideFromSearch: true
 excludeFromCollections: true
 ---
 

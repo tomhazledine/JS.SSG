@@ -22,7 +22,7 @@ Here is a side-by-side comparison of an icon. The image on the left is an SVG, t
         </div>
         <div class="item-wrapper">
             <div class="item-mask">
-                <img class="masked-image" src="/images/articles/code_128.png">
+                <img class="masked-image" src="/images/articles/code_128.png"/>
             </div>
         </div>
     </div><div class="two-x clearfix">
@@ -36,7 +36,7 @@ Here is a side-by-side comparison of an icon. The image on the left is an SVG, t
         </div>
         <div class="item-wrapper">
             <div class="item-mask">
-                <img class="masked-image" src="/images/articles/code_128.png">
+                <img class="masked-image" src="/images/articles/code_128.png"/>
             </div>
         </div>
     </div><div class="ten-x clearfix">
@@ -50,7 +50,7 @@ Here is a side-by-side comparison of an icon. The image on the left is an SVG, t
         </div>
         <div class="item-wrapper">
             <div class="item-mask">
-                <img class="masked-image" src="/images/articles/code_128.png">
+                <img class="masked-image" src="/images/articles/code_128.png"/>
             </div>
         </div>
     </div>

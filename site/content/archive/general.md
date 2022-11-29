@@ -2,6 +2,7 @@
 layout: Category
 title: "General"
 category: general
+hideFromSearch: true
 excludeFromCollections: true
 ---
 

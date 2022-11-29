@@ -9,7 +9,7 @@ categories: ["general"]
 image: "/articles/fridge.png"
 ---
 
-<img class="post-content__image" src="/images/articles/fridge.png" alt="Heath Robinson internet fridge">
+<img class="post-content__image" src="/images/articles/fridge.png" alt="Heath Robinson internet fridge"/>
 
 The great white hope of the Internet Of Things is the internet-connected fridge. It's the go-to example when trying to explain IOT to lay people. "Imagine what you could do if your fridge was connected to the web!" So why don't we have them yet? And do we really want them? Or even need them?
 
@@ -52,7 +52,7 @@ At scale, this is for wheels and gears on industrial machinery. If you know when
 > Making user-friendly software is hard. Making user-friendly hardware is hard. Doing both together is even harder, by many orders of magnitude.
 
 <figure class="post-content__image-wrapper">
-    <img class="post-content__image" src="/images/articles/fridge2.png" alt="">
+    <img class="post-content__image" src="/images/articles/fridge2.png" alt=""/>
     <figcaption class="post-content__caption">The unintuitive interface from the depths of hell that I have to decipher every time I want to bump up the heat, and a Nest thermostat that makes me wish my life was more like the fancy people I see in magazines.</figcaption>
 </figure>
 
@@ -61,7 +61,7 @@ At scale, this is for wheels and gears on industrial machinery. If you know when
 <dd>They don’t understand their end-users in the way that a regular customer-facing company does. Without that understanding, they’ll never make an innovative product that can truly excite us.</dd>
 </dl>
 
-<img class="post-content__image" src="/images/articles/fridge3.png" alt="">
+<img class="post-content__image" src="/images/articles/fridge3.png" alt=""/>
 
 <dl>
 <dt>5: It increases the cost across the board.</dt>

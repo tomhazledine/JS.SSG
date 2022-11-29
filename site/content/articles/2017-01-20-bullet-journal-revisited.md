@@ -10,7 +10,7 @@ image: "/articles/journal.jpg"
 ---
 
 <figure class="post-content__image-wrapper post-content__image-wrapper--has-sidebar">
-    <img class="post-content__image" src="/images/articles/journal.jpg" alt="">
+    <img class="post-content__image" src="/images/articles/journal.jpg" alt=""/>
     <figcaption class="sidenote">My original analogue attempt at maintaining a Bullet Journal</figcaption>
 </figure>
 

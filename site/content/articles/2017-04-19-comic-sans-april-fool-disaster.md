@@ -38,7 +38,7 @@ $code: "Comic Sans MS", cursive, sans-serif;
 My front-end tooling makes pushing these changes to my live site a quick process, too. I committed my "hilarious" update into GIT and pushed that to the remote repository. Then I connected to my server by `ssh`, ran `git pull` to get the changes from the repo. The final step was to run `gulp sass` to compile the production-ready CSS. Writing it all down like that makes it look more complicated than it is. Once you've run through the process a couple of times, deploying an update takes <5 minutes. Overkill for a quick two-liner like this, perhaps, but it works for updates of any size.
 
 <figure class="post-content__image-wrapper">
-    <img class="post-content__image" src="/images/articles/comic-sans-screenshot.png" alt="My site, but set in Comic Sans.">
+    <img class="post-content__image" src="/images/articles/comic-sans-screenshot.png" alt="My site, but set in Comic Sans."/>
     <figcaption class="post-content__caption">My site, but set in Comic Sans.</figcaption>
 </figure>
 

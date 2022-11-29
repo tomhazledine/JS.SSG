@@ -12,7 +12,7 @@ image: "/articles/modular_with_succulent.jpg"
 Over the last year I've fallen in love with making music again, and it's all thanks to **modular synthesisers**. But to understand why this is such a big step for me, you need to know just how surprising it is that I'm now _"in to"_ electronic music.
 
 <figure class="post-content__image-wrapper">
-    <img class="post-content__image" src="/images/articles/modular_with_succulent.jpg" alt="My growing eurorack modular synthesiser (complete with obligatory succulent)">
+    <img class="post-content__image" src="/images/articles/modular_with_succulent.jpg" alt="My growing eurorack modular synthesiser (complete with obligatory succulent)"/>
     <figcaption class="post-content__caption">My growing eurorack modular synthesiser (complete with obligatory succulent)</figcaption>
 </figure>
 

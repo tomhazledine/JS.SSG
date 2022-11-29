@@ -2,6 +2,7 @@
 layout: Category
 title: "Career"
 category: career
+hideFromSearch: true
 excludeFromCollections: true
 ---
 
