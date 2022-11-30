@@ -8,6 +8,7 @@ const defaultConfig = {
     templates: "templates",
     images: "images",
     public: "public",
+    ignore: "drafts",
     collections: ["categories", "tags"],
     search: true,
     searchFields: ["title"],

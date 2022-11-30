@@ -22,7 +22,8 @@ const PATHS = {
     TEMPLATES: path.resolve(".", `./${config.templates}`),
     PUBLIC: path.resolve(".", `./${config.public}/`),
     OUT: path.resolve(".", `./${config.out}/`),
-    IMAGES: path.resolve(".", `./${config.images}/`)
+    IMAGES: path.resolve(".", `./${config.images}/`),
+    IGNORE: path.resolve(".", `./${config.in}/${config.ignore}/`)
 };
 
 console.log("Generating static site...");

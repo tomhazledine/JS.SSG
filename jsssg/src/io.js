@@ -37,9 +37,11 @@ const ensureDirectoryExistence = filePath => {
     return true;
 };
 
-export const readFolder = startPath => {
+export const readFolder = (startPath, ignorePath = false) => {
     const allPaths = getAllFilePaths(startPath);
-    const flattenedPaths = allPaths.flat(Infinity);
+    const flattenedPaths = allPaths
+        .flat(Infinity)
+        .filter(path => !path.includes(ignorePath));
     return flattenedPaths;
 };
 

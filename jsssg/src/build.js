@@ -12,7 +12,7 @@ export const build = async ({ PATHS, config, args }) => {
     // cleanup({ args, PATHS, config });
 
     if (args.verbose) console.log("Getting all content file paths...");
-    const allFiles = readFolder(PATHS.IN);
+    const allFiles = readFolder(PATHS.IN, PATHS.IGNORE);
     if (args.verbose) console.log(`found ${allFiles.length} files`);
 
     if (args.verbose) console.log("Parsing frontmatter...");
