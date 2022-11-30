@@ -1,6 +1,8 @@
 import watch from "node-watch";
 import readline from "readline";
 
+import { log } from "./console.js";
+
 export const initWatch = (PATHS, build, config, buildParams) => {
     const changed = (_, file) => {
         log(`File changed: ${file}`, "yellow");
