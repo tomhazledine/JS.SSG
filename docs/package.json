@@ -14,7 +14,7 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "jsssg": "1.0.0",
+        "jsssg": "0.1.3",
         "moment": "^2.29.4"
     }
 }
