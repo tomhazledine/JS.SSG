@@ -30,9 +30,14 @@ export const buildSearchData = ({ fields, site, outPath, templates }) => {
                 {}
             );
 
+            const scope = {
+                page: page,
+                site
+            };
+
             const markdownContents =
                 page.type === "mdx"
-                    ? renderMdx(page.markdown, templates)
+                    ? renderMdx(page.markdown, templates, scope)
                     : render(page.markdown);
 
             const content = parseSearchContent(markdownContents);

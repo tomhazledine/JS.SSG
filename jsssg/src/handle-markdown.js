@@ -27,20 +27,28 @@ export const renderTemplate = ({ template, ...props }) => {
     return "<span>template not found</span>";
 };
 
-export const renderMdx = (body, templates) => {
+export const renderMdx = (body, templates, scope = {}) => {
     const components = Object.keys(templates)
         .filter(key => templates[key].type === "jsx")
         .reduce(
             (acc, key) => ({ ...acc, [key]: templates[key].component }),
             {}
         );
-    return renderToStaticMarkup(<MDX components={components}>{body}</MDX>);
+    return renderToStaticMarkup(
+        <MDX components={components} scope={scope}>
+            {body}
+        </MDX>
+    );
 };
 
 export const handleMarkdown = async ({ file, templates, site }) => {
+    const scope = {
+        page: file,
+        site
+    };
     const markdownContents =
         file.type === "mdx"
-            ? renderMdx(file.markdown, templates)
+            ? renderMdx(file.markdown, templates, scope)
             : render(file.markdown);
     const fallbackTemplate = "Main";
     const layout = file.frontmatter.layout
