@@ -9,13 +9,18 @@ const Menu = ({ pages, current }) => {
         .sort((a, b) => a.priority - b.priority);
 
     const itemsMarkup = items.map(page => (
-        <li key={`menu_${page.url}`} className={page.current ? "current" : ""}>
-            {page.current && <span>{">"}</span>}
+        <li
+            key={`menu_${page.url}`}
+            className={`menu-item ${page.current ? "menu-item__current" : ""}`}
+        >
+            {page.current && (
+                <span className="menu-item__indicator">{">"}</span>
+            )}
             <a href={page.url}>{page.title}</a>
         </li>
     ));
     return (
-        <nav>
+        <nav className="menu">
             <ul>{itemsMarkup}</ul>
         </nav>
     );

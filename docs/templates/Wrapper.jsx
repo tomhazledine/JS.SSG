@@ -1,3 +1,6 @@
+import Header from "./Header.js";
+import Menu from "./Menu.js";
+
 const Wrapper = ({ page = {}, site = {}, children }) => (
     <html lang="en">
         <head>
@@ -10,8 +13,14 @@ const Wrapper = ({ page = {}, site = {}, children }) => (
             />
             <link href="/app.css" rel="stylesheet" />
         </head>
-        <body>
-            <div className="container">{children}</div>
+        <body className="outer">
+            <aside className="sidebar">
+                <Header title={site.title} />
+                <Menu pages={site.allPages} current={page.url} />
+            </aside>
+            <main className="main">
+                <div className="container">{children}</div>
+            </main>
         </body>
     </html>
 );

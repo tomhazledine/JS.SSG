@@ -83,3 +83,47 @@ pre > code {
     font-weight: bold;
     font-style: normal;
 }
+
+.outer {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.sidebar {
+    height: 100%;
+    width: 300px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    overflow-y: scroll;
+    padding: 1em;
+    border-right: 1px solid var(--grey);
+}
+
+.main {
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+}
+
+.menu > ul {
+    margin: 0;
+    padding: 0;
+}
+
+.menu-item {
+    list-style: none;
+    padding: 0.5em 0.5em 0.5em 1.5em;
+}
+
+.menu-item__current {
+    position: relative;
+    background: var(--grey);
+}
+.menu-item__indicator {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
