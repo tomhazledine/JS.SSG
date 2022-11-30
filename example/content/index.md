@@ -1,6 +1,7 @@
 ---
 title: Home
 layout: Home
+excludeFromCollections: true
 ---
 
 Elit cupidatat incididunt excepteur excepteur sunt quis mollit velit Lorem nostrud cupidatat aute labore eu. Eu aute anim laborum aliqua enim fugiat ea. Esse ad fugiat dolor tempor sint consequat irure consequat veniam dolor. Consectetur enim deserunt aliquip officia ut.
