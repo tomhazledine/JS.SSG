@@ -12,6 +12,7 @@
         "docs:build": "yarn workspace docs build",
         "docs:dev": "yarn workspace docs dev",
         "example:build": "yarn workspace example build",
+        "example:deploy": "yarn jsssg:build && yarn example:build",
         "example:dev": "yarn workspace example dev",
         "site:build": "yarn workspace site build",
         "site:dev": "yarn workspace site dev",
