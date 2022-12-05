@@ -1,7 +1,10 @@
 :root {
     --type: "Cartograph Sans", sans-serif;
+    --monospace: "Cartograph Mono", monospace;
     --cream: #efeeeb;
     --grey: #dad8d2;
+    --black: #4d4d4d;
+    --white: #fdfdfa;
 }
 
 html {
@@ -17,6 +20,8 @@ html {
 body {
     font-size: 1.8em;
     font-family: var(--type);
+    color: var(--black);
+    background: var(--white);
     line-height: 1.7;
 }
 
@@ -28,7 +33,7 @@ body {
 
 code {
     font-variant-ligatures: none;
-    font-family: var(--type);
+    font-family: var(--monospace);
     background: var(--cream);
     font-size: 1em;
     line-height: inherit;
@@ -84,6 +89,17 @@ pre > code {
     font-style: normal;
 }
 
+@font-face {
+    font-family: "Cartograph Mono";
+    src: url("./fonts/CartographMonoCF-Medium.eot");
+    src: url("./fonts/CartographMonoCF-Medium.eot?#iefix")
+            format("embedded-opentype"),
+        url("./fonts/CartographMonoCF-Medium.woff") format("woff"),
+        url("./fonts/CartographMonoCF-Medium.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
 .outer {
     display: flex;
     margin: 0;
@@ -125,5 +141,25 @@ pre > code {
     position: absolute;
     top: 50%;
     left: 0;
+    transform: translateY(-50%);
+}
+
+.callout {
+    border: 4px dashed var(--black);
+    padding: 2rem;
+    position: relative;
+}
+
+.callout__eyebrow {
+    position: absolute;
+    top: -2px;
+    padding: 0.5rem;
+    left: 1.5rem;
+    background: var(--white);
+    display: inline-block;
+    line-height: 1;
+    text-transform: uppercase;
+    font-weight: 700;
+    /* font-size: 0.8em; */
     transform: translateY(-50%);
 }

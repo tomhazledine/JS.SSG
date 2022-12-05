@@ -1,0 +1,201 @@
+---
+title: Basic Concepts
+layout: Article
+---
+
+```json
+{
+    "name": "your-site-name",
+    "version": "1.0.0",
+    "scripts": {
+        "build": "jsssg",
+        "dev": "jsssg --serve --port=1337 --watch",
+        "debug": "jsssg --verbose"
+    },
+    "dependencies": {
+        "jsssg": "0.1.3"
+    }
+}
+```
+
+### Example of a "full" starting folder structure
+
+```
+├── src/
+|   ├── content/
+|   |   ├── about.mdx
+|   |   ├── contact.mdx
+|   |   └── blog/
+|   |       ├── my-first-blog-post.mdx
+|   |       └── my-second-blog-post.mdx
+|   ├── templates/
+|   |   ├── default.jsx
+|   |   └── blog-post.jsx
+|   └── public/
+|       ├── styles.css
+|       └── main.js
+├── config.json
+└── package.json
+```
+
+The node_modules/ directory contains the installed SSG package and its dependencies. The config.json file contains the configuration settings for the SSG. The src/ directory contains the "raw" files for the project, including the content/ directory with the markdown or mdx content files, the templates/ directory with the template files that provide the markup for the finished pages, and the public/ directory with the CSS and JavaScript files that determine the look and feel of the site, as well as any interactivity. The src/build/ directory is where the generated HTML files and assets will be saved. The public/ directory at the root level of the project is where the final, generated website will be served from.
+
+The node_modules/ directory contains the installed SSG package and its dependencies. The config.json file contains the configuration settings for the SSG. The content/ directory contains the markdown or mdx content files. The templates/ directory contains the template files that provide the markup for the finished pages. The public/ directory is where the generated HTML files and assets will be saved. The src/ directory contains the CSS and JavaScript files that determine the look and feel of the site, as well as any interactivity.
+
+tom@tomhazledine.com
+Give more detail about how the user's folder-structure should look before starting (bearing in mind the SSG is a node package, and the SSG itself has a configuration file)
+
+To use our Static Site Generator (SSG), you'll need to have your content, templates, and assets organized in a specific way. Here's an example of how your folder structure might look:
+
+node_modules/ - This is where our SSG package will be installed, along with any other dependencies it may have.
+
+config.json - This is the configuration file for our SSG. You'll need to edit this file to specify settings such as the location of your content, templates, and assets.
+
+content/ - This is where you'll save your markdown or mdx content files.
+
+templates/ - This is where you'll save your template files that provide the markup for your finished pages.
+
+public/ - This is where the generated HTML files and assets for your site will be saved.
+
+src/ - This is where you'll save your CSS and JavaScript files that determine the look and feel of your site, as well as any interactivity you may want to include.
+
+Once you have your files organized in this way, you'll be ready to use our SSG to generate your static website.
+
+tom@tomhazledine.com
+Show an example folder structure for this project
+
+Here is an example of how your folder structure might look for a project using our Static Site Generator (SSG):
+
+node_modules/ - This is where our SSG package will be installed, along with any other dependencies it may have.
+
+config.json - This is the configuration file for our SSG. You'll need to edit this file to specify settings such as the location of your content, templates, and assets.
+
+content/ - This is where you'll save your markdown or mdx content files. For example:
+
+about.mdx
+contact.mdx
+blog/
+my-first-blog-post.mdx
+my-second-blog-post.mdx
+templates/ - This is where you'll save your template files that provide the markup for your finished pages. For example:
+
+default.jsx
+blog-post.jsx
+public/ - This is where the generated HTML files and assets for your site will be saved. For example:
+
+index.html
+about.html
+contact.html
+blog/
+my-first-blog-post.html
+my-second-blog-post.html
+src/ - This is where you'll save your CSS and JavaScript files that determine the look and feel of your site, as well as any interactivity you may want to include. For example:
+
+styles.css
+main.js
+Once you have your files organized in this way, you'll be ready to use our SSG to generate your static website.
+
+tom@tomhazledine.com
+summarise that in a text-art illustration
+
+Here is a text-art illustration of the folder structure for a project using our Static Site Generator (SSG):
+
+Copy code
+.
+├── config.json
+├── node_modules/
+├── content/
+| ├── about.mdx
+| ├── contact.mdx
+| └── blog/
+| ├── my-first-blog-post.mdx
+| └── my-second-blog-post.mdx
+├── templates/
+| ├── default.jsx
+| └── blog-post.jsx
+├── public/
+| ├── index.html
+| ├── about.html
+| ├── contact.html
+| └── blog/
+| ├── my-first-blog-post.html
+| └── my-second-blog-post.html
+└── src/
+├── styles.css
+└── main.js
+The node_modules/ directory contains the installed SSG package and its dependencies. The config.json file contains the configuration settings for the SSG. The content/ directory contains the markdown or mdx content files. The templates/ directory contains the template files that provide the markup for the finished pages. The public/ directory is where the generated HTML files and assets will be saved. The src/ directory contains the CSS and JavaScript files that determine the look and feel of the site, as well as any interactivity.
+
+That means that to be of any use to you, you must have some content in markdown form. Without any markdown, JS.SSG is useless.
+
+If you just want a single-page site, then the only "content" file you need is a single markdown file: `index.md`. You'll also need a `config.json` file (to store your site settings for JS.SSG to use) and a `package.json` (this is a JS tool, after all, so you'll need a package tp manage the installation). The config package json files should live in your project's root, and you should keep your content in a separate folder. The default folder where JS.SSG will look for content is `content\`.
+
+A simple site setup might look something like this:
+
+```
+your-project-folder/
+    content/
+        index.md
+    config.json
+    package.json
+```
+
+To get a full-featured website at the end of the process, you'll need to create some templates (JS.SSG provides some basic ones, but these are just to get you started).
+
+## Install
+
+```
+yarn add jsssg
+```
+
+JS.SSG expects to find three things:
+
+1. a folder of markdown files to convert into pages
+2. a folder of JS templates (to define how the built pages should look)
+3. a folder of public assets to be included in the build as-is (i.e. stylesheets, images, fonts, etc.)
+
+Setup basic commands in the "scripts" section of your project's `package.json`:
+
+```json
+// package.json
+"scripts": {
+    "build": "jsssg",
+    "dev": "jsssg --serve --port=1337 --watch",
+    "debug": "jsssg --verbose"
+},
+```
+
+-   `jsssg` builds a production-ready static site in the `/build` directory
+-   `jsssg` builds a production-ready static site in the `/build` directory, serves it on port 1337 and watches your markdown and template files for changes
+-   `jsssg` builds a production-ready static site in the `/build` directory and has a really noisy console output so you can see what's going on (or going wrong)
+
+### Configuration
+
+You can configure JS.SSG by including a `config.json` file in the root of your project.
+
+-   `in`: the path to your markdown files (defaults to `content`)
+-   `out`: the place you want your finished build to go (defaults to `build`)
+-   `templates`: the path to your markdown files (defaults to `templates`)
+-   `data`: an object to store site-wide data that can be accessed by every template
+
+### Example project structure
+
+```
+- package.json
+- config.json
+- content/
+    - index.md
+    - page.md
+    - stuff/
+        - another-page.md
+- templates/
+    - main.js
+    - post.js
+    - archive.js
+    components/
+        - cool-block.js
+        - snippet.js
+- public/
+    images/
+    app.css
+    app.js
+```
