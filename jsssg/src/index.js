@@ -1,13 +1,13 @@
 #!/usr/bin/env node
-// 👆 Used to tell Node.js that this is a CLI tool
-
 "use strict";
+
 import path from "path";
 
 import { build } from "./build.js";
 import { cleanup } from "./cleanup.js";
 import { getConfig, parseArgs } from "./config.js";
 import { log } from "./console.js";
+import { exit } from "./exit.js";
 import { images } from "./images.js";
 import { render } from "./markdown.js";
 import { server } from "./server.js";
@@ -46,4 +46,8 @@ if (args.serve) {
 
 if (args.watch) {
     initWatch(PATHS, build, config, buildParams);
+}
+
+if (args.watch || args.serve) {
+    exit();
 }
