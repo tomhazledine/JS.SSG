@@ -24,6 +24,8 @@
         "node-watch": "^0.7.3",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
+        "rehype-slug": "^5.1.0",
+        "remark-deflist": "^1.0.0",
         "sharp": "^0.31.2",
         "svgo": "^3.0.2",
         "yaml": "^2.1.3"
