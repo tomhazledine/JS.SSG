@@ -3,7 +3,7 @@ import { markdown } from "jsssg";
 const Callout = ({ title, children }) => {
     return (
         <div className="callout">
-            <span className="callout__eyebrow">Author's note</span>
+            <span className="callout__eyebrow">Note</span>
             {title && (
                 <h3 dangerouslySetInnerHTML={{ __html: markdown(title) }} />
             )}

@@ -1,7 +1,4 @@
 {
-    "in": "content",
-    "out": "build",
-    "templates": "templates",
     "data": {
         "title": "JSSSG Docs",
         "url": "https://docs.jsssg.com/"
