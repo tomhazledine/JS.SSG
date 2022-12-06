@@ -5,7 +5,8 @@ import path from "path";
 
 import { build } from "./build.js";
 import { cleanup } from "./cleanup.js";
-import { getConfig, parseArgs } from "./config.js";
+import { parseArgs } from "./args.js";
+import { getConfig } from "./config.js";
 import { log } from "./console.js";
 import { exit } from "./exit.js";
 import { images } from "./images.js";
@@ -14,16 +15,16 @@ import { server } from "./server.js";
 import { initWatch } from "./watch.js";
 
 export const args = parseArgs(process.argv);
-export const config = getConfig();
+export const config = getConfig(args);
 export const markdown = render;
 
 const PATHS = {
-    IN: path.resolve(".", `./${config.in}/`),
+    IN: path.resolve(".", `./${config.in}`),
     TEMPLATES: path.resolve(".", `./${config.templates}`),
-    PUBLIC: path.resolve(".", `./${config.public}/`),
-    OUT: path.resolve(".", `./${config.out}/`),
-    IMAGES: path.resolve(".", `./${config.images}/`),
-    IGNORE: path.resolve(".", `./${config.in}/${config.ignore}/`)
+    PUBLIC: path.resolve(".", `./${config.public}`),
+    OUT: path.resolve(".", `./${config.out}`),
+    IMAGES: path.resolve(".", `./${config.images}`),
+    IGNORE: path.resolve(".", `./${config.in}/${config.ignore}`)
 };
 
 console.log("Generating static site...");
