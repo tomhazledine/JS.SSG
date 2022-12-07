@@ -4,7 +4,7 @@
     --cream: #efeeeb;
     --grey: #dad8d2;
     --black: #4d4d4d;
-    --white: #fdfdfa;
+    --white: #ffffff;
 }
 
 html {
@@ -15,6 +15,10 @@ html {
 *:before,
 *:after {
     box-sizing: inherit;
+    margin-top: 0;
+    padding-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
 }
 
 body {
@@ -25,10 +29,47 @@ body {
     line-height: 1.7;
 }
 
+.stack > * + * {
+    display: block;
+    margin-top: 4rem;
+}
+
+.stack--large > * + * {
+    display: block;
+    margin-top: 8rem;
+}
+
+.stack--small > * + * {
+    display: block;
+    margin-top: 1rem;
+}
+
+.cluster {
+    display: flex;
+    align-items: center;
+}
+
+.cluster > * + * {
+    margin-left: 1rem;
+}
+
 .container {
     width: 96%;
     max-width: 960px;
     margin: 0 auto;
+    padding: 1em;
+    padding-bottom: 10em;
+}
+
+hr {
+    display: block;
+    border: none;
+    width: 100%;
+    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
+    background: var(--grey);
+    height: 1px;
 }
 
 code {
@@ -162,4 +203,28 @@ pre > code {
     font-weight: 700;
     /* font-size: 0.8em; */
     transform: translateY(-50%);
+}
+
+.cards {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.card {
+    position: relative;
+    list-style: none;
+    padding: 1em;
+    border: 1px solid var(--grey);
+}
+
+.card > a:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
