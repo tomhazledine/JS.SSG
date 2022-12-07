@@ -1,26 +1,39 @@
 ---
-title: Getting Started
+title: Getting Started with JS.SSG
+menuTitle: Getting Started
 layout: Article
 menuPriority: 2
 ---
 
--   [Before you start]()
--   [Installing JS.SSG]()
--   [Build your site]()
+**JS.SSG** is a tool for converting your markdown files into HTML that you can use to build a website. In order to have full control over the final site, you'll need three things: content, templates, and assets. JS.SSG helps with all of those things, but it's so simple that you can just start with content and nothing else.
 
-## Before you start
+This page will focus on the content aspect of building your website with JS.SSG, but it's important to note that templates and assets are also important for creating a complete and functional website.
 
-**JS.SSG** is a tool for transforming your markdown files into html that you can deploy to the web.
+## Content
 
-To have full control over the final site, there are three things you'll need:
+Your content needs to be written in Markdown or MDX files (`.md` or `.mdx`). Each file must include a "title" value in the frontmatter (e.g. `"title: My First Blog Post"`). These content files can be used to create the pages of your website.
 
-1. **Content** - You'll need to have your content written and saved in markdown or mdx files. These files will be used to generate the final pages of your site.
-2. **Templates** - You'll need to have template files that provide the markup for your finished pages. These templates will determine the structure and layout of your site.
-3. **Assets** - You'll need to have assets such as images, CSS files, and JavaScript files that determine the look and feel of your pages, as well as any interactivity you may want to include.
+### Example files
 
-We'll cover [Templates]() and [Assets]() in detail later, but JS.SSG comes with some default placeholders for those so all you _need_ to have to get started is some content writen in Markdown (either in `.md` or `.mdx` files).
+A content file should look something like this:
 
-### Basic starting folder structure
+```
+---
+title: My First Blog Post
+---
+
+Welcome to my first blog post! This is a placeholder post that I've created to demonstrate the structure of a markdown file.
+
+I can write as much or as little as I want here. I can use markdown formatting to make my text bold, italic, or create links.
+
+For example, I can make this word **bold** or this word *italic*. I can also create a [link to Google](https://www.google.com) or a [link to my blog's homepage](/).
+
+## Conclusion
+
+This is the end of my blog post. Thanks for reading!
+```
+
+And your project's folder should look something like this:
 
 ```
 ├── content/
@@ -34,10 +47,9 @@ We'll cover [Templates]() and [Assets]() in detail later, but JS.SSG comes with 
 ```
 
 <Callout title="Why do you need a package.json file?">
-    The `package.json` file is present because JS.SSG is a node module, so the
-    project needs to be a node project. `package.json` is where information
-    about dependencies (such as JS.SSG) is stored, along with metadata for your
-    project (title, version, etc.)
+    The `package.json` file is required because JS.SSG is a node module. It
+    stores information about the dependencies for your project, as well as
+    metadata like the title and version.
 </Callout>
 
 ## Installing JS.SSG
@@ -48,29 +60,7 @@ Install JS.SSG using Yarn with the following command:
 yarn add jsssg
 ```
 
-You can also use `npm install jsssg` if you prefer NPM over Yarn.
-
-### Configuration
-
-Before running your first build, you'll need to set some basic configutation for JS.SSG. This should live in `config.json` in the root of your project (as we saw in the [basic starting folder structure](#basic-starting-folder-structure)).
-
-The contents of your `config.json` should look something like this:
-
-```json
-{
-    "in": "content",
-    "out": "build",
-    "templates": "templates",
-    "data": {
-        "title": "JSSSG Docs",
-        "url": "https://docs.jsssg.com/"
-    }
-}
-```
-
-Unless you declare them, JS.SSG will assume you're using the default values for `in`, `out`, and `templates`, so these are optional in your `config.json`. `data.title` and `data.url` are required, however. `title` is whatever you want to call your site, and `url` should be the URL where your site will eventually live. Don't worry if you don't have a URL yet, you can put in anything here and change it later.
-
-The `data` object is where you can store any and all information about your site. This object will be accessible within all your templates as the `site` prop.
+You can also use `npm install jsssg` if you prefer NPM.
 
 ## Build your site
 
@@ -80,7 +70,9 @@ You are now ready to build your site. Do this by running
 yarn jsssg
 ```
 
-Once the script has run, you should see a `build/` folder in the root of your project. This folder contains all the files for your new site. Every markdown file in your `content/` directory will have a corresponding `.html` file in the `build/` directory.
+This will create a `build/` folder in the root of your project. It will contain all the files for your new website. Every markdown file in your ` content/` folder will be converted into an HTML file in the `build/` folder.
+
+Your folder structure will now look like this:
 
 ```
 ├── build/
@@ -93,25 +85,23 @@ Once the script has run, you should see a `build/` folder in the root of your pr
 |   ├── index.html
 |   └── sitemap.xml
 ├── content/
+|   └── blog/
+|   |   ├── my-first-blog-post.mdx
+|   |   └── my-second-blog-post.mdx
 |   ├── about.mdx
 |   ├── contact.mdx
-|   ├── index.mdx
-|   └── blog/
-|       ├── my-first-blog-post.mdx
-|       └── my-second-blog-post.mdx
-├── config.json
+|   └── index.mdx
 └── package.json
 ```
 
 <Callout title="Sitemap and RSS feed">
-    You'll also see a couple of extra files: `feed.xml` and `sitemap.xml`. These
-    are your RSS feed and sitemap. Most content sites need these files, so
-    JS.SSG creates them for you automatically
+    The feed.xml and sitemap.xml files are your RSS feed and sitemap. Most
+    websites need these files, so JS.SSG creates them automatically.
 </Callout>
 
 ### Preview your site
 
-If you want to preview your site before deploying it to a server, you can do this by running
+You can preview your website before deploying it to a server by running:
 
 ```
 jsssg --serve

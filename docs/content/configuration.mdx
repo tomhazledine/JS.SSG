@@ -1,0 +1,24 @@
+---
+title: Configuration
+layout: Article
+---
+
+Before running your first build, you'll need to set some basic configutation for JS.SSG. This should live in `config.json` in the root of your project (as we saw in the [basic starting folder structure](#basic-starting-folder-structure)).
+
+The contents of your `config.json` should look something like this:
+
+```json
+{
+    "in": "content",
+    "out": "build",
+    "templates": "templates",
+    "data": {
+        "title": "JSSSG Docs",
+        "url": "https://docs.jsssg.com/"
+    }
+}
+```
+
+Unless you declare them, JS.SSG will assume you're using the default values for `in`, `out`, and `templates`, so these are optional in your `config.json`. `data.title` and `data.url` are required, however. `title` is whatever you want to call your site, and `url` should be the URL where your site will eventually live. Don't worry if you don't have a URL yet, you can put in anything here and change it later.
+
+The `data` object is where you can store any and all information about your site. This object will be accessible within all your templates as the `site` prop.

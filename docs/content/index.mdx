@@ -1,67 +1,50 @@
 ---
-title: JS.SSG Documentation
+title: Welcome to the JS.SSG documentation!
 menuTitle: Home
 menuPriority: 1
 layout: Article
 ---
 
-An opinionated static site generator built with JavaScript.
+Quickly and easily turn your markdown content into a fast and customizable website.
 
-## Install
+JS.SSG is a tool for converting your markdown files into HTML. One of the best things about JS.SSG is that it lets you write your templates in JSX (or vanilla JS, if you prefer) without having to worry about configuring or installing additional build tools. This makes it super easy to create custom and dynamic templates for your website.
 
-```
-yarn add jsssg
-```
+---
 
-JS.SSG expects to find three things:
+## Getting Started
 
-1. a folder of markdown files to convert into pages
-2. a folder of JS templates (to define how the built pages should look)
-3. a folder of public assets to be included in the build as-is (i.e. stylesheets, images, fonts, etc.)
+The "Getting Started" section of the documentation is designed to guide you through the process of setting up a project with JS.SSG and building your first website. It is split into three pages:
 
-Setup basic commands in the "scripts" section of your project's `package.json`:
+<Cards
+    cards={[
+        {
+            title: "Content",
+            body: "This page covers the basics of writing your content in markdown or mdx files and includes a brief overview of templates and assets.",
+            url: "/"
+        },
+        {
+            title: "Templates",
+            body: "This page provides detailed information about how to use and customize the default templates that come with JS.SSG.",
+            url: "/"
+        },
+        {
+            title: "Assets",
+            body: "This page provides detailed information about how to use and customize the default assets (such as images, CSS, and JavaScript files) that come with JS.SSG.",
+            url: "/"
+        }
+    ]}
+/>
 
-```json
-// package.json
-"scripts": {
-    "build": "jsssg",
-    "dev": "jsssg --serve --port=1337 --watch",
-    "debug": "jsssg --verbose"
-},
-```
+1. **Content**: This page covers the basics of writing your content in markdown or mdx files and includes a brief overview of templates and assets.
+2. **Templates**: This page provides detailed information about how to use and customize the default templates that come with JS.SSG.
+3. **Assets**: This page provides detailed information about how to use and customize the default assets (such as images, CSS, and JavaScript files) that come with JS.SSG.
 
--   `jsssg` builds a production-ready static site in the `/build` directory
--   `jsssg` builds a production-ready static site in the `/build` directory, serves it on port 1337 and watches your markdown and template files for changes
--   `jsssg` builds a production-ready static site in the `/build` directory and has a really noisy console output so you can see what's going on (or going wrong)
+Once you have read these pages and have a basic understanding of how JS.SSG works, you can move on to the Advanced Usage page for information about more advanced features of JS.SSG.
 
-### Configuration
+## Advanced Usage
 
-You can configure JS.SSG by including a `config.json` file in the root of your project.
+For advanced users, the Advanced Usage page provides information about more advanced features of JS.SSG, such as configuration options, pagination and collections (categories, tags, etc.), and overriding the defualt templates for built-in pages (like the RSS feed and the sitemap).
 
--   `in`: the path to your markdown files (defaults to `content`)
--   `out`: the place you want your finished build to go (defaults to `build`)
--   `templates`: the path to your markdown files (defaults to `templates`)
--   `data`: an object to store site-wide data that can be accessed by every template
+## Need help?
 
-### Example project structure
-
-```
-- package.json
-- config.json
-- content/
-    - index.md
-    - page.md
-    - stuff/
-        - another-page.md
-- templates/
-    - main.js
-    - post.js
-    - archive.js
-    components/
-        - cool-block.js
-        - snippet.js
-- public/
-    images/
-    app.css
-    app.js
-```
+If you have any questions or need help using JS.SSG, please visit the Support page for information about how to get in touch with the JS.SSG community.
