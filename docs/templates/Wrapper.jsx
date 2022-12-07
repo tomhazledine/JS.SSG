@@ -14,12 +14,12 @@ const Wrapper = ({ page = {}, site = {}, children }) => (
             <link href="/app.css" rel="stylesheet" />
         </head>
         <body className="outer">
-            <aside className="sidebar">
+            <aside className="sidebar stack">
                 <Header title={site.title} />
                 <Menu pages={site.allPages} current={page.url} />
             </aside>
             <main className="main">
-                <div className="container">{children}</div>
+                <div className="container stack">{children}</div>
             </main>
         </body>
     </html>
