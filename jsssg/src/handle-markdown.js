@@ -2,6 +2,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import MDX from "@mdx-js/runtime";
 import remarkDeflist from "remark-deflist";
 import rehypeSlug from "rehype-slug";
+import rehypeHighlight from "rehype-highlight";
 
 import { args } from "./index.js";
 import { log } from "./console.js";
@@ -41,7 +42,7 @@ export const renderMdx = (body, templates, scope = {}) => {
             components={components}
             scope={scope}
             remarkPlugins={[remarkDeflist]}
-            rehypePlugins={[rehypeSlug]}
+            rehypePlugins={[rehypeSlug, rehypeHighlight]}
         >
             {body}
         </MDX>
