@@ -1,9 +1,10 @@
 :root {
-    --type: "Cartograph Sans", sans-serif;
+    --type: sans-serif; /*"Cartograph Sans", sans-serif;*/
     --monospace: "Cartograph Mono", monospace;
     --cream: #efeeeb;
     --grey: #dad8d2;
-    --black: #4d4d4d;
+    /* --black: #4d4d4d; */
+    --black: #000000;
     --white: #ffffff;
 }
 
@@ -22,8 +23,8 @@ html {
 }
 
 body {
-    font-size: 1.8em;
-    /* font-family: var(--type); */
+    font-size: 1.8rem;
+    font-family: var(--type);
     color: var(--black);
     background: var(--white);
     line-height: 1.7;
@@ -107,28 +108,32 @@ hr {
     background: var(--grey);
     height: 1px;
 }
-
+/* 
 code {
     font-variant-ligatures: none;
-    /* font-family: var(--monospace); */
+    font-family: var(--monospace);
     background: var(--cream);
     font-size: 1em;
     line-height: inherit;
 }
-
+*/
 pre {
+    --hljs-github-dark-dimmed-bg: #22272e;
+    --hljs-github-dark-bg: #0d1117;
+    --hljs-github-bg: #ffffff;
     border: 1px solid var(--grey);
     overflow: hidden;
-    background: var(--cream);
+    background: var(--hljs-github-bg);
     font-size: inherit;
     padding: 2rem 1rem;
     overflow: auto;
 }
+/*
 pre > code {
-    /* font-variant-ligatures: none; */
-    /* text-shadow: none !important; */
+    font-variant-ligatures: none;
+    text-shadow: none !important;
     line-height: 1.2;
-}
+} */
 *:not(pre) > code {
     border: 1px solid var(--grey);
 }

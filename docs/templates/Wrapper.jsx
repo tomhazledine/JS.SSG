@@ -12,6 +12,7 @@ const Wrapper = ({ page = {}, site = {}, children }) => (
                 content="width=device-width, initial-scale=1.0"
             />
             <link href="/app.css" rel="stylesheet" />
+            <link href="/hljs.github.css" rel="stylesheet" />
         </head>
         <body className="outer">
             <aside className="sidebar stack">
