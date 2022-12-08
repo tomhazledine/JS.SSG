@@ -3,12 +3,11 @@ import { markdown } from "jsssg";
 const Card = ({ title, body, url = false }) => (
     <li className="card">
         {url && (
-            <a
-                href={url}
-                dangerouslySetInnerHTML={{ __html: markdown(title) }}
-            />
+            <a href={url}>
+                <h3>{title}</h3>
+            </a>
         )}
-        {!url && <h3 dangerouslySetInnerHTML={{ __html: markdown(title) }} />}
+        {!url && <h3>{title}</h3>}
         <div dangerouslySetInnerHTML={{ __html: markdown(body) }} />
     </li>
 );

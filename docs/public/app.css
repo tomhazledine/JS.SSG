@@ -23,7 +23,7 @@ html {
 
 body {
     font-size: 1.8em;
-    font-family: var(--type);
+    /* font-family: var(--type); */
     color: var(--black);
     background: var(--white);
     line-height: 1.7;
@@ -44,14 +44,50 @@ body {
     margin-top: 1rem;
 }
 
+/* .cluster {
+    display: flex;
+    align-items: center;
+} */
+
 .cluster {
     display: flex;
+    /* flex-wrap: wrap; */
+    gap: 1em;
+    align-items: stretch;
+}
+
+/* .cluster > * + * {
+    margin-left: 1rem;
+} */
+
+/* .cluster {
+    --cluster__gutter: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    margin: calc(0 - (var(--cluster__gutter) / 2));
+}
+
+.cluster > * {
+    margin: var(--cluster__gutter);
+} */
+
+/* .cluster--centered {
+    justify-content: center;
+}
+.cluster--centered-vertically {
     align-items: center;
 }
 
-.cluster > * + * {
-    margin-left: 1rem;
+.cluster--no-gutter {
+    margin: 0;
 }
+.cluster--no-gutter > * {
+    margin: 0;
+}
+
+.cluster--stretch {
+    align-items: stretch;
+} */
 
 .container {
     width: 96%;
@@ -74,7 +110,7 @@ hr {
 
 code {
     font-variant-ligatures: none;
-    font-family: var(--monospace);
+    /* font-family: var(--monospace); */
     background: var(--cream);
     font-size: 1em;
     line-height: inherit;
@@ -217,6 +253,7 @@ pre > code {
     list-style: none;
     padding: 1em;
     border: 1px solid var(--grey);
+    width: 100%;
 }
 
 .card > a:before {
