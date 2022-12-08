@@ -11,3 +11,320 @@ This is part 2 of the 3-part Getting Started Guide. This page shows you how to c
 Part 1 covers [working with content](/getting-started-content) and part 3 covers [working with assets](/getting-started-assets).
 
 ---
+
+1. [Overview](#overview)
+2. [JSX templates](#jsx-templates)
+3. [JSX components](#jsx-components)
+4. [Import tools and utilities](#import-tools-and-utilities)
+5. [Vanilla JS templates](#vanilla-js-templates)
+6. [Vanilla JS components](#vanilla-js-components)
+
+## Overview
+
+Templates are what JS.SSG uses to display content. They turn the raw content from Mardown files into a defined HTML structure.
+
+Templates in JS.SSG are nothing more than JavaScript functions that return a string of HTML. The content of the page is passed into the function and the template author is then free to do whatever they like with that content. By design, JS.SSG templates are open-ended and flexible. The "happy path" for JS.SSG is to use JSX to create templates and components, but you can use [vanilla JavaScript templates](#vanilla-js-templates) if you prefer.
+
+<Callout title="What is JSX?">
+    JSX is an extension to JavaScript that allows developers to write JS code
+    with HTML-like syntax, making it easier to write and maintain complex UIs.
+    JSX code is compiled into regular JavaScript that can be run in a web
+    browser or other JavaScript runtime environment. This allows developers to
+    use the power and flexibility of JavaScript to create interactive UIs while
+    still using familiar HTML-like syntax to define their structure.
+</Callout>
+
+## JSX templates
+
+### Create a template file
+
+To apply a custom template to one of your Markdown pages, create a file called `Post.jsx` in a folder called `templates/` in the root of your project.
+
+```
+├── content/ <--- markdown files go in here
+├── templates/
+|   └── Post.jsx <--- the new template file
+└── package.json
+```
+
+### Write a template
+
+In the new `Post.js` file, write your template function and export it as the default export.
+
+All templates are initialised with three paramaters:
+
+1. `content` - the content of the page as a string of HTML
+2. `page` - an object containing all the frontmatter from the Markdown file
+3. `site` - an object containing metadata about the site as a whole (root url, site title, etc.)
+
+```jsx
+const Post = ({ content, page, site }) => {
+    return (
+        <html lang="en">
+            <body>
+                <h1>{page.title}</h1>
+                <div dangerouslySetInnerHTML={{ __html: content }} />
+                <a href={site.url}>Home</a>
+            </body>
+        </html>
+    );
+};
+
+export default Post;
+```
+
+<Callout title="Why do we need to use `dangerouslySetInnerHTML`?">
+    The page's markdown has already been converted to HTML before being passed
+    as `content` to the template, so wrapping it in `dangerouslySetInnerHTML`
+    ensures that HTML is rendered correctly in the final file
+</Callout>
+
+### Apply the template to a page
+
+To apply the new template file to a page, we'll use the `layout` frontmatter item. Templates are identified within JS.SSG by their filename, so if your template file is `Post.jsx` then we set the page's layout to be "Post" (note: capitalisation is important).
+
+```md
+---
+title: My First Blog Post
+layout: Post
+---
+
+Welcome to my first blog post! This is a placeholder post that...
+```
+
+Now when you run `yarn jsssg --serve` the Post template will be applied to that page.
+
+<Callout title="Do we call them Layouts or Templates?">
+    The terms "layout" and "template" can often seem interchangeable, and in
+    many ways they are. "Layout" refers to the overall structure and design of a
+    web page, while "template" refers to a specific, reusable file that defines
+    the structure of a particular section of the layout. In other words, a
+    layout defines the overall appearance of a web page, while a template
+    defines the structure of a specific part of the page. So we write *template*
+    files, but apply a *layout* to a markdown file.
+</Callout>
+
+## JSX Components
+
+One of the primary benefits of using any templating framework is the ability to split up your code for ease of reuse. After all, you don't want to have to re-write your header and footer for every page. Components are great way to acheive this, and JSX component specifically have the added benefit of being useable within MDX files too!
+
+### Components are just small templates
+
+Alternatively, you could say that templates are just large components 😉
+
+Creating a component is exactly the same process as creating a template. Write a `.jsx` file for your component and export a default function that returns some JSX.
+
+```
+├── templates/
+|   ├── Header.jsx
+|   └── Post.jsx
+```
+
+```jsx
+// Header.jsx
+const Header = ({ url, title }) => {
+    return (
+        <header>
+            <h2>
+                <a href={url}>{title}</a>
+            </h2>
+        </header>
+    );
+};
+
+export default Header;
+```
+
+```jsx
+// Post.jsx
+import Header from "./Header.js";
+
+const Post = ({ content, page, site }) => {
+    return (
+        <html lang="en">
+            <body>
+                <Header url={site.url} title={site.title} />
+                <h1>{page.title}</h1>
+                <div dangerouslySetInnerHTML={{ __html: content }} />
+            </body>
+        </html>
+    );
+};
+
+export default Post;
+```
+
+### Things to bear in mind when writing JSX templates
+
+There are a few small differences to remember when writing JSX templates instead of vanilla JS ones:
+
+#### No `<!DOCTYPE html>`.
+
+By default JSX makes adding a `DOCTYPE` a bit tricky, so JS.SSG adds that for you automatically. You don't need to include it in JSX templates.
+
+#### Write components with `.jsx` file extension, but import them with `.js`.
+
+Due to the way JS.SSG transpiles components, we need to import them as `.js` files even though they are written as `.jsx`:
+
+If your templates file looks like this:
+
+```
+├── templates/
+|   ├── Header.jsx
+|   └── Post.jsx
+```
+
+You need to import `Header` like this:
+
+```jsx
+// Post.jsx
+import Header from "./Header.js";
+
+const Post = ({ content, page, site }) => {
+    return (
+        <html lang="en">
+            <body>
+                <Header />
+                // the rest of your template...
+            </body>
+        </html>
+    );
+};
+```
+
+<Callout title="Components are simpler with JSX">
+    You can write [vanilla JS components](#vanilla-js-components), but things
+    look much cleaner and simpler in JSX. If you like to structure your HTML
+    with components, then [JSX Templates](#jsx-templates) are the recommended
+    method for doing so.
+</Callout>
+
+## Import tools and utilities
+
+You don't just need to import components; you can import other things too. Because JS.SSG's templates and components are all "just JS", you can do anything in them that you can in any JS file.
+
+### Convert raw Markdown into HTML with the built-in `markdown` function
+
+While the main `content` of your page is converted from Markdown to HTML automatically, you may want to convert _other_ Markdown strings into HTML (perhaps you've stored an `excerpt` in the page's frontmatter?). JS.SSG provides a `markdown` function that you can use within your templates. Just `import` it like so:
+
+```jsx
+// PostHeader.jsx
+import { markdown } from "jsssg";
+
+const PostHeader = ({ title, excerpt }) => (
+    <header>
+        <h1>{title}</h1>
+        <div dangerouslySetInnerHTML={{ __html: markdown(excerpt) }} />
+    </header>
+);
+
+export default PostHeader;
+```
+
+### Write utility functions to transform your data
+
+For example, you could import a function to parse `yyyy-mm-dd` formatted dates into a different format:
+
+```
+├── utils/
+|   ├── dates.js
+├── templates/
+|   └── Post.js
+```
+
+```js
+// dates.js
+import moment from "moment";
+
+export const formatDate = date => moment(date, "YYYY-MM-DD").format("MMM Y");
+```
+
+```jsx
+// PostHeader.jsx
+import { formatDate } from "../utils/dates.js";
+
+const PostHeader = ({ title, date }) => (
+    <header>
+        <h1>{title}</h1>
+        <p>
+            <span>Published on</span>
+            <time dateTime={date} itemProp="datePublished">
+                {formatDate(date)}
+            </time>
+        </p>
+    </header>
+);
+
+export default PostHeader;
+```
+
+---
+
+## Vanilla JS templates
+
+Writing your templates in vanilla JavaScript is almost exactly the same as writing a JSX template, except you save the file with the `.js` extension.
+
+```js
+const Post = ({ content, page, site }) => {
+    return `<!DOCTYPE html>
+            <html lang="en">
+                <body>
+                    <h1>${page.title}</h1>
+                    ${content}
+                    <a href="${site.url}">Home</a>
+                </body>
+            </html>`;
+};
+
+export default Post;
+```
+
+## Vanilla JS components
+
+As with JSX/JS templates, vanilla components are very similar to JSX ones. The crucial difference is in how the components are integrated into their parent template: we need to call JS component functions directly (`Header()`), rather than using them as JSX tags (`<Header />`).
+
+```
+├── templates/
+|   ├── Header.jsx
+|   └── Post.jsx
+```
+
+```js
+// Header.js
+const Header = ({ url, title }) => {
+    return `<header>
+                <h2>
+                    <a href="${url}">${title}</a>
+                </h2>
+            </header>`);
+};
+
+export default Header;
+```
+
+```js
+// Post.js
+import Header from "./Header.js";
+
+const Post = ({ content, page, site }) => {
+    return `<!DOCTYPE html>
+            <html lang="en">
+                <body>
+                    ${Header({ url: site.url, title: site.title })}
+                    <h1>${page.title}</h1>
+                    ${content}
+                    <a href="${site.url}">Home</a>
+                </body>
+            </html>`;
+};
+
+export default Post;
+```
+
+<Callout title="Don't mix JS and JSX templates">
+    Mixing JS and JSX formats can get confusing very quickly. It is stongly
+    recommended that you only use one type of template per layout. A layout can
+    be contructed from multiple templates and/or components, so feel free to
+    have JS templates for one type of page (they're great for xml pages, for
+    instance)
+</Callout>
