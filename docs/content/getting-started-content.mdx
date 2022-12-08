@@ -1,17 +1,45 @@
 ---
-title: Getting Started with JS.SSG
-menuTitle: Getting Started
+title: "Getting Started: Working With Content"
+menuTitle: 1. Content
+menuGroup: getting_started
 layout: Article
 menuPriority: 2
 ---
 
-**JS.SSG** is a tool for converting your markdown files into HTML that you can use to build a website. In order to have full control over the final site, you'll need three things: content, templates, and assets. JS.SSG helps with all of those things, but it's so simple that you can just start with content and nothing else.
+This is part 1 of the 3-part Getting Started Guide. This page shows you how to build a basic site with JS.SSG. It covers how to prepare your content in Markdown files, and how to use JS.SSG to convert those Markdown files into production-ready HTML.
 
-This page will focus on the content aspect of building your website with JS.SSG, but it's important to note that templates and assets are also important for creating a complete and functional website.
+Part 2 covers [working with templates](/getting-started-templates) and part 3 covers [working with assets](/getting-started-assets).
 
-## Content
+---
+
+1. [Overview](#overview)
+2. [Preparing Your Content](#preparing-your-content)
+3. [Installing JS.SSG](#installing-jsssg)
+4. [Building Your Site](#building-your-site)
+
+## Overview
+
+At its most basic, **JS.SSG** is a tool for converting your markdown files into HTML that you can use to build a website. In order to have full control over the final site, you'll need three things:
+
+1. Content (a website without content is nothing)
+2. Templates (a way to choose how to display you content)
+3. Assets (styles and scripts and images to enhance how your content is displayed)
+
+JS.SSG helps with all of those things, but it's so simple that you can just start with content and nothing else.
+
+This page will focus on how to prepare your content for JS.SSG, and how to then use JS.SSG to convert that content into HTML pages that can be deplpoyed as a website.
+
+the content aspect of building your website with JS.SSG, but it's important to note that templates and assets are also important for creating a complete and functional website.
+
+## Preparing Your Content
 
 Your content needs to be written in Markdown or MDX files (`.md` or `.mdx`). Each file must include a "title" value in the frontmatter (e.g. `"title: My First Blog Post"`). These content files can be used to create the pages of your website.
+
+<Callout title="What is Markdown">
+    Markdown is a lightweight markup language that you can use to add formatting
+    to plain text documents. It was created to be easy to read and easy to
+    write, and it can be converted seamlessly to many other formats.
+</Callout>
 
 ### Example files
 
@@ -62,7 +90,7 @@ yarn add jsssg
 
 You can also use `npm install jsssg` if you prefer NPM.
 
-## Build your site
+## Building Your Site
 
 You are now ready to build your site. Do this by running
 
