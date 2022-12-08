@@ -19,7 +19,7 @@ export const renderTemplate = ({ template, ...props }) => {
         try {
             const Template = template.component;
             const markup = renderToStaticMarkup(<Template {...props} />);
-            return markup;
+            return `<!DOCTYPE html>` + markup;
         } catch (err) {
             if (args.verbose)
                 log([`Problem rendering template`, template], "red");
