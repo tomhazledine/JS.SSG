@@ -61,9 +61,9 @@ const Menu = ({ pages, current }) => {
 
     return (
         <nav className="menu" role="navigation">
-            {itemsMarkup}
+            {/* {itemsMarkup} */}
             {gettingStartedMarkup}
-            {advancedMarkup}
+            {/* {advancedMarkup} */}
         </nav>
     );
 };

@@ -1,0 +1,20 @@
+.menu > ul {
+    margin: 0;
+    padding: 0;
+}
+
+.menu-item {
+    list-style: none;
+    padding: 0.5em 0.5em 0.5em 1.5em;
+}
+
+.menu-item__current {
+    position: relative;
+    background: var(--grey);
+}
+.menu-item__indicator {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}

@@ -1,0 +1,54 @@
+@import "base.vars";
+@import "base.fonts";
+@import "base.layout";
+@import "base.general";
+@import "base.code";
+
+@import "component.callout";
+@import "component.cards";
+@import "component.menu";
+
+.container {
+    width: 96%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 1em;
+    padding-bottom: 10em;
+}
+
+hr {
+    display: block;
+    border: none;
+    width: 100%;
+    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
+    background: var(--grey);
+    height: 1px;
+}
+
+.outer {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    --sidebar-width: 300px;
+}
+
+.sidebar {
+    height: 100vh;
+    width: var(--sidebar-width);
+    flex-shrink: 0;
+    position: fixed;
+    flex-grow: 0;
+    overflow-y: scroll;
+    padding: 1em;
+    border-right: 1px solid var(--grey);
+}
+
+.main {
+    height: 100%;
+    width: 100%;
+    margin-left: var(--sidebar-width);
+    overflow-y: scroll;
+}

@@ -1,0 +1,19 @@
+.callout {
+    border: 4px dashed var(--black);
+    padding: 2rem;
+    position: relative;
+}
+
+.callout__eyebrow {
+    position: absolute;
+    top: -2px;
+    padding: 0.5rem;
+    left: 1.5rem;
+    background: var(--white);
+    display: inline-block;
+    line-height: 1;
+    text-transform: uppercase;
+    font-weight: 700;
+    /* font-size: 0.8em; */
+    transform: translateY(-50%);
+}

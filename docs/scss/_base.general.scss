@@ -1,0 +1,21 @@
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+    margin-top: 0;
+    padding-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+body {
+    font-size: 1.8rem;
+    font-family: var(--type);
+    color: var(--white);
+    background: var(--black);
+    line-height: 1.7;
+}
