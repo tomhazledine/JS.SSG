@@ -24,7 +24,8 @@ const PATHS = {
     PUBLIC: path.resolve(".", `./${config.public}`),
     OUT: path.resolve(".", `./${config.out}`),
     IMAGES: path.resolve(".", `./${config.images}`),
-    IGNORE: path.resolve(".", `./${config.in}/${config.ignore}`)
+    IGNORE: path.resolve(".", `./${config.in}/${config.ignore}`),
+    STYLES: path.resolve(".", `./${config.styles}`)
 };
 
 console.log("Generating static site...");
@@ -36,6 +37,7 @@ if (args.clean) {
 }
 
 build(buildParams);
+
 if (args.images) {
     images(PATHS);
 }

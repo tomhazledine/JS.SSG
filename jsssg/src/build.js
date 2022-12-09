@@ -1,12 +1,11 @@
-import fs from "fs";
-
 import { copyFile, readFolder } from "./io.js";
-import { handleFileBuild, processFile } from "./process-file.js";
 import { parseSiteData } from "./parse-site-data.js";
-import { getTemplates } from "./templates.js";
+import { handleFileBuild, processFile } from "./process-file.js";
 import { buildRssPage } from "./rss.js";
-import { buildSitemapPage } from "./sitemap.js";
+import { compileSass } from "./sass.js";
 import { buildSearchData } from "./search.js";
+import { buildSitemapPage } from "./sitemap.js";
+import { getTemplates } from "./templates.js";
 
 export const build = async ({ PATHS, config, args }) => {
     // cleanup({ args, PATHS, config });
@@ -58,6 +57,11 @@ export const build = async ({ PATHS, config, args }) => {
     publicFiles.forEach(filePath =>
         copyFile(filePath, filePath.replace(PATHS.PUBLIC, PATHS.OUT))
     );
+
+    if (config.styles) {
+        const allStyleFiles = readFolder(PATHS.STYLES, "_");
+        allStyleFiles.forEach(stylePath => compileSass(stylePath, PATHS));
+    }
 
     console.log(`Site generated at "/${config.out}"`);
 };

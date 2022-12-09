@@ -9,6 +9,7 @@ export const getConfig = args => {
         templates: "templates",
         images: "images",
         public: "public",
+        styles: false,
         ignore: "drafts",
         collections: ["categories", "tags"],
         search: true,

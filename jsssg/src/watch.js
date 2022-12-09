@@ -9,7 +9,8 @@ export const initWatch = (PATHS, build, config, buildParams) => {
     };
 
     const pathsToWatch = [
-        PATHS.IN
+        PATHS.IN,
+        PATHS.STYLES
         // PATHS.TEMPLATES
     ];
 
