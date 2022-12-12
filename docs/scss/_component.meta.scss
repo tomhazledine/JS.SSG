@@ -1,0 +1,32 @@
+.meta {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+}
+
+.meta li {
+    list-style: none;
+    display: inline-block;
+    padding: 0.5em 2rem;
+    border: 1px solid var(--grey--dark);
+    background: var(--background--secondary);
+    + li {
+        border-left: 0;
+        // border-left: 1px solid var(--black);
+    }
+    &:first-of-type {
+        border-radius: 2rem 0 0 2rem;
+    }
+    &:last-of-type {
+        border-radius: 0 2rem 2rem 0;
+    }
+    a {
+        text-decoration: none;
+    }
+}
+
+.meta__version {
+}
+
+.meta__release-date {
+}

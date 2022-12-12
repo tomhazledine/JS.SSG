@@ -15,15 +15,13 @@ const buildMenu = (items, title = false) => {
             key={`menu_${page.url}`}
             className={`menu-item ${page.current ? "menu-item__current" : ""}`}
         >
-            {page.current && (
-                <span className="menu-item__indicator">{">"}</span>
-            )}
+            {page.current && <span className="menu-item__indicator" />}
             <a href={page.url}>{page.title}</a>
         </li>
     ));
     return (
         <>
-            {title && <h4>{title}</h4>}
+            {title && <h5>{title}</h5>}
             <ul>{itemsMarkup}</ul>
         </>
     );
@@ -42,6 +40,12 @@ const Menu = ({ pages, current }) => {
         current
     );
 
+    const overviewItems = parseMenu(
+        pages,
+        page => page.frontmatter.menuGroup === "overview",
+        current
+    );
+
     const otherItems = parseMenu(
         pages,
         page =>
@@ -57,11 +61,13 @@ const Menu = ({ pages, current }) => {
 
     const advancedMarkup = buildMenu(advancedItems, "Advanced");
 
+    const overviewMarkup = buildMenu(overviewItems, "Overview");
+
     const itemsMarkup = buildMenu(otherItems);
 
     return (
-        <nav className="menu" role="navigation">
-            {/* {itemsMarkup} */}
+        <nav className="menu stack" role="navigation">
+            {overviewMarkup}
             {gettingStartedMarkup}
             {/* {advancedMarkup} */}
         </nav>

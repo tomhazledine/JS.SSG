@@ -4,10 +4,9 @@ import { slugify } from "../utils/helpers.js";
 
 const Callout = ({ title, children }) => {
     return (
-        <div className="callout" id={`note-${slugify(title)}`}>
-            <span className="callout__eyebrow">Note</span>
+        <div className="callout stack--small" id={`note-${slugify(title)}`}>
             {title && (
-                <h3 dangerouslySetInnerHTML={{ __html: markdown(title) }} />
+                <h4 dangerouslySetInnerHTML={{ __html: markdown(title) }} />
             )}
             <div
                 className="markdown-stuff"

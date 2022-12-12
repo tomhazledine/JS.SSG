@@ -7,24 +7,65 @@
 @import "component.callout";
 @import "component.cards";
 @import "component.menu";
+@import "component.meta";
+@import "component.title";
+@import "component.hero-text";
 
 .container {
     width: 96%;
     max-width: 960px;
     margin: 0 auto;
     padding: 1em;
+    padding-top: 6em;
     padding-bottom: 10em;
 }
 
+// hr {
+//     display: block;
+//     border: none;
+//     width: 100%;
+//     margin: 0;
+//     margin-left: auto;
+//     margin-right: auto;
+//     background: var(--hairline);
+//     height: 1px;
+// }
 hr {
     display: block;
     border: none;
-    width: 100%;
+    width: 50%;
+    // margin: 10px auto;
     margin: 0;
     margin-left: auto;
     margin-right: auto;
-    background: var(--grey);
-    height: 1px;
+    padding: 2rem 0;
+    position: relative;
+    &:before {
+        z-index: 1;
+        position: absolute;
+        content: "";
+        display: block;
+        width: 100%;
+        height: 2px;
+        top: 50%;
+        left: 50%;
+        background: var(--grey--dark);
+        transform: translate(-50%, -50%);
+    }
+    &:after {
+        z-index: 2;
+        position: absolute;
+        content: "";
+        display: block;
+        width: 16px;
+        height: 16px;
+        top: 50%;
+        left: 50%;
+        background: var(--background);
+        border: 2px solid var(--grey--dark);
+        box-shadow: var(--background) 0 0 0 8px;
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
 }
 
 .outer {
@@ -43,7 +84,7 @@ hr {
     flex-grow: 0;
     overflow-y: scroll;
     padding: 1em;
-    border-right: 1px solid var(--grey);
+    border-right: 1px solid var(--hairline);
 }
 
 .main {
