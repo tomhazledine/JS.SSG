@@ -14,8 +14,38 @@ html {
 
 body {
     font-size: 1.8rem;
-    font-family: var(--type);
+    font-weight: 400;
+    font-family: var(--typeface);
     color: var(--white);
     background: var(--black);
-    line-height: 1.7;
+    line-height: 1.8;
+}
+
+a {
+    color: var(--primary);
+    // text-underline-offset: 0.2em;
+    &:hover {
+        color: var(--secondary);
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 700;
+    // font-style: italic;
+}
+
+h1,
+h2 {
+    font-size: 4.5rem;
+}
+h3 {
+    font-size: 3.5rem;
+}
+h4 {
+    font-size: 3rem;
 }

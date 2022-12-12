@@ -1,28 +1,32 @@
+:root {
+    // vars in `./_base.vars.scss`
+}
+
 code {
     // font-variant-ligatures: none;
     font-family: var(--monospace);
-    // background: var(--cream);
+    color: var(--code-text);
+    background: var(--code-background);
     // font-size: 1em;
     // line-height: inherit;
 }
 
 pre {
-    --hljs-github-dark-dimmed-bg: #22272e;
-    --hljs-github-dark-bg: #0d1117;
-    --hljs-github-bg: #ffffff;
     // border: 1px solid var(--grey);
     overflow: hidden;
-    background: var(--hljs-github-dark-dimmed-bg);
+    color: var(--code-text);
+    background: var(--code-background);
     font-size: inherit;
     padding: 2rem 1rem;
     overflow: auto;
 }
-/*
-pre > code {
-    font-variant-ligatures: none;
-    text-shadow: none !important;
-    line-height: 1.2;
-} */
+
+// pre > code {
+//     font-variant-ligatures: none;
+//     text-shadow: none !important;
+//     line-height: 1.2;
+// }
+
 *:not(pre) > code {
-    border: 1px solid var(--grey);
+    // border: 1px solid var(--grey);
 }

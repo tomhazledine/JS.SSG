@@ -3,9 +3,17 @@ title: Welcome to the JS.SSG documentation!
 menuTitle: Home
 menuPriority: 1
 layout: Article
+menuGroup: overview
 ---
 
-## Quickly and easily turn your markdown content into a fast and customizable website.
+<Meta site={site} />
+
+<HeroText text="Quickly and easily turn your markdown content into a fast and customizable website." />
+
+```bash
+yarn add jsssg
+yarn jsssg --serve
+```
 
 JS.SSG is a tool for converting your markdown files into HTML. One of the best things about JS.SSG is that it lets you write your templates in JSX (or vanilla JS, if you prefer) without having to worry about installing or configuring additional build tools. This makes it super easy to create customised and dynamic templates for your website.
 
@@ -34,12 +42,12 @@ The "Getting Started" section of the documentation is designed to guide you thro
         },
         {
             title: "2. Templates",
-            body: "This page shows you how to create your own template files to ",
+            body: "This page shows you how to create templates to customise how your content is displayed.",
             url: "/getting-started-templates"
         },
         {
             title: "3. Assets",
-            body: "This page provides detailed information about how to use and customize the default assets (such as images, CSS, and JavaScript files) that come with JS.SSG.",
+            body: "This page shows you how to manage assets like styles, scripts and images.",
             url: "/getting-started-assets"
         }
     ]}
@@ -47,10 +55,10 @@ The "Getting Started" section of the documentation is designed to guide you thro
 
 Once you have read these pages and have a basic understanding of how JS.SSG works, you can move on to the Advanced Usage page for information about more advanced features of JS.SSG.
 
-## Advanced Usage
+## ~~Advanced Usage~~ (coming soon)
 
 For advanced users, the Advanced Usage page provides information about more advanced features of JS.SSG, such as configuration options, pagination and collections (categories, tags, etc.), and overriding the defualt templates for built-in pages (like the RSS feed and the sitemap).
 
-## Need help?
+## ~~Need help?~~ (coming soon)
 
 If you have any questions or need help using JS.SSG, please visit the Support page for information about how to get in touch with the JS.SSG community.

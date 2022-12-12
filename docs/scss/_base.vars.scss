@@ -1,10 +1,44 @@
 :root {
-    // --type: sans-serif;
-    --type: "Cartograph Sans", sans-serif;
+    // --typeface: "Cartograph Sans", sans-serif;
+    --typeface: "Hanken Grotesk", sans-serif;
     --monospace: "Cartograph Mono", monospace;
     --cream: #efeeeb;
     --grey: #dad8d2;
+    --grey--dark: #3d3d3d;
+    --grey--v-dark: #2d2d2d;
     // --black: #4d4d4d;
     --black: #000000;
-    --white: #ffffff;
+    --white: #d0d0d0;
+
+    --primary: #00b7c6;
+    --primary--dark: #007079;
+    --primary--mid: #42d3e2;
+    // --primary--light: #b5e6e3;
+    --primary--light: #adbac7;
+    --secondary: #ff851b;
+    --orange: #793200;
+    --orange--dark: #c65100;
+
+    --background: var(--black);
+    --background--secondary: #22272e;
+    --text: var(--white);
+    --hairline: var(--grey--v-dark);
+
+    --hljs-github-dark-dimmed-bg: #22272e;
+    --hljs-github-dark-bg: #0d1117;
+    --hljs-github-bg: #ffffff;
+    --hljs-github-dark-dimmed-text: #adbac7;
+    --code-text: var(--hljs-github-dark-dimmed-text);
+    --code-background: var(--hljs-github-dark-dimmed-bg);
+}
+
+::selection {
+    color: var(--black);
+    background: var(--primary);
+}
+a::selection {
+    // color: var(--white);
+    // text-decoration:none;
+    background: var(--secondary);
+    text-shadow: none !important;
 }

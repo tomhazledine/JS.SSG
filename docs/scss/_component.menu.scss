@@ -5,16 +5,37 @@
 
 .menu-item {
     list-style: none;
+    // padding: 0.5em 0.5em 0.5em 1.5em;
+}
+
+.menu-item a {
+    text-decoration: none;
+    display: block;
     padding: 0.5em 0.5em 0.5em 1.5em;
+}
+
+.menu-item:not(.menu-item__current) a:hover {
+    background: var(--background--secondary);
 }
 
 .menu-item__current {
     position: relative;
-    background: var(--grey);
+    background: var(--background--secondary);
 }
+
+.menu-item__current a {
+    color: var(--text);
+}
+
 .menu-item__indicator {
     position: absolute;
-    top: 50%;
+    top: 0;
     left: 0;
-    transform: translateY(-50%);
+    height: 100%;
+    width: 4px;
+    background: var(--primary);
+    // top: 50%;
+    // left: 0.5em;
+    // transform: translateY(-50%);
+    // color: var(--primary)
 }

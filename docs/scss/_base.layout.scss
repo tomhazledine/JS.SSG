@@ -25,6 +25,10 @@
     align-items: stretch;
 }
 
+.cluster--no-gutter {
+    gap: 0;
+}
+
 /* .cluster > * + * {
     margin-left: 1rem;
 } */
@@ -45,10 +49,6 @@
 }
 .cluster--centered-vertically {
     align-items: center;
-}
-
-.cluster--no-gutter {
-    margin: 0;
 }
 .cluster--no-gutter > * {
     margin: 0;

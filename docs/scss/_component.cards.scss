@@ -9,8 +9,13 @@
     position: relative;
     list-style: none;
     padding: 1em;
-    border: 1px solid var(--grey);
+    border: 1px solid var(--primary);
+    border-radius: 2rem;
     width: 100%;
+}
+
+.card > a {
+    text-decoration: none;
 }
 
 .card > a:before {
