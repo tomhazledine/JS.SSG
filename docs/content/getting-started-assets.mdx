@@ -14,11 +14,110 @@ Part 1 covers [working with content](/getting-started-content) and part 2 covers
 
 -   [Overview](#overview)
 -   [Using the Public Folder](#using-the-public-folder)
+-   [Built-in Sass compilation](#built-in-sass-compilation)
+-   [Optimising and re-sizing images](#optimising-and-re-sizing-images)
 
 ## Overview
 
 In steps 1 and 2 we saw how to convert your raw Markdown content into customised HTML using templates. The next thing to learn is how JS.SSG handles **assets** like stylesheets, client-side JS, and images. These are the things that set the look and feel of your finished website.
 
+JS.SSG can help you with [Sass compilation](#built-in-sass-compilation) and [image optimisation](#optimising-and-re-sizing-images), but you don't _have_ to use these features. JS.SSG wants to work with whatever _you're_ happiest using.
+
 ## Using the Public Folder
 
+By default JS.SSG looks for a folder called `/public`. Anything in this folder will be copied into the root of the final build.
+
+This gives you the power to use whatever asset pipeline you like best. As long as the final files are saved into `/public`, you can use webpack, esbuild, whatever!
+
+## Built-in Sass compilation
+
+[Sass](https://sass-lang.com/) is such a common way to pre-compile stylesheets that JS.SSG supports Sass out-of-the-box. Save your `.scss` files into a folder called `/styles`, and JS.SSG will compile those styles into production-ready `.css` files and include them in the final build.
+
+```
+├── styles/
+|   ├── _layout.scss
+|   ├── _typography.scss
+|   └── app.scss
+```
+
+...will be converted into:
+
+```
+├── build/
+|   └── app.css
+```
+
 ## Optimising and re-sizing images
+
+Another common task that JS.SSG does out-of-the-box is image optimisation. JS.SSG uses [Sharp](https://sharp.pixelplumbing.com/) and [SVGO](https://github.com/svg/svgo) to reduce filesizes of your raw images, as well as creating multiple resized versions of raster (`.png`,`.jpg`, etc.) files.
+
+By default JS.SSG look for a folder called `/images` and will process any image files it finds in there.
+
+Images are processed when the `--images` flag is added to the `jsssg` command.
+
+```
+├── images/
+|   └── hero-image.jpg
+```
+
+```bash
+yarn jsssg --images
+```
+
+```
+├── build/
+|   ├── images/
+|   |   ├── hero-image-100.jpg
+|   |   ├── hero-image-200.jpg
+|   |   ├── hero-image-600.jpg
+|   |   └── hero-image.jpg
+```
+
+<Callout title="Images are not created with every build">
+    Processing images is a costly (a.k.a. *slow*) operation, and should only be
+    run when new images have been added to your project. This is why images are
+    **not** processed with every build. `yarn jsssg` *will not* processes your
+    images, but `yarn jsssg --images` will.
+</Callout>
+
+## Example before-and-after folder structure
+
+An example of how the "raw files" might look for a simple JS.SSG site:
+
+```
+.
+├── content/
+|   └── index.mdx
+├── public/
+|   └── favicon.ico
+├── styles/
+|   ├── _module.scss
+|   └── app.scss
+├── images/
+|   └── hero-image.jpg
+├── templates/
+|   └── Main.jsx
+└── package.json
+```
+
+The result of running `yarn jsssg --images` in that folder
+
+```
+├── build/
+|   ├── images/
+|   |   ├── hero-image-100.jpg
+|   |   ├── hero-image-200.jpg
+|   |   ├── hero-image-600.jpg
+|   |   └── hero-image.jpg
+|   ├── app.css
+|   ├── favicon.ico
+|   ├── feed.xml
+|   ├── index.html
+|   └── sitemap.xml
+```
+
+---
+
+## Next steps
+
+Now you've seen how to create a static site with JS.SSG. Customise things even further by exploring the [configuration options](/configuration)
