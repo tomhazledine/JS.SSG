@@ -4,20 +4,137 @@ layout: Article
 menuGroup: advanced
 ---
 
-Before running your first build, you'll need to set some basic configutation for JS.SSG. This should live in `config.json` in the root of your project (as we saw in the [basic starting folder structure](#basic-starting-folder-structure)).
+-   [Overview](#overview)
+-   [Configuration options](#configuration-options)
+-   [Global site data](#global-site-data)
 
-The contents of your `config.json` should look something like this:
+## Overview
+
+JS.SSG allows you to override most of the default settings by using a configuration file: `config.json`
+
+The `config.json` file should live in the root of your project, and is used to both reset default values _and_ save global data about your site.
+
+The contents of your `config.json` could look something like this:
 
 ```json
 {
-    "in": "content",
-    "out": "build",
-    "templates": "templates",
+    "in": "src/content",
+    "out": "dist",
+    "templates": "src/templates",
     "data": {
         "title": "JSSSG Docs",
-        "url": "https://docs.jsssg.com/"
+        "url": "https://jsssg.org/"
     }
 }
+```
+
+## Configuration options
+
+### `in`
+
+This is the path to your [Markdown content](/getting-started-content) files.
+
+Default: `"content"`
+
+### `out`
+
+This is where JS.SSG will save the final output for your site.
+
+Default: `"build"`
+
+### `templates`
+
+The path to your [template files](/getting-started-templates).
+
+Default: `"templates"`
+
+### `images`
+
+The path to your [image files](/getting-started-assets#optimising-and-re-sizing-images).
+
+Default: `"images"`
+
+### `public`
+
+The path to your [public files](/getting-started-assets#using-the-public-folder).
+
+Default: `"public"`
+
+### `styles`
+
+The path to your [Sass files](/getting-started-assets#built-in-sass-compilation).
+
+Default: `false`
+
+### `ignore`
+
+Markdown files that contain this in their path will not be processed by JS.SSG.
+
+Default: `"drafts"`
+
+### `collections`
+
+The taxonomies that JS.SSG will use when creating collections.
+
+Default: `["categories", "tags"]`
+
+### `search`
+
+Boolean value that sets whether or not a `search-data.json` file is created.
+
+Default: `true`
+
+### `searchFields`
+
+An array of the frontmatter fields that will be included in `search-data.json` for each page (in addition to the main content).
+
+Default: `["title"]`
+
+### `rss`
+
+Boolean value that sets whether or not a `feed.xml` file is created.
+
+Default: `true`
+
+### `sitemap`
+
+Boolean value that sets whether or not a `sitemap.xml` file is created.
+
+Default: `true`
+
+### `clean`
+
+Boolean value that sets whether or not the output folder (`/build` by default) is deleted before building the new version.
+
+Default: `false`
+
+## Global site data
+
+The "data" section of `config.json` is reserved for information about your site in general. This data is included in the `site` object that gets passed to all page templates (along with the `content` and `page` values).
+
+The only value included by defualt is `"url"`. `data.url` has a default value of `"http://localhost:8080/"` (or whatever port you've specified in the [command arguments](/commands#--port)) but you should set this to be the final URL where your site will live.
+
+```json
+// config.json
+{
+    "data": {
+        "title": "JS.SSG Docs",
+        "url": "http://jsssg.org/"
+    }
+}
+```
+
+```jsx
+// templates/Page.jsx
+const Page = ({ content, page, site }) => (
+    <html lang="en">
+        <head>
+            <title>{site.title}</title>
+            //...
+        </head>
+        //...
+    </html>
+);
 ```
 
 Unless you declare them, JS.SSG will assume you're using the default values for `in`, `out`, and `templates`, so these are optional in your `config.json`. `data.title` and `data.url` are required, however. `title` is whatever you want to call your site, and `url` should be the URL where your site will eventually live. Don't worry if you don't have a URL yet, you can put in anything here and change it later.

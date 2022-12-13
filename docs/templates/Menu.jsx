@@ -69,7 +69,7 @@ const Menu = ({ pages, current }) => {
         <nav className="menu stack" role="navigation">
             {overviewMarkup}
             {gettingStartedMarkup}
-            {/* {advancedMarkup} */}
+            {advancedMarkup}
         </nav>
     );
 };

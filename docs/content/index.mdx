@@ -10,22 +10,26 @@ menuGroup: overview
 
 <HeroText text="Quickly and easily turn your markdown content into a fast and customizable website." />
 
-```bash
+```
 yarn add jsssg
-yarn jsssg --serve
+yarn jsssg
+
+> Generating static site...
+> Site generated at "/build"
+> ✨  Done in 1.02s.
 ```
 
 JS.SSG is a tool for converting your markdown files into HTML. One of the best things about JS.SSG is that it lets you write your templates in JSX (or vanilla JS, if you prefer) without having to worry about installing or configuring additional build tools. This makes it super easy to create customised and dynamic templates for your website.
 
 ## Highlights
 
--   Templates are "just JavaScript", so you have complete control
--   Use JSX in your templates without any configuration or additional build tools
--   Use components in your templates (after all, it's just JS(X))
--   RSS feed and sitemap are automatically created for you
--   Supports MDX, so you can use components within your content
--   Optimizes and resizes your images for you
--   Flexible taxonomy system to easily use tags, categories, and more
+-   Templates are **"just JavaScript"**, so you have complete control
+-   Use **JSX** in your templates without any configuration or additional build tools
+-   Use **components** in your templates (after all, it's just JS(X))
+-   **RSS** feed and **sitemap** are automatically created for you
+-   Supports **MDX**, so you can use components within your content
+-   Optimizes and resizes your **images** for you
+-   Flexible taxonomy system to easily use **tags**, **categories**, and more
 
 ---
 
@@ -55,10 +59,25 @@ The "Getting Started" section of the documentation is designed to guide you thro
 
 Once you have read these pages and have a basic understanding of how JS.SSG works, you can move on to the Advanced Usage page for information about more advanced features of JS.SSG.
 
-## ~~Advanced Usage~~ (coming soon)
+## Advanced Usage
 
-For advanced users, the Advanced Usage page provides information about more advanced features of JS.SSG, such as configuration options, pagination and collections (categories, tags, etc.), and overriding the defualt templates for built-in pages (like the RSS feed and the sitemap).
+Once you've mastered the basics, these pages provide information about more advanced features of JS.SSG, such as configuration options, pagination and collections (categories, tags, etc.), and overriding the defualt templates for built-in pages (like the RSS feed and the sitemap).
 
-## ~~Need help?~~ (coming soon)
-
-If you have any questions or need help using JS.SSG, please visit the Support page for information about how to get in touch with the JS.SSG community.
+<Cards
+    cards={[
+        {
+            title: "Commands",
+            body: "See all the optional arguments you can add to the basic `jsssg` command.",
+            url: "/commands"
+        },
+        {
+            title: "Configuration",
+            body: "Customise almost any aspect of the build using a `config.json` file.",
+            url: "/configuration"
+        },
+        {
+            title: "And more",
+            body: "coming soon..."
+        }
+    ]}
+/>

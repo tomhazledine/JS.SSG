@@ -1,0 +1,76 @@
+---
+title: Commands
+layout: Article
+menuGroup: advanced
+---
+
+These are the commands that you can use with JS.SSG.
+
+## Basic command
+
+```
+yarn jsssg
+```
+
+Builds a production-ready static site in the [out](/configuration#out) directory (`/build` by default)
+
+## Optional arguments
+
+### `--serve`
+
+Running `yarn jsssg --serve` builds a production-ready static site in the [out](/configuration#out) directory, and serves it locally for preview at [http://localhost:8080/](http://localhost:8080/)
+
+### `--port`
+
+Sets the port that JS.SSG uses to serve the preview of the site.
+
+Running `yarn jsssg --serve --port=1337` builds a production-ready static site in the [out](/configuration#out) directory, and serves it locally for preview at [http://localhost:1337/](http://localhost:1337/)
+
+### `--watch`
+
+Runs a build of the site, and then watches the "content" folder for changes. Rebuilds the site when any content files are changed.
+
+### `--verbose`
+
+Adding `--verbose` to the command will include verbose logging in the console.
+
+Normal console output:
+
+```bash
+$ jsssg
+Generating static site...
+Site generated at "/build"
+✨  Done in 2.63s.
+```
+
+With `--verbose` appended to the command:
+
+```bash
+$ jsssg --verbose
+Generating static site...
+Getting all content file paths...
+ Reading /path/to/content
+found N files
+Parsing frontmatter...
+ Parsing frontmatter for /path/to/file.mdx
+ etc...
+Processing pages...
+Loading templates...
+ Reading /path/to/templates
+Loading vanilla JS templates...
+Loading JSX templates...
+Saving temporary template: /path/to/template.js
+Deleting temporary template: /path/to/template.js
+ Writing RSS feed to /out-path/feed.xml
+ Writing sitemap to /out-path/sitemap.xml
+ Writing sitemap to /out-path/search-data.json
+Getting all public file paths...
+ Reading /path/to/public
+found N files
+ Reading /path/to/styles
+ Writing css to /out-path/app.css
+Site generated at "/build"
+ Writing /out-path/index.html
+ etc...
+✨  Done in 2.36s.
+```
