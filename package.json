@@ -1,11 +1,13 @@
 {
     "private": true,
-    "workspaces": [
-        "docs",
-        "example",
-        "jsssg",
-        "site"
-    ],
+    "workspaces": {
+        "packages": [
+            "docs",
+            "example",
+            "jsssg",
+            "site"
+        ]
+    },
     "scripts": {
         "clean": "rm -rf node_modules && rm -rf jsssg/node_modules && rm -rf site/node_modules && rm -rf jsssg/build && rm -rf site/build",
         "jsssg:build": "yarn workspace jsssg build",
