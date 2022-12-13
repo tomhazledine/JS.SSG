@@ -1,4 +1,6 @@
 @import "base.vars";
+@import "base.breakpoints";
+@import "base.hidden";
 @import "base.fonts";
 @import "base.layout";
 @import "base.general";
@@ -8,6 +10,7 @@
 @import "component.cards";
 @import "component.menu";
 @import "component.meta";
+@import "component.sidebar";
 @import "component.title";
 @import "component.hero-text";
 
@@ -66,30 +69,4 @@ hr {
         box-shadow: var(--background) 0 0 0 8px;
         transform: translate(-50%, -50%) rotate(45deg);
     }
-}
-
-.outer {
-    display: flex;
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    --sidebar-width: 300px;
-}
-
-.sidebar {
-    height: 100vh;
-    width: var(--sidebar-width);
-    flex-shrink: 0;
-    position: fixed;
-    flex-grow: 0;
-    overflow-y: scroll;
-    padding: 1em;
-    border-right: 1px solid var(--hairline);
-}
-
-.main {
-    height: 100%;
-    width: 100%;
-    margin-left: var(--sidebar-width);
-    overflow-y: scroll;
 }

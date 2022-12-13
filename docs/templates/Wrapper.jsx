@@ -25,9 +25,31 @@ const Wrapper = ({ page = {}, site = {}, children }) => (
             <link href="/hljs.github-dark-dimmed.css" rel="stylesheet" />
         </head>
         <body className="outer">
-            <aside className="sidebar stack">
-                <Header title={site.title} />
-                <Menu pages={site.allPages} current={page.url} />
+            <aside className="sidebar">
+                <a href="/" className="sidebar__home-link">
+                    <span className="hidden--visually">{site.title}</span>
+                </a>
+                <input
+                    className="sidebar__menu-checkbox"
+                    type="checkbox"
+                    id="show-menu"
+                />
+                <label className="sidebar__toggle" htmlFor="show-menu">
+                    <span className="hidden--visually">Show Menu</span>
+                </label>
+                <label className="sidebar__mask" htmlFor="show-menu">
+                    <span className="hidden--visually">Hide Menu</span>
+                </label>
+                <div className="sidebar__inner stack">
+                    <Header title={site.title} />
+                    <Menu pages={site.allPages} current={page.url} />
+                    <label
+                        className="sidebar__toggle--inner"
+                        htmlFor="show-menu"
+                    >
+                        <span className="hidden--visually">Hide Menu</span>
+                    </label>
+                </div>
             </aside>
             <main className="main">
                 <div className="container stack">{children}</div>
