@@ -1,17 +1,19 @@
 .hero-text {
-    background-image: linear-gradient(
-        to top left,
-        var(--primary--dark),
-        var(--primary)
-    );
-    -webkit-background-clip: text;
     color: transparent;
     line-height: 1.2;
-    // font-style: italic;
     font-size: 3rem;
     border-left: 4px solid var(--text);
     padding-left: 2rem;
     border-right: 4px solid var(--text);
     padding-right: 2rem;
     font-family: var(--monospace);
+    // font-weight: 600;
+    > p {
+        background-image: linear-gradient(
+            to left,
+            var(--secondary),
+            var(--primary)
+        );
+        background-clip: text;
+    }
 }
