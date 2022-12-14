@@ -57,7 +57,7 @@ export const copyFile = (originalFilePath, newFilePath) => {
 export const saveFile = (filePath, data) => {
     const targetExists = ensureDirectoryExistence(filePath);
     if (targetExists) {
-        fs.writeFileSync(filePath, data);
+        fs.writeFileSync(filePath, data, "utf8");
     }
 };
 

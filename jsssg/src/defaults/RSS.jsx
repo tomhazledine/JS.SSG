@@ -1,5 +1,5 @@
 import moment from "moment";
-import path from "path";
+import { render } from "../markdown.js";
 import { renderMdx } from "../handle-markdown.js";
 
 const formatDate = date => moment(date, "YYYY-MM-DD").utc().format();
@@ -27,10 +27,13 @@ const RSS = ({ site }) => {
             page,
             site
         };
-        const parsedContent = renderMdx(page.markdown, site.templates, scope);
+        const parsedContent =
+            page.type === "mdx"
+                ? renderMdx(page.markdown, site.templates, scope)
+                : render(page.markdown);
         const content = convertHtmlToAbsoluteUrls(parsedContent, site.url);
 
-        const pageUrl = path.join(site.url, page.url);
+        const pageUrl = new URL(page.url, site.url).href;
         const updatedDate = page.frontmatter.date
             ? formatDate(page.frontmatter.date)
             : moment().utc().format();
@@ -53,7 +56,7 @@ const RSS = ({ site }) => {
         <feed xmlns="http://www.w3.org/2005/Atom">
             <title>{site.title}</title>
             <subtitle>{site.summary}</subtitle>
-            <link href={path.join(site.url, "/feed.xml")} rel="self" />
+            <link href={new URL("/feed.xml", site.url).href} rel="self" />
             <link href={site.url} />
             <updated>{updatedDate}</updated>
             <id>{site.url}/</id>
