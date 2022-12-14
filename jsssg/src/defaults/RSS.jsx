@@ -8,6 +8,8 @@ import { renderMdx } from "../handle-markdown.js";
 const formatDate = date => moment(date, "YYYY-MM-DD").utc().format();
 const convertHtmlToAbsoluteUrls = (content, url) =>
     content.replace(/href="\//gi, `href="${url}/`);
+
+const stripSVGs = content => content.replace(/<svg(.*?)\/svg>/gi, "");
 const sortByDate = (a, b) =>
     parseInt(b.frontmatter.date.replace(/-/gi, ""), 10) -
     parseInt(a.frontmatter.date.replace(/-/gi, ""), 10);
@@ -38,12 +40,13 @@ const RSS = ({ site }) => {
             htmlContent,
             site.url
         );
+        const htmlContentWithoutSVG = stripSVGs(htmlContentWithURLs);
 
         const parsedDOM = new DOMParser({
             errorHandler: {
                 warning: () => {}
             }
-        }).parseFromString(htmlContentWithURLs);
+        }).parseFromString(htmlContentWithoutSVG);
         const content = new XMLSerializer({
             errorHandler: {
                 warning: () => {}
