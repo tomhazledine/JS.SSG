@@ -4,6 +4,8 @@
     "templates": "templates",
     "data": {
         "title": "Example site",
-        "url": "https://example-jsssg-site.com/"
+        "url": "https://example-jsssg-site.com/",
+        "author": "Test McTesterson",
+        "authorEmail": "test@example.org"
     }
 }

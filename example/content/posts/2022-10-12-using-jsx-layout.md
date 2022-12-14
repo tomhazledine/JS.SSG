@@ -2,6 +2,7 @@
 permalink: using-jsx-layout
 title: A post that uses a JSX layout
 layout: Article
+date: 2022-10-12
 ---
 
 Do velit mollit labore non ipsum. Lorem voluptate ad adipisicing labore veniam officia elit enim dolore deserunt velit aute ullamco laboris. Velit quis fugiat proident do ullamco aliquip do est dolore adipisicing eiusmod. Dolore magna deserunt elit adipisicing cillum ullamco est Lorem duis mollit culpa qui. Nulla aliquip fugiat eiusmod fugiat in eu quis dolor do mollit dolor. Dolor laboris consequat cupidatat sit ipsum adipisicing tempor voluptate enim.
