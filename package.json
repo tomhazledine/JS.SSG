@@ -1,18 +1,16 @@
 {
     "private": true,
-    "workspaces": {
-        "packages": [
-            "docs",
-            "example",
-            "jsssg",
-            "site"
-        ]
-    },
+    "workspaces": [
+        "docs",
+        "example",
+        "jsssg",
+        "site"
+    ],
     "scripts": {
         "clean": "rm -rf node_modules && rm -rf jsssg/node_modules && rm -rf docs/node_modules && rm -rf jsssg/build && rm -rf docs/build",
         "jsssg:build": "yarn workspace jsssg build",
         "docs:build": "yarn workspace docs build",
-        "docs:publish": "yarn workspace docs netlify deploy --dir=build -prod",
+        "docs:publish": "yarn workspace docs netlify deploy --dir=build --prod",
         "docs:dev": "yarn workspace docs dev",
         "example:build": "yarn workspace example build",
         "example:deploy": "yarn jsssg:build && yarn example:build",

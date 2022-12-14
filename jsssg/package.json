@@ -13,6 +13,8 @@
     "license": "ISC",
     "dependencies": {
         "@mdx-js/runtime": "^1.6.22",
+        "autoprefixer": "^10.4.13",
+        "cssnano": "^5.1.14",
         "esbuild": "^0.15.14",
         "markdown-it": "^13.0.1",
         "markdown-it-anchor": "^8.6.5",
@@ -22,6 +24,7 @@
         "markdown-it-implicit-figures": "^0.10.0",
         "node-static": "^0.7.11",
         "node-watch": "^0.7.3",
+        "postcss": "^8.4.20",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "rehype-highlight": "^6.0.0",
