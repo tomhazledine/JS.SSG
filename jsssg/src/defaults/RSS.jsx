@@ -71,7 +71,7 @@ const RSS = ({ site }) => {
     return (
         <feed xmlns="http://www.w3.org/2005/Atom">
             <title>{site.title}</title>
-            <generator uri="https://jsssg.org/" version="0.1.8">
+            <generator uri="https://jsssg.org/" version="0.1.9">
                 JS.SSG
             </generator>
             <subtitle>{site.summary}</subtitle>
