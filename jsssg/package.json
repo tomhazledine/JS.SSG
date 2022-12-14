@@ -1,6 +1,6 @@
 {
     "name": "jsssg",
-    "version": "0.1.6",
+    "version": "0.1.7",
     "description": "An opinionated static site generator built with JavaScript",
     "main": "./build/index.js",
     "devDependencies": {},
@@ -9,8 +9,32 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "build": "esbuild src/index.js --bundle --outfile=build/index.js --platform=node --loader:.js=jsx --jsx=automatic --external:esbuild --external:sharp"
     },
-    "author": "",
-    "license": "ISC",
+    "author": {
+        "name": "Tom Hazledine",
+        "email": "tom@tomhazledine.com",
+        "url": "https://tomhazledine.com/"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/tomhazledine/JS.SSG.git"
+    },
+    "bugs": "https://github.com/tomhazledine/JS.SSG/issues",
+    "homepage": "https://jsssg.org/",
+    "license": "MIT",
+    "keywords": [
+        "static-site-generator",
+        "static-site",
+        "ssg",
+        "documentation",
+        "website",
+        "blog",
+        "templates",
+        "generator",
+        "html",
+        "markdown",
+        "mdx",
+        "jsx"
+    ],
     "dependencies": {
         "@mdx-js/runtime": "^1.6.22",
         "autoprefixer": "^10.4.13",
