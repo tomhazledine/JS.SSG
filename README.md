@@ -2,7 +2,7 @@
 
 A "just the way I like it" static site generator built with Node.js
 
-Docs can be found at [./ssg/README.md](./ssg/README.md)
+Docs can be found at [jsssg.org](<[./ssg/README.md](https://jsssg.org/)>)
 
 ## Roadmap
 
@@ -20,8 +20,8 @@ Docs can be found at [./ssg/README.md](./ssg/README.md)
 -   [x] Group pages internally ("categories","tags", etc.)
 -   [~] ~~In-markdown includes~~ handled by MDX components
 -   [x] Pagination between pages (based on grouping)
--   [ ] Built-in image optimisation (optional)
--   [ ] Built-in css/scss handling (optional)
+-   [x] Built-in image optimisation (optional)
+-   [x] Built-in css/scss handling (optional)
 -   [ ] Built-in JS pipeline (optional)
 -   [ ] Generate a search index
 -   [x] Sitemap xml file
@@ -31,13 +31,13 @@ Docs can be found at [./ssg/README.md](./ssg/README.md)
 -   [ ] Default theme
 -   [x] Build pipeline for SSG itself (webpack? raw Babel? Something else?)
 -   [ ] Short demo video on YouTube
--   [ ] Code block highlighting
+-   [x] Code block highlighting
 -   [ ] Documentation site
-    -   [ ] url?
-    -   [ ] theme
-    -   [ ] Getting Started
+    -   [x] url?
+    -   [x] theme
+    -   [x] Getting Started
     -   [ ] Using Templates (JS and JSX)
     -   [ ] Using Markdown and MDX
     -   [ ] Custom Taxonomies
     -   [ ] Pagination
-    -   [ ] Config
+    -   [x] Config
