@@ -5,8 +5,9 @@
         "url": "https://docs.jsssg.com/",
         "latest": {
             "version": "0.1.3",
-            "released": "2022-12-11",
-            "github": "https://github.com/tomhazledine/SSG/tree/main/jsssg"
+            "released": "2022-12-14",
+            "github": "https://github.com/tomhazledine/SSG/tree/main/jsssg",
+            "npm": "https://www.npmjs.com/package/jsssg"
         }
     }
 }

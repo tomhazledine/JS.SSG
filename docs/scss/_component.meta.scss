@@ -2,16 +2,19 @@
     margin-left: auto;
     margin-right: auto;
     padding: 0;
+    @include bp(d2) {
+        display: block;
+    }
 }
 
 .meta li {
     list-style: none;
     display: inline-block;
-    padding: 0.5em 2rem;
+    padding: 0.5rem 2rem;
     border: 1px solid var(--grey--dark);
     background: var(--background--secondary);
     + li {
-        border-left: 0;
+        border-left-width: 0;
         // border-left: 1px solid var(--black);
     }
     &:first-of-type {
@@ -23,6 +26,26 @@
     a {
         text-decoration: none;
     }
+    @include bp(d2) {
+        width: 100%;
+        border-radius: 2rem;
+        + li {
+            margin-top: 1rem;
+            border-left-width: 1px;
+        }
+        &:first-of-type,
+        &:last-of-type {
+            border-radius: 2rem;
+        }
+    }
+}
+
+.meta__key {
+    font-style: italic;
+}
+
+.meta__value {
+    font-family: var(--monospace);
 }
 
 .meta__version {

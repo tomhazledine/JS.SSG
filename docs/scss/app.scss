@@ -21,6 +21,9 @@
     padding: 1em;
     padding-top: 6em;
     padding-bottom: 10em;
+    @include bp(d1) {
+        padding-top: 1em;
+    }
 }
 
 // hr {

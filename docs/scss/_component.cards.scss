@@ -3,6 +3,9 @@
     padding-right: 0;
     margin-left: 0;
     margin-right: 0;
+    @include bp(d1) {
+        flex-wrap: wrap;
+    }
 }
 
 .card {
@@ -12,6 +15,7 @@
     border: 1px solid var(--primary);
     border-radius: 2rem;
     width: 100%;
+    flex-shrink: 1;
 }
 
 .card > a {
