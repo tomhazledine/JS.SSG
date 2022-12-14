@@ -1,4 +1,6 @@
 import moment from "moment";
+import { DOMParser, XMLSerializer } from "xmldom";
+
 import { render } from "../markdown.js";
 import { renderMdx } from "../handle-markdown.js";
 
@@ -27,11 +29,25 @@ const RSS = ({ site }) => {
             page,
             site
         };
-        const parsedContent =
+        const htmlContent =
             page.type === "mdx"
                 ? renderMdx(page.markdown, site.templates, scope)
                 : render(page.markdown);
-        const content = convertHtmlToAbsoluteUrls(parsedContent, site.url);
+        const htmlContentWithURLs = convertHtmlToAbsoluteUrls(
+            htmlContent,
+            site.url
+        );
+
+        const parsedDOM = new DOMParser({
+            errorHandler: {
+                warning: () => {}
+            }
+        }).parseFromString(htmlContentWithURLs);
+        const content = new XMLSerializer({
+            errorHandler: {
+                warning: () => {}
+            }
+        }).serializeToString(parsedDOM);
 
         const pageUrl = new URL(page.url, site.url).href;
         const updatedDate = page.frontmatter.date
@@ -55,6 +71,9 @@ const RSS = ({ site }) => {
     return (
         <feed xmlns="http://www.w3.org/2005/Atom">
             <title>{site.title}</title>
+            <generator uri="https://jsssg.org/" version="0.1.8">
+                JS.SSG
+            </generator>
             <subtitle>{site.summary}</subtitle>
             <link href={new URL("/feed.xml", site.url).href} rel="self" />
             <link href={site.url} />
