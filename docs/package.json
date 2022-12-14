@@ -14,7 +14,7 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "jsssg": "0.1.4",
+        "jsssg": "0.1.6",
         "moment": "^2.29.4",
         "netlify-cli": "^12.2.10"
     }
