@@ -19,11 +19,11 @@ export const build = async ({ PATHS, config, args }) => {
         allFiles.map(async filePath => await processFile(filePath, PATHS))
     );
 
-    if (args.verbose) console.log("Processing pages...");
-    const site = parseSiteData(config, fileData);
-
     if (args.verbose) console.log("Loading templates...");
     const templates = await getTemplates(PATHS.TEMPLATES);
+
+    if (args.verbose) console.log("Processing pages...");
+    const site = { ...parseSiteData(config, fileData), templates };
 
     fileData.forEach(file =>
         handleFileBuild({

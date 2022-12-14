@@ -11,12 +11,14 @@ import { log } from "./console.js";
 import { exit } from "./exit.js";
 import { images } from "./images.js";
 import { render } from "./markdown.js";
+import { renderMdx } from "./handle-markdown.js";
 import { server } from "./server.js";
 import { initWatch } from "./watch.js";
 
 export const args = parseArgs(process.argv);
 export const config = getConfig(args);
 export const markdown = render;
+export const mdx = renderMdx;
 
 const PATHS = {
     IN: path.resolve(".", `./${config.in}`),

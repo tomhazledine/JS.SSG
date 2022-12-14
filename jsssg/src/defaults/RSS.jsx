@@ -1,7 +1,6 @@
 import moment from "moment";
 import path from "path";
-import { render as markdown } from "../markdown.js";
-import { escapeHTML } from "../utils.js";
+import { renderMdx } from "../handle-markdown.js";
 
 const formatDate = date => moment(date, "YYYY-MM-DD").utc().format();
 const convertHtmlToAbsoluteUrls = (content, url) =>
@@ -24,7 +23,11 @@ const RSS = ({ site }) => {
     const updatedDate = formatDate(newestDate);
 
     const postsMarkup = posts.map(page => {
-        const parsedContent = markdown(page.markdown);
+        const scope = {
+            page,
+            site
+        };
+        const parsedContent = renderMdx(page.markdown, site.templates, scope);
         const content = convertHtmlToAbsoluteUrls(parsedContent, site.url);
 
         const pageUrl = path.join(site.url, page.url);
@@ -38,7 +41,10 @@ const RSS = ({ site }) => {
                 <link href={pageUrl} />
                 <updated>{updatedDate}</updated>
                 <id>{pageUrl}</id>
-                <content type="html">{escapeHTML(content)}</content>
+                <content
+                    type="html"
+                    dangerouslySetInnerHTML={{ __html: content }}
+                />
             </entry>
         );
     });
