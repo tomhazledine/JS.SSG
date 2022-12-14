@@ -1,9 +1,11 @@
+import { version } from "jsssg";
+
 const Meta = ({ site }) => {
     return (
         <ul className="meta cluster cluster--no-gutter">
             <li className="meta__version">
                 <span className="meta__key">Version:</span>{" "}
-                <span className="meta__value">{site.latest.version}</span>
+                <span className="meta__value">{version}</span>
             </li>
             <li className="meta__release-date">
                 <span className="meta__key">Released:</span>{" "}
