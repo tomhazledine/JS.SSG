@@ -1,6 +1,7 @@
 import moment from "moment";
 import { DOMParser, XMLSerializer } from "xmldom";
 
+import jsssgPackage from "../../package.json" assert { type: "json" };
 import { render } from "../markdown.js";
 import { renderMdx } from "../handle-markdown.js";
 
@@ -71,7 +72,7 @@ const RSS = ({ site }) => {
     return (
         <feed xmlns="http://www.w3.org/2005/Atom">
             <title>{site.title}</title>
-            <generator uri="https://jsssg.org/" version="0.1.9">
+            <generator uri="https://jsssg.org/" version={jsssgPackage.version}>
                 JS.SSG
             </generator>
             <subtitle>{site.summary}</subtitle>
