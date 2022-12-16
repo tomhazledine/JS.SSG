@@ -64,10 +64,7 @@ const RSS = ({ site }) => {
                 <link href={pageUrl} />
                 <updated>{updatedDate}</updated>
                 <id>{pageUrl}</id>
-                <content
-                    type="html"
-                    dangerouslySetInnerHTML={{ __html: content }}
-                />
+                <content type="html">{content}</content>
             </entry>
         );
     });
