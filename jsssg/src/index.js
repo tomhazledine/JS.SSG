@@ -29,7 +29,7 @@ const PATHS = {
     OUT: path.resolve(".", `./${config.out}`),
     IMAGES: path.resolve(".", `./${config.images}`),
     IGNORE: path.resolve(".", `./${config.in}/${config.ignore}`),
-    STYLES: path.resolve(".", `./${config.styles}`)
+    STYLES: config.styles ? path.resolve(".", `./${config.styles}`) : false
 };
 
 console.log("Generating static site...");

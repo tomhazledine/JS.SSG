@@ -9,11 +9,12 @@ export const initWatch = (PATHS, build, config, buildParams) => {
     };
 
     const pathsToWatch = [
-        PATHS.IN,
-        PATHS.STYLES
+        PATHS.IN
         // PATHS.TEMPLATES
     ];
 
-    console.log(`Watching for changes on "${config.in}"`);
+    if (PATHS.STYLES) pathsToWatch.push(PATHS.STYLES);
+
+    console.log(`Watching for changes on ${pathsToWatch.join(" & ")}`);
     watch(pathsToWatch, { recursive: true }, changed);
 };
