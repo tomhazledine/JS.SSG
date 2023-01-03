@@ -1,4 +1,5 @@
 import Header from "./Header.js";
+import Footer from "./Footer.js";
 import Menu from "./Menu.js";
 
 const Wrapper = ({ page = {}, site = {}, children }) => (
@@ -54,6 +55,7 @@ const Wrapper = ({ page = {}, site = {}, children }) => (
             <main className="main">
                 <div className="container stack">{children}</div>
             </main>
+            <Footer />
         </body>
     </html>
 );
