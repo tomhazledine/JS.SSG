@@ -3516,6 +3516,14 @@ esbuild-sunos-64@0.15.14:
   resolved "https://registry.yarnpkg.com/esbuild-sunos-64/-/esbuild-sunos-64-0.15.14.tgz#29b0b20de6fe6ef50f9fbe533ec20dc4b595f9aa"
   integrity sha512-DNVjSp/BY4IfwtdUAvWGIDaIjJXY5KI4uD82+15v6k/w7px9dnaDaJJ2R6Mu+KCgr5oklmFc0KjBjh311Gxl9Q==
 
+esbuild-visualizer@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/esbuild-visualizer/-/esbuild-visualizer-0.4.0.tgz#61e57302ee051faa79281daf741a517dbdf64154"
+  integrity sha512-Sa1nXTxAPasvsyYKx/LVLgFy9CUY9rC4wGCkxjhB9+oL3bTYAlqAo2TcWaGS01T/KwG5qGOfyFWLTjjfokaAEA==
+  dependencies:
+    open "^8.4.0"
+    yargs "^17.6.2"
+
 esbuild-windows-32@0.15.14:
   version "0.15.14"
   resolved "https://registry.yarnpkg.com/esbuild-windows-32/-/esbuild-windows-32-0.15.14.tgz#05e9b159d664809f7a4a8a68ed048d193457b27d"
@@ -7026,7 +7034,7 @@ onetime@^6.0.0:
   dependencies:
     mimic-fn "^4.0.0"
 
-open@^8.0.4:
+open@^8.0.4, open@^8.4.0:
   version "8.4.0"
   resolved "https://registry.npmjs.org/open/-/open-8.4.0.tgz"
   integrity sha512-XgFPPM+B28FtCCgSb9I+s9szOC1vZRSwgWsRUA5ylIxRTgKozqjOCrVOqGsYABPYK5qnfqClxZTFBa8PKt2v6Q==
@@ -10006,7 +10014,7 @@ yargs-parser@^21.1.1:
   resolved "https://registry.npmjs.org/yargs-parser/-/yargs-parser-21.1.1.tgz"
   integrity sha512-tVpsJW7DdjecAiFpbIB1e3qxIQsE6NoPc5/eTdrbbIC4h0LVsWhnoa3g+m2HclBIujHzsxZ4VJVA+GUuc2/LBw==
 
-yargs@^17.0.0, yargs@^17.6.0:
+yargs@^17.0.0, yargs@^17.6.0, yargs@^17.6.2:
   version "17.6.2"
   resolved "https://registry.npmjs.org/yargs/-/yargs-17.6.2.tgz"
   integrity sha512-1/9UrdHjDZc0eOU0HxOHoS78C69UD3JRMvzlJ7S79S2nTaWRA/whGCTV8o9e/N/1Va9YIV7Q4sOxD8VV4pCWOw==
