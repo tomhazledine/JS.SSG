@@ -1,4 +1,10 @@
+.DS_Store
 build/
 node_modules/
+
 # Local Netlify folder
 .netlify
+
+# esbuild analysis output
+jsssg/esbuild
+jsssg/stats.html

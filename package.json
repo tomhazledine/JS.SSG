@@ -9,6 +9,8 @@
     "scripts": {
         "clean": "rm -rf node_modules && rm -rf jsssg/node_modules && rm -rf docs/node_modules && rm -rf jsssg/build && rm -rf docs/build",
         "jsssg:build": "yarn workspace jsssg build",
+        "jsssg:analyse": "yarn workspace jsssg analyse",
+        "jsssg:visualise": "yarn workspace jsssg visualise",
         "docs:build": "yarn workspace docs build",
         "docs:publish": "yarn workspace docs netlify deploy --dir=build --prod",
         "docs:dev": "yarn workspace docs dev",
