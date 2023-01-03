@@ -23,6 +23,8 @@ const Wrapper = ({ page = {}, site = {}, children }) => (
                 rel="stylesheet"
             />
             <link href="/hljs.github-dark-dimmed.css" rel="stylesheet" />
+            <link rel="shortcut icon" href="/favicon.png" />
+            <link rel="shortcut icon" href="/favicon.ico" />
         </head>
         <body className="outer">
             <aside className="sidebar">
