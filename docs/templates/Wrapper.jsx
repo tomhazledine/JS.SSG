@@ -45,7 +45,20 @@ const Wrapper = ({ page = {}, site = {}, children }) => (
                 </label>
                 <div className="sidebar__inner stack">
                     <Header title={site.title} />
-                    <Menu pages={site.allPages} current={page.url} />
+                    <Menu
+                        pages={site.allPages}
+                        sections={[
+                            { slug: "overview", label: "Overview" },
+                            {
+                                slug: "getting_started",
+                                label: "Getting Started"
+                            },
+                            { slug: "features", label: "Features" },
+                            { slug: "examples", label: "Code Examples" },
+                            { slug: "advanced", label: "Advanced" }
+                        ]}
+                        current={page.url}
+                    />
                     <label
                         className="sidebar__toggle--inner"
                         htmlFor="show-menu"
