@@ -1,0 +1,164 @@
+---
+title: Write templates in JSX without needing to ship any JS to production
+menuTitle: JSX Templates
+layout: Article
+menuGroup: features
+menuPriority: 1
+---
+
+1. [What is a template?](#what-is-a-template)
+2. [Why does JS.SSG support JSX?](#why-does-jsssg-support-jsx)
+3. [Creating (and naming) new templates](#creating-and-naming-new-templates)
+4. [Layouts vs. Components](#layouts-vs-components)
+5. [Layouts](#layouts)
+6. [Components](#components)
+
+## What is a template?
+
+Templates are the files that tell JS.SSG exactly how to convert your content into HTML. At their simplest, JS.SSG templates are component functions that accept content as props and return a string of HTML.
+
+In this example, the `Callout` component accepts `title` and `message` props, and renders that data within a `<div>` with a class of `"callout"`:
+
+```jsx
+// Callout.jsx
+export default ({ title, message }) => (
+    <div className="callout">
+        <h1>{title}</h1>
+        <p>{message}</p>
+    </div>
+);
+```
+
+## Why does JS.SSG support JSX?
+
+<HeroText text="Perhaps _the_ biggest selling point for JS.SSG is the ability to write your site templates using JSX **without** needing to include any framework code in your production build." />
+
+The templating language an SSG uses is a key factor in how it _feels_ to use as a developer. JS.SSG was created primarily beacuse of this:
+
+1. If you're acustomed to writing JSX, then the common SSG templating languages (Liquid, Nunjucks, Handlebars, etc.) can feel clunky (ugly, even?) in comparison.
+2. Static site generators that _do_ support JSX templates usually include the rest of the framework too (either React or Preact, for example) - making their final builds over-powered when all you wanted was a content site.
+
+You should be able to write your templates in JSX and have your SSG create pure HTML files as the only output. **This is JS.SSG's main job.**
+
+<Callout>
+    JS.SSG can, of course, include all the JavaScript you want in your final
+    site. Sites generated with JS.SSG can be as dynamic and full-featured as you
+    like. But they are not Single Page Apps - they are websites, with all the
+    routing handled by good ol' fashioned HTML files. See the page on [asset
+    handling](/getting-started-assets) for more details about including JS in
+    your final build.
+</Callout>
+
+## Creating (and naming) new templates
+
+JS.SSG templates live in the templates folder in the root of your project. This is `/templates`, unless you're using a [custom template config](/configuration/#templates). _Note that you **can** nest sub-folders of templates within the templates directory_
+
+The name of the file is the name of the template. By convention these are PascalCased to conform with the fact that they are "just" JSX components. If you want to use the template within another template, import it in the same way as any other JS function. In this example, the `HomeLink` component is imported into the `Header.jsx` template file:
+
+```jsx
+// Header.jsx
+import HomeLink from "/HomeLink.js";
+
+export default ({ page, site }) => (
+    <header>
+        <h1>{page.title}</h1>
+        <HomeLink url={site.url} title={site.title} />
+    </header>
+);
+```
+
+### Write templates with `.jsx` file extension, but import them with `.js`.
+
+Due to the way JS.SSG transpiles templates, we need to import them as `.js` files even though they are written as `.jsx`:
+
+If your templates folder looks like this:
+
+```
+├── templates/
+|   ├── Header.jsx
+|   └── HomeLink.jsx
+```
+
+You need to import `HomeLink` like this: `import HomeLink from "/HomeLink.js";`
+
+## Layouts vs. Components
+
+All JS.SSG template files are components that can be used throughout your code: either within other template files or inside MDX content files (learn more about [using MDX with JS.SSG](/feature-mdx)). There are, however, two distinct types of template: "layouts" and "components".
+
+### Layouts
+
+**Layouts** are used for full pages and are applied to a page in the markdown frontmatter using the `layout` value. For example, `layout: Article` means that the content in that markdown file will be rendered to HTML using the `/templates/Article.jsx` layout.
+
+Layout templates always have access to the same three props: `content`, `page`, and `site`:
+
+-   `content`: this is the content of the page. It has already been converted to HTML from raw markdown (including any MDX components if they have been used in the page).
+-   `page` - an object containing all the frontmatter from the Markdown file for the specific page that is being rendered.
+-   `site` - an object containing metadata about the site as a whole (root url, site title, etc.). See the [page about global site data configuration](configuration/#global-site-data) for more detail about how to add data to the `site` object.
+
+Because layout templates are intented to contain an entire page of HTML, they should include the HTML tags required for a full web page (`<html>`, `<body>`, etc.). You can, of course, break these out into separate component files to keep your code neater (e.g. `<Header>`,`<Menu>`, etc...).
+
+```jsx
+// ExampleLayout.jsx
+export default ({ content, page, site }) => {
+    return (
+        <html lang="en">
+            <body>
+                <header>
+                    <a href={site.url}>{site.title}</a>
+                </header>
+                <h1>{page.title}</h1>
+                <div dangerouslySetInnerHTML={{ __html: content }} />
+            </body>
+        </html>
+    );
+};
+```
+
+<Callout title="You do not need to add the DOCTYPE">
+    By default JSX makes it hard to add a `!DOCTYPE` declaration to the top of a
+    page, so JS.SSG adds that for you automatically. You don't need to include
+    it in JSX templates.
+</Callout>
+
+<Callout title="Why do we need to use `dangerouslySetInnerHTML`?">
+    The page's markdown has already been converted to HTML before being passed
+    as `content` to the template, so wrapping it in `dangerouslySetInnerHTML`
+    ensures that HTML is rendered correctly in the final file.
+</Callout>
+
+### Components
+
+Component templates are very similar to layout templates, but with a few crucial differences.
+
+**No default props.** Layout templates are always intialised with predefined props (`{content, page, site}`), but components are intended to be used _ad hoc_ so they do not have any pre set properties. The only props available are ones that you explicitly define when creating the component.
+
+In this simplfied example, a `HomeLink` component is created and then imported into a `Header` component where it is used.
+
+```
+├── templates/
+|   ├── Header.jsx
+|   └── HomeLink.jsx
+```
+
+```jsx
+// HomeLink.jsx
+export default ({ url, title }) => (
+    <a href={url} className="home-link">
+        {title}
+    </a>
+);
+```
+
+```jsx
+// Header.jsx
+import HomeLink from "/HomeLink.js";
+
+export default ({ page, site }) => (
+    <header>
+        <h1>{page.title}</h1>
+        <HomeLink url={site.url} title={site.title} />
+    </header>
+);
+```
+
+Components can also be used inside MDX content files. Learn more about that on the [MDX Content](/feature-mdx) page.
