@@ -2,7 +2,7 @@ import { markdown } from "jsssg";
 
 import { slugify } from "../utils/helpers.js";
 
-const Callout = ({ title, children }) => {
+export default ({ title, children }) => {
     return (
         <div
             className="callout stack--small"
@@ -18,5 +18,3 @@ const Callout = ({ title, children }) => {
         </div>
     );
 };
-
-export default Callout;
