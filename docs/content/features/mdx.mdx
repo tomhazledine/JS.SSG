@@ -1,0 +1,101 @@
+---
+title: MDX content files
+menuTitle: MDX content
+layout: Article
+menuGroup: features
+---
+
+<Callout
+    title={`Limited (but useful) support as of version ${site.latest.version}`}
+>
+    JS.SSG currently supports a *limited* set of MDX features, outlined below.
+</Callout>
+
+JS.SSG supports content provided with `.mdx` files.
+
+-   [✅ Components](#components-)
+-   [✅ JS expressions](#js-expressions-)
+-   [⚠️ `export` and `import` for components](#export-and-import-for-components-️)
+-   [⚠️ Inline JS expressions](#inline-js-expressions-️)
+
+## MDX features available in JS.SSG
+
+### Components ✅
+
+You can use any component from the `/templates` directory directly inside an MDX file (without needing to `import` anything).
+
+For example, given this folder structure with a `Callout` component file and a `blog-post` MDX file:
+
+```
+├── content/
+|   └── blog-post.mdx
+├── templates/
+|   └── Callout.jsx
+```
+
+We could then use the `Callout` component within our `blog-post` file:
+
+```
+---
+title: My First Blog Post
+---
+
+Welcome to my first blog post! This is a placeholder post that I've created to demonstrate the structure of a markdown file.
+
+<Callout title="Something important">
+    This section is important, so I want to call it out in a distinctive style.
+</Callout>
+
+I can write as much or as little as I want here. I can use markdown formatting to make my text bold, italic, or create links.
+```
+
+### JS expressions ✅
+
+When writing markup within a markdown file you can use inline JavaScript.
+
+For example, including this snippet in your file:
+
+```jsx
+<h2 style={{ background: "red" }}>{`testing ${new Date().getFullYear()}`}</p>
+```
+
+will result in this output:
+
+<h2 style={{ background: "red" }}>{`testing ${new Date().getFullYear()}`}</h2>
+
+<Callout title="In MDX use JSX markup syntax">
+    {
+        'Because JS.SSG treats MDX file contents as JSX, remember to use JSX syntax when you write inline markup. For example, use `<h2 style={{ fontSize: "2em" }}>` rather than `<h2 style="font-size: 2em;">`'
+    }
+</Callout>
+
+Inline expressions (i.e. those not contained in JSX markup) are [not supported](#inline-js-expressions-️)
+
+---
+
+## Not supported
+
+### `export` and `import` for components ⚠️
+
+You cannot directly import components or declare components within an MDX file. You can, however, [use any components from the `/templates` directory](#components) without needing to import them
+
+### Inline JS expressions ⚠️
+
+Currently MDX JS expressions created inline within text using braces (`{}`) will not be evaluated. They will just be reproduced as-in in the final output.
+
+```
+---
+title: My First Blog Post
+---
+
+Welcome to my {page.title} This is a placeholder post that I've created to demonstrate the structure of a markdown file.
+```
+
+Will render as:
+
+```html
+<p>
+    Welcome to my {page.title} This is a placeholder post that I've created to
+    demonstrate the structure of a markdown file.
+</p>
+```
