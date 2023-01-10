@@ -1,0 +1,89 @@
+---
+permalink: example-master-layout
+title: "Code example: creating a master layout"
+menuTitle: Master Layout
+layout: Article
+menuGroup: examples
+---
+
+A very common practice when working with templates is to create a _master_ (or _main_ or _wrapper_) template that contains all the parts of your site that are repeated on every page. If every layout on your site includes a Header and Footer, you don't need to rewrite those for every template file.
+
+When using JS.SSG, you can achieve this by creating a template file that can wrap around the content within other layouts. If you've ever writen a React component that has "children", you'll recognize this concept.
+
+For this example, we'll create several template files: a `Header` component to generate a reusable header for every page, a `Master` template to serve as the "wrapper", and two layouts (`Home` and `Post`).
+
+```
+├── templates/
+|   ├── Header.jsx
+|   ├── Home.jsx
+|   ├── Master.jsx
+|   └── Post.jsx
+```
+
+## The "master" layout template
+
+The thing that make this work is the `children` prop that is passed into the component function. You can include any properties you like here (we're using `site` in this example), but "children" is a special keyword that allows us to wrap other components with this component.
+
+```jsx
+// Master.jsx
+import Header from "./Header.js";
+
+export default ({ site, children }) => (
+    <html lang="en">
+        <head>
+            <meta charSet="UTF-8" />
+            <title>{site.title}</title>
+        </head>
+        <body className="outer">
+            <Header title={site.title} />
+            <main className="main">
+                <div className="container">{children}</div>
+            </main>
+        </body>
+    </html>
+);
+```
+
+## Using the master layout within other layout files
+
+Now we can use the `Master` component within our `Home` and `Post` layout files.
+
+<Callout>
+    Don't forget that any template that is used as a page layout accepts three
+    props: `content`, `page`, and `site`. More detail about layout components
+    can be found on the [JSX Templates](/feature-jsx-templates) page.
+</Callout>
+
+```jsx
+// Post.jsx
+import Master from "./Master.js";
+
+export default ({ content, page, site }) => (
+    <Master site={site}>
+        <h1>{page.title}</h1>
+        <div dangerouslySetInnerHTML={{ __html: content }} />
+    </Master>
+);
+```
+
+```jsx
+// Home.jsx
+import Master from "./Master.js";
+
+export default ({ content, page, site }) => (
+    <Master site={site}>
+        <h1>{site.title}</h1>
+        <img
+            className="hero-image"
+            src={page.frontmatter.image}
+            alt={page.frontmatter.imageAlt}
+        />
+        <div
+            className="home-content"
+            dangerouslySetInnerHTML={{ __html: content }}
+        />
+    </Master>
+);
+```
+
+Now we have two layouts (`Home` and `Post`) that we can use in our content pages' frontmatter. Both of these layouts share the same header component and outer HTML structure, but can be customised for their specific use cases.
