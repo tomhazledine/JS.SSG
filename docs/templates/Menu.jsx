@@ -9,7 +9,7 @@ const parseMenu = (pages, filter, current) =>
         }))
         .sort((a, b) => a.priority - b.priority);
 
-const buildMenu = (items, title = false) => {
+const MenuSection = ({ items, title = false }) => {
     const itemsMarkup = items.map(page => (
         <li
             key={`menu_${page.url}`}
@@ -27,49 +27,25 @@ const buildMenu = (items, title = false) => {
     );
 };
 
-const Menu = ({ pages, current }) => {
-    const gettingStartedItems = parseMenu(
-        pages,
-        page => page.frontmatter.menuGroup === "getting_started",
-        current
-    );
-
-    const advancedItems = parseMenu(
-        pages,
-        page => page.frontmatter.menuGroup === "advanced",
-        current
-    );
-
-    const overviewItems = parseMenu(
-        pages,
-        page => page.frontmatter.menuGroup === "overview",
-        current
-    );
-
-    const otherItems = parseMenu(
-        pages,
-        page =>
-            page.frontmatter.menuGroup !== "getting_started" &&
-            page.frontmatter.menuGroup !== "advanced",
-        current
-    );
-
-    const gettingStartedMarkup = buildMenu(
-        gettingStartedItems,
-        "Getting Started"
-    );
-
-    const advancedMarkup = buildMenu(advancedItems, "Advanced");
-
-    const overviewMarkup = buildMenu(overviewItems, "Overview");
-
-    const itemsMarkup = buildMenu(otherItems);
+const Menu = ({ pages, sections, current }) => {
+    const sectionMarkup = sections.map(section => {
+        const items = parseMenu(
+            pages,
+            page => page.frontmatter.menuGroup === section.slug,
+            current
+        );
+        return (
+            <MenuSection
+                key={`menu_section_${section.slug}`}
+                items={items}
+                title={section.label}
+            />
+        );
+    });
 
     return (
         <nav className="menu stack" role="navigation">
-            {overviewMarkup}
-            {gettingStartedMarkup}
-            {advancedMarkup}
+            {sectionMarkup}
         </nav>
     );
 };

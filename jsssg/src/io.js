@@ -91,7 +91,7 @@ export const buildPagePaths = (filePath, permalink, PATHS) => {
         "/"
     );
     return {
-        url: relativePath.replace("/index.html", "/"),
+        url: path.join("/", relativePath.replace("/index.html", "/")),
         filePath: path.join(PATHS.OUT, relativePath)
     };
 };

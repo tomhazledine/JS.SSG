@@ -15,5 +15,10 @@
             var(--primary)
         );
         background-clip: text;
+        strong {
+            color: var(--white);
+            // background-image: none;
+            // background-clip: initial;
+        }
     }
 }

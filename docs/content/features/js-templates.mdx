@@ -1,0 +1,120 @@
+---
+permalink: feature-js-templates
+title: JS Templates
+menuPriority: 2
+layout: Article
+menuGroup: features
+---
+
+1. [What is a template?](#what-is-a-template)
+2. [Creating (and naming) new templates](#creating-and-naming-new-templates)
+3. [Layouts vs. Components](#layouts-vs-components)
+4. [Layouts](#layouts)
+5. [Components](#components)
+6. [Consider using JSX templates](#consider-using-jsx-templates)
+
+## What is a template?
+
+Templates are the files that tell JS.SSG exactly how to convert your content into HTML. At their simplest, JS.SSG templates are component functions that accept content as props and return a string of HTML.
+
+In this example, the `Callout` component accepts `title` and `message` props, and renders that data within a `<div>` with a class of `"callout"`:
+
+```js
+// Callout.js
+export default ({ title, message }) => `
+    <div class="callout">
+        <h1>${title}</h1>
+        <p>${message}</p>
+    </div>`;
+```
+
+## Creating (and naming) new templates
+
+JS.SSG templates live in the templates folder in the root of your project. This is `/templates`, unless you're using a [custom template config](/configuration/#templates). _Note that you **can** nest sub-folders of templates within the templates directory_
+
+The name of the file is the name of the template. By convention these are PascalCased to conform with the fact that they are components. If you want to use the template within another template, import it in the same way as any other JS function. In this example, the `HomeLink` component is imported into the `Header.js` template file:
+
+```js
+// Header.js
+import HomeLink from "/HomeLink.js";
+
+export default ({ page, site }) => `
+    <header>
+        <h1>${page.title}</h1>
+        ${HomeLink({ url: site.url, title: site.title })}
+    </header>`;
+```
+
+## Layouts vs. Components
+
+All JS.SSG template files are components that can be used throughout your code within other template files. There are, however, two distinct types of template: "layouts" and "components".
+
+### Layouts
+
+**Layouts** are used for full pages and are applied to a page in the markdown frontmatter using the `layout` value. For example, `layout: Article` means that the content in that markdown file will be rendered to HTML using the `/templates/Article.js` layout.
+
+Layout templates always have access to the same three props: `content`, `page`, and `site`:
+
+-   `content`: this is the content of the page. It has already been converted to HTML from raw markdown (including any MDX components if they have been used in the page).
+-   `page` - an object containing all the frontmatter from the Markdown file for the specific page that is being rendered.
+-   `site` - an object containing metadata about the site as a whole (root url, site title, etc.). See the [page about global site data configuration](configuration/#global-site-data) for more detail about how to add data to the `site` object.
+
+Because layout templates are intented to contain an entire page of HTML, they should include the HTML tags required for a full web page (`<html>`, `<body>`, etc.). You can, of course, break these out into separate component files to keep your code neater (e.g. `<Header>`,`<Menu>`, etc...).
+
+```js
+// ExampleLayout.js
+export default ({ content, page, site }) => {
+    return `<!doctype html>
+        <html lang="en">
+            <body>
+                <header>
+                    <a href=${site.url}>${site.title}</a>
+                </header>
+                <h1>${page.title}</h1>
+                ${content}
+            </body>
+        </html>`;
+};
+```
+
+### Components
+
+Component templates are very similar to layout templates, but with a few crucial differences.
+
+**No default props.** Layout templates are always intialised with predefined props (`{content, page, site}`), but components are intended to be used _ad hoc_ so they do not have any pre set properties. The only props available are ones that you explicitly define when creating the component.
+
+In this simplfied example, a `HomeLink` component is created and then imported into a `Header` component where it is used.
+
+```
+├── templates/
+|   ├── Header.js
+|   └── HomeLink.js
+```
+
+```js
+// HomeLink.js
+export default ({ url, title }) => `
+    <a href="${url}" class="home-link">
+        ${title}
+    </a>`;
+```
+
+```js
+// Header.js
+import HomeLink from "/HomeLink.js";
+
+export default ({ page, site }) => {
+    return `<header>
+        <h1>${page.title}</h1>
+        ${HomeLink({ url: site.url, title: site.title })}
+    </header>`;
+};
+```
+
+## Consider using JSX templates
+
+Pure JS templates are supported in JS.SSG because sometimes it can be useful to have complete control of what gets rendered, but for HTML-style markup it is recommended that you use [JSX templates](/feature-jsx-templates) (although this is not _required_).
+
+You can write literally any kind of JS code you like within a template file. The only restriction is that the `default` export of the file is a function that returns a single string. That string is what gets written to the final HTML file that JS.SSG generates.
+
+If you are writing lots of HTML markup, the JSX template syntax is cleaner and easier to read and write. This applies to the markup as HTML line breaks and nesting look better in JSX, and HTML syntax hilighting is much better for JSX than for template literals. The syntax for using components within your HTML is much cleaner and simpler in JSX templates, too.

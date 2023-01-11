@@ -37,16 +37,21 @@ export const renderMdx = (body, templates, scope = {}) => {
             (acc, key) => ({ ...acc, [key]: templates[key].component }),
             {}
         );
-    return renderToStaticMarkup(
-        <MDX
-            components={components}
-            scope={scope}
-            remarkPlugins={[remarkDeflist]}
-            rehypePlugins={[rehypeSlug, rehypeHighlight]}
-        >
-            {body}
-        </MDX>
-    );
+    try {
+        return renderToStaticMarkup(
+            <MDX
+                components={components}
+                scope={scope}
+                remarkPlugins={[remarkDeflist]}
+                rehypePlugins={[rehypeSlug, rehypeHighlight]}
+            >
+                {body}
+            </MDX>
+        );
+    } catch (err) {
+        if (args.verbose) log([`Problem rendering template`, template], "red");
+        console.error(err);
+    }
 };
 
 export const handleMarkdown = async ({ file, templates, site }) => {
