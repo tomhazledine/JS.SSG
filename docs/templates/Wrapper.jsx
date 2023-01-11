@@ -43,28 +43,30 @@ const Wrapper = ({ page = {}, site = {}, children }) => (
                 <label className="sidebar__mask" htmlFor="show-menu">
                     <span className="hidden--visually">Hide Menu</span>
                 </label>
-                <div className="sidebar__inner stack">
-                    <Header title={site.title} />
-                    <Menu
-                        pages={site.allPages}
-                        sections={[
-                            { slug: "overview", label: "Overview" },
-                            {
-                                slug: "getting_started",
-                                label: "Getting Started"
-                            },
-                            { slug: "features", label: "Features" },
-                            { slug: "examples", label: "Code Examples" },
-                            { slug: "advanced", label: "Advanced" }
-                        ]}
-                        current={page.url}
-                    />
-                    <label
-                        className="sidebar__toggle--inner"
-                        htmlFor="show-menu"
-                    >
-                        <span className="hidden--visually">Hide Menu</span>
-                    </label>
+                <div className="sidebar__inner">
+                    <div className="sidebar__scrollable stack">
+                        <Header title={site.title} />
+                        <Menu
+                            pages={site.allPages}
+                            sections={[
+                                { slug: "overview", label: "Overview" },
+                                {
+                                    slug: "getting_started",
+                                    label: "Getting Started"
+                                },
+                                { slug: "features", label: "Features" },
+                                { slug: "examples", label: "Code Examples" },
+                                { slug: "advanced", label: "Advanced" }
+                            ]}
+                            current={page.url}
+                        />
+                        <label
+                            className="sidebar__toggle--inner"
+                            htmlFor="show-menu"
+                        >
+                            <span className="hidden--visually">Hide Menu</span>
+                        </label>
+                    </div>
                 </div>
             </aside>
             <main className="main">

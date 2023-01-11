@@ -36,21 +36,26 @@
     position: absolute;
     top: 0;
     left: 0;
-    padding: 1em;
     transform: translateX(var(--sidebar-offset));
     border-right: 0.1rem solid var(--hairline);
     transition: transform 0.2s;
+    overflow-y: scroll;
     @include bp(u2) {
         position: relative;
         transform: translateX(0);
     }
 }
 
+.sidebar__scrollable {
+    padding: 1em;
+    padding-bottom: 6em;
+}
+
 .main {
     z-index: 1;
     height: 100%;
     width: 100%;
-    overflow-y: scroll;
+    // overflow-y: scroll;
     margin-left: var(--sidebar-closed-width);
     @include bp(u2) {
         margin-left: var(--sidebar-open-width);
