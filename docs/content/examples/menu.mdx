@@ -1,0 +1,176 @@
+---
+permalink: example-menu
+title: "Code example: creating a site menu"
+menuTitle: Menu
+layout: Article
+menuGroup: examples
+tags: [menu]
+---
+
+Most websites need a menu to allow users to navigate between pages. There are many ways to achieve this in JS.SSG, and in this example we're creating a custom `Menu` component that reads all the pages in your JS.SSG project and creates menu items for each of them.
+
+1. [Getting all the pages](#getting-all-the-pages)
+2. [The Menu component](#the-menu-component)
+3. [Filtering the pages included in the menu](#filtering-the-pages-included-in-the-menu)
+
+## Getting all the pages
+
+Every [layout component](/feature-jsx-templates#layouts) is passed a `site` prop that contains info about the site in general, including all the pages within the site. These can be accessed using the `site.allPages` value.
+
+In this example layout, `SimpleLayout`, we're passing in `site.allPages` to our `Menu` component as a prop called `pages` _(We'll write this `Menu` component in the [next section](#the-menu-component))_.
+
+We're also including the URL for the page being rendered as prop called `current`. This will allow us to change how we render the currently-active item in the menu.
+
+```jsx
+// SimpleLayout.jsx
+import Menu from "./Menu.js";
+
+export default ({ content, page, site }) => (
+    <html lang="en">
+        <head>
+            <title>{site.title}</title>
+        </head>
+        <body>
+            <Menu pages={site.allPages} current={page.url} />
+            <h1>{page.title}</h1>
+            <div dangerouslySetInnerHTML={{ __html: content }} />
+        </body>
+    </html>
+);
+```
+
+<Callout message="For these examples we're using [JSX templates](/feature-jsx-templates), but the same priciples apply to vanilla [JS templates](/feature-js-templates). The only change required would be to refactor JSX syntax into pure JS template strings (for example `return <h1>{title}</h1>;` would become `` return `<h1>${title}</h1>`; ``)." />
+
+## The Menu component
+
+Our Menu component consists of two parts:
+
+1. A `MenuItem` component to handle rendering each menu item
+2. The `Menu` component itself, which generates the full list of menu items and renders them inside a `<nav>` element.
+
+A few things to note about these components:
+
+-   Every menu item needs a unique `key` (just like when dealing with arrays of components within React)
+-   To determine if a menu item is the "current" page being rendered, we're comparing the current page's `url` with the menu item's URL which we passed into the `Menu` as the `current` prop (`current={page.url === current}`).
+-   For this example, we're writing the `MenuItem` component with the `Menu.jsx` component file. You could easily extract this compontent into its own file if you prefer.
+
+```jsx
+// Menu.jsx
+const MenuItem = ({ page, current }) => {
+    const itemClass = current ? "menu-item--current" : "menu-item";
+    return (
+        <li>
+            <a href={page.url} className={itemClass}>
+                {page.title}
+            </a>
+        </li>
+    );
+};
+
+export default ({ pages, current }) => {
+    const menuItems = pages.map(page => (
+        <MenuItem
+            key={`menu-item-${page.url}`}
+            page={page}
+            current={page.url === current}
+        />
+    ));
+
+    return (
+        <nav className="menu" role="navigation">
+            <ul>{menuItems}</ul>
+        </nav>
+    );
+};
+```
+
+## Filtering the pages included in the menu
+
+You don't have to pass in _all_ the pages to the menu. There are several methods you can use to filter the pages included in the menu.
+
+1. [Hard coding](#hard-coding)
+1. [A custom filter function](#a-custom-filter-function)
+1. [Using collections](#using-collections)
+
+### Hard coding
+
+You can always hard-code the menu in your template, and only rely on dynamic props to determine the `current` item. You don't even need to change the example code for the `Menu` component; you can swap the dynamic `site.allPages` array with a hard-coded `menuPages` array:
+
+```jsx
+// SimpleLayout.jsx
+import Menu from "./Menu.js";
+
+export default ({ content, page, site }) => {
+    const menuPages = [
+        {
+            url: "/path-to-page-one",
+            title: "Page One"
+        },
+        {
+            url: "/path-to-page-two",
+            title: "Page Two"
+        }
+        // etc...
+    ];
+
+    return (
+        <html lang="en">
+            <head>
+                <title>{site.title}</title>
+            </head>
+            <body>
+                <Menu pages={menuPages} current={page.url} />
+            </body>
+        </html>
+    );
+};
+```
+
+### A custom filter function
+
+You could filter the `pages` array with the `Menu` component by using the `.filter()` array method.
+
+In this example, we're checking for a frontmatter value on the page called `hideFromMenu` (this can be any frontmatter value you like) and if that value is `true` we filter that page out of the `pages` array.
+
+```jsx
+const menuFilter = page => {
+    if (page.frontmatter.hideFromMenu) {
+        // If the condition is met, exclude `page` from the list
+        return false;
+    }
+    return true;
+};
+
+const menuItems = pages
+    .filter(menuFilter)
+    .map(page => (
+        <MenuItem
+            key={`menu-item-${page.url}`}
+            page={page}
+            current={page.url === current}
+        />
+    ));
+```
+
+<Callout message="This `menuFilter` function has been writen verbosely to best illustrate the basic concept. In production code, this could be writen as a one-liner in the `const menuItems` declaration: \n\n`.filter(page => !page.frontmatter.hideFromMenu)`" />
+
+### Using collections
+
+The `site.allPages` value returns all the pages in the project, but there are alternative values that could be used. All [collections](/features/taxonomies) (tags, categories, and custom taxonomies) create a list of pages that can be used for a menu. These are accessed through the `site.collections.pages` value.
+
+For example, you could add a tag called `menu` to the pages you want to include in your menu.
+
+```
+---
+title: Example Page
+tags: "menu"
+---
+
+Ad enim velit mollit consectetur et aliqua aliquip.
+```
+
+That page will then appear in the `site.collections.pages.tags.menu` array, which you can then use in place of `site.allPages`.
+
+```jsx
+<Menu pages={site.collections.pages.tags.menu} current={page.url} />
+```
