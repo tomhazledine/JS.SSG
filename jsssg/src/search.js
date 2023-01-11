@@ -35,13 +35,19 @@ export const buildSearchData = ({ fields, site, outPath, templates }) => {
                 site
             };
 
-            const markdownContents =
-                page.type === "mdx"
-                    ? renderMdx(page.markdown, templates, scope)
-                    : render(page.markdown);
+            try {
+                const markdownContents =
+                    page.type === "mdx"
+                        ? renderMdx(page.markdown, templates, scope)
+                        : render(page.markdown);
 
-            const content = parseSearchContent(markdownContents);
-            return { ...includedFrontmatter, url: page.url, content };
+                const content = parseSearchContent(markdownContents);
+                return { ...includedFrontmatter, url: page.url, content };
+            } catch (err) {
+                if (args.verbose)
+                    log([`Problem rendering search page`, page.url], "red");
+                console.error(err);
+            }
         });
 
     const feedPath = path.resolve(outPath, "search-data.json");
