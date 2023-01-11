@@ -1,0 +1,114 @@
+---
+title: "Collections: Tags, Categories, and Custom Taxonomies"
+menuTitle: Collections
+layout: Article
+menuGroup: features
+---
+
+1. [Overview](#overview)
+2. [Tags and Categories](#tags-and-categories)
+3. [Custom Taxonomies](#custom-taxonomies)
+4. [The collections object](#the-collections-object)
+
+## Overview
+
+JS.SSG has out-of-the box for two taxonomies: `tags` and `categories`. These are set in the frontmatter of your content files, and populate the `site.collections` data that is passed as a prop to every layout.
+
+You can also create custom taxonomies by declaring them in the config file.
+
+---
+
+## Tags and Categories
+
+Tags and categorie are useful for organising the data in site. These can be set using the `tags` and `categories` frontmatter keys in markdown files.
+
+```
+---
+title: An example blog post
+tags: [foo, bar, baz]
+---
+
+Ullamco tempor ad dolore ad consequat sint nulla et dolore proident elit nostrud.
+```
+
+<Callout message="`tags` and `categories` (and custom taxonomies) can accept either a single string value or an array of strings. Both `tags: foo` and `tags: [ foo, bar]` are valid." />
+
+If either `tags` or `categories` are set in a page's frontmatter, that page will be added to the relevant "collection" when JS.SSG compiles your site. You can use these collections within template files (to create menus, lists of posts, index pages, etc.) by accessing the `site.collections` object. See [The collections object section of this page](#the-collections-object) for more details.
+
+---
+
+## Custom Taxonomies
+
+If `tags` and `categories` are too restrictive for your needs, you can create additional taxonomies using the [collections](/configuration/#collections) configuration value.
+
+```
+// config.json
+{
+    "collections": ["customTaxonomyOne", "customTaxonomyTwo"]
+}
+```
+
+These taxonomies will then be available to use within your content's frontmatter in the same manner as `tags` and `categories` and JS.SSG will use these when creating collections.
+
+```
+---
+title: An example blog post
+customTaxonomyOne: [foo, bar, baz]
+---
+
+Ullamco tempor ad dolore ad consequat sint nulla et dolore proident elit nostrud.
+```
+
+The default taxonomies of `tags` and `categories` will always be available regardless of the contents of `config.collections`, so you don't need to re-declare them when declaring new custom taxonomies.
+
+<Callout>
+    By convention, JS.SSG uses plurals for the taxonomy slugs. For example,
+    `tags` rather than `tag`.
+</Callout>
+
+---
+
+## The `collections` object
+
+Information about all taxonomies is available with templates via the `site.collections` object. The `collections` data has two sections: `site.collections.keys` and `site.collections.pages`.
+
+### `keys`
+
+`site.collections.keys` provides an object where the keys are the slugs for all the available taxonomies and the values are an array of all the items within that taxonomy. This is made available so you can have easy access to all the taxonomy keys without having to reverse-engineer them from the `collections.pages` data.
+
+For example, if you used two tags within your content, `tags: video` and `tags: image`, then the `collections.keys` data would appear like this:
+
+```
+keys: {
+    categories: [],
+    tags: [ 'video', 'image' ]
+},
+```
+
+### `pages`
+
+`site.collections.pages` is where the page data for all collections is stored. Assuming the previously used example of two tags, `video` and `image`, the `pages` data would look something like this:
+
+```
+pages: {
+    categories: {},
+    tags: {
+        video: [
+            { page data }
+        ],
+        image: [
+            { page data },
+            { page data },
+            ...
+        ]
+    }
+}
+```
+
+The page data objects have the following values:
+
+-   `type` - the filetype for the content file (either `'md'`, or `'mdx'`.
+-   `frontmatter` - an object containing all the pages frontmatter, including `title`, `layout`, `tags`, etc.
+-   `markdown` - the raw markdown content of the page, as a `string`.
+-   `filePath` - the full path to the orginial markdown file on disk (useful for debugging).
+-   `url` - the relative URL of the page in the final build.
