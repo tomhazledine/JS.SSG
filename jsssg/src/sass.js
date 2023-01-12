@@ -8,7 +8,14 @@ import { args } from "./index.js";
 import { saveFile } from "./io.js";
 
 export const compileSass = async (stylePath, PATHS) => {
-    const rawCSS = sass.compile(stylePath);
+    let rawCSS;
+    try {
+        rawCSS = sass.compile(stylePath);
+    } catch (err) {
+        log(`Invalid SCSS: ${stylePath}`, "red");
+        console.error(err);
+        return;
+    }
 
     const compiledCSS = await postcss([autoprefixer, cssnano]).process(
         rawCSS.css,

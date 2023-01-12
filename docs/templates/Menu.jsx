@@ -9,7 +9,9 @@ const parseMenu = (pages, filter, current) =>
         }))
         .sort((a, b) => a.priority - b.priority);
 
-const MenuSection = ({ items, title = false }) => {
+const MenuSection = ({ items, title = false, current }) => {
+    const containsCurrent = items.map(item => item.url).includes(current);
+    const currentClassName = containsCurrent ? "current" : "";
     const itemsMarkup = items.map(page => (
         <li
             key={`menu_${page.url}`}
@@ -20,10 +22,14 @@ const MenuSection = ({ items, title = false }) => {
         </li>
     ));
     return (
-        <>
-            {title && <h5>{title}</h5>}
+        <details className="menu-details" open={containsCurrent}>
+            {title && (
+                <summary className={`menu-details-summary ${currentClassName}`}>
+                    {title}
+                </summary>
+            )}
             <ul>{itemsMarkup}</ul>
-        </>
+        </details>
     );
 };
 
@@ -39,12 +45,13 @@ const Menu = ({ pages, sections, current }) => {
                 key={`menu_section_${section.slug}`}
                 items={items}
                 title={section.label}
+                current={current}
             />
         );
     });
 
     return (
-        <nav className="menu stack" role="navigation">
+        <nav className="menu stack--small" role="navigation">
             {sectionMarkup}
         </nav>
     );

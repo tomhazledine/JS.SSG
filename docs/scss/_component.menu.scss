@@ -39,3 +39,33 @@
     // transform: translateY(-50%);
     // color: var(--primary)
 }
+
+.menu-details-summary {
+    list-style: none;
+    position: relative;
+    padding-left: 2.4rem;
+    cursor: pointer;
+    &:before {
+        position: absolute;
+        top: 50%;
+        transform: translate(-20%, -50%) rotate(-45deg);
+        left: 0;
+        content: "";
+        display: block;
+        width: 0.8rem;
+        height: 0.8rem;
+        border-bottom: 0.2rem solid var(--primary);
+        border-right: 0.2rem solid var(--primary);
+    }
+    // &.current {
+    //     background: var(--background--secondary);
+    // }
+}
+
+.menu-details[open] > .menu-details-summary:before {
+    transform: translate(0%, -80%) rotate(45deg);
+}
+
+.menu-details > ul {
+    padding-left: 0;
+}
