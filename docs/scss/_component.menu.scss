@@ -57,9 +57,9 @@
         border-bottom: 0.2rem solid var(--primary);
         border-right: 0.2rem solid var(--primary);
     }
-    // &.current {
-    //     background: var(--background--secondary);
-    // }
+    &::-webkit-details-marker {
+        display: none;
+    }
 }
 
 .menu-details[open] > .menu-details-summary:before {
