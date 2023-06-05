@@ -7,17 +7,20 @@ import { args } from "./index.js";
 import { saveFile } from "./io.js";
 import { chunk } from "./utils.js";
 
-const parseSearchContent = markdown =>
-    markdown
-        // Remove tags
-        .replace(/<\/?[^>]+(>|$)/g, "")
-        // Split into sentences
-        .split("\n")
-        // Remove empty lines
-        .filter(line => line !== "")
+const parseSearchContent = markdown => {
+    // Remove tags
+    const content = markdown.replace(/<\/?[^>]+(>|$)/g, "");
+
+    // Split into sentences
+    const segmenter = new Intl.Segmenter("en", { granularity: "sentence" });
+    const segments = [...segmenter.segment(content)]
+        .map(segment => segment.segment)
         // Cap sentences at 240 chars
         .map(line => chunk(line, 240))
         .flat();
+
+    return segments;
+};
 
 export const buildSearchData = ({ fields, site, outPath, templates }) => {
     const allPages = site.allPages;
