@@ -43,7 +43,10 @@ export const renderMdx = (body, templates, scope = {}) => {
                 components={components}
                 scope={scope}
                 remarkPlugins={[remarkDeflist]}
-                rehypePlugins={[rehypeSlug, rehypeHighlight]}
+                rehypePlugins={[
+                    rehypeSlug,
+                    [rehypeHighlight, { ignoreMissing: true }]
+                ]}
             >
                 {body}
             </MDX>

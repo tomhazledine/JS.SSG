@@ -17,7 +17,11 @@ const parseSearchContent = markdown => {
         .map(segment => segment.segment)
         // Cap sentences at 240 chars
         .map(line => chunk(line, 240))
-        .flat();
+        .flat()
+        // Remove trailing whitespace
+        .map(line => line.trim())
+        // Remove empty lines
+        .filter(line => line.length > 0);
 
     return segments;
 };
