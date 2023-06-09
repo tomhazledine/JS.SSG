@@ -43,6 +43,12 @@ This is where JS.SSG will save the final output for your site.
 
 Default: `"build"`
 
+### `appName`
+
+If defined, `appName` will be prepended to the filename of your style files. For example, setting `appName: "my-site"` will result in `app.scss` becoming `my-site.app.css`.
+
+Default: `false`
+
 ### `templates`
 
 The path to your [template files](/getting-started-templates).
@@ -63,7 +69,9 @@ Default: `"public"`
 
 ### `styles`
 
-The path to your [Sass files](/getting-started-assets#built-in-sass-compilation).
+The path to your [Sass files](/getting-started-assets#built-in-sass-compilation). Every "root" Sass file (i.e. those _not_ starting with an underscore) in this directory will be compiled to CSS and saved in the output folder. If you have a file called `app.scss` in this directory, it will be compiled to `app.css` in the output folder, but partials like `_variables.scss` will not be compiled.
+
+If you have set an [`appName`](#appname), the output file will be prepended with the name you've chosen.
 
 Default: `false`
 
