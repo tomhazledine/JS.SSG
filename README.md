@@ -2,7 +2,7 @@
 
 A "just the way I like it" static site generator built with Node.js
 
-Docs can be found at [jsssg.org](<[./ssg/README.md](https://jsssg.org/)>)
+Docs can be found at [jsssg.org](https://jsssg.org/))
 
 ## Roadmap
 
