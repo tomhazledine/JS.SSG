@@ -1,3 +1,4 @@
+import path from "path";
 import { copyFile, readFolder } from "./io.js";
 import { parseSiteData } from "./parse-site-data.js";
 import { handleFileBuild, processFile } from "./process-file.js";
@@ -59,8 +60,12 @@ export const build = async ({ PATHS, config, args }) => {
     );
 
     if (config.styles) {
-        const allStyleFiles = readFolder(PATHS.STYLES, "_");
-        allStyleFiles.forEach(stylePath => compileSass(stylePath, PATHS));
+        const allStyleFiles = readFolder(PATHS.STYLES);
+        allStyleFiles
+            .filter(fullpath => !path.basename(fullpath).startsWith("_"))
+            .forEach(stylePath =>
+                compileSass(stylePath, PATHS, config.appName)
+            );
     }
 
     console.log(`Site generated at "/${config.out}"`);

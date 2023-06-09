@@ -4,6 +4,7 @@ import { readFile } from "./io.js";
 
 export const getConfig = args => {
     const defaultConfig = {
+        appName: false,
         in: "content",
         out: "build",
         templates: "templates",
