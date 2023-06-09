@@ -1,6 +1,6 @@
 {
     "name": "jsssg",
-    "version": "0.1.12",
+    "version": "0.1.13",
     "description": "An opinionated static site generator built with JavaScript",
     "main": "./build/index.js",
     "devDependencies": {},
@@ -9,7 +9,9 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "build": "esbuild src/index.js --bundle --outfile=build/index.js --platform=node --loader:.js=jsx --jsx=automatic --external:esbuild --external:sharp",
         "analyse": "esbuild src/index.js --bundle --outfile=build/index.js --platform=node --loader:.js=jsx --jsx=automatic --external:esbuild --external:sharp --metafile=esbuild",
-        "visualise": "esbuild-visualizer --metadata ./esbuild"
+        "visualise": "esbuild-visualizer --metadata ./esbuild",
+        "version:bump": "npm version patch",
+        "publish": "npm publish"
     },
     "author": {
         "name": "Tom Hazledine",

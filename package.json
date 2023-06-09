@@ -11,6 +11,8 @@
         "jsssg:build": "yarn workspace jsssg build",
         "jsssg:analyse": "yarn workspace jsssg analyse",
         "jsssg:visualise": "yarn workspace jsssg visualise",
+        "jsssg:version:bump": "yarn workspace jsssg version:bump",
+        "jsssg:publish": "yarn workspace jsssg publish",
         "docs:build": "yarn workspace docs build",
         "docs:publish": "yarn workspace docs netlify deploy --dir=build --prod",
         "docs:dev": "yarn workspace docs dev",
