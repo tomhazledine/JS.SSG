@@ -1,6 +1,6 @@
 {
     "name": "jsssg",
-    "version": "0.1.13",
+    "version": "0.1.14",
     "description": "An opinionated static site generator built with JavaScript",
     "main": "./build/index.js",
     "devDependencies": {},
