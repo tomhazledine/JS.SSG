@@ -16,8 +16,11 @@ export const build = async ({ PATHS, config, args }) => {
     if (args.verbose) console.log(`found ${allFiles.length} files`);
 
     if (args.verbose) console.log("Parsing frontmatter...");
-    const fileData = await Promise.all(
+    const unfilteredFileData = await Promise.all(
         allFiles.map(async filePath => await processFile(filePath, PATHS))
+    );
+    const fileData = unfilteredFileData.filter(
+        file => file.type !== "not a file"
     );
 
     if (args.verbose) console.log("Loading templates...");
